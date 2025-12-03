@@ -1,0 +1,13 @@
+bin/
+.git
+.gitignore
+.dockerignore
+Dockerfile
+Makefile
+README.md
+docs/
+test/
+.idea/
+.vscode/
+coverage.out
+coverage.html
