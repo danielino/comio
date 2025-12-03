@@ -9,4 +9,6 @@ type Engine interface {
 	Allocate(size int64) (offset int64, err error)
 	Free(offset, size int64) error
 	Sync() error
+	Stats() Stats
+	BlockSize() int
 }

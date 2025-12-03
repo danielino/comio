@@ -20,4 +20,5 @@ type Object struct {
 	Metadata     map[string]string  `json:"metadata"`
 	StorageClass string             `json:"storage_class"`
 	DeleteMarker bool               `json:"delete_marker"`
+	Offset       int64              `json:"offset"` // Internal use
 }

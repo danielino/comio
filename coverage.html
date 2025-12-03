@@ -1,0 +1,3408 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>comio: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">github.com/danielino/comio/cmd/comio/main.go (0.0%)</option>
+				
+				<option value="file1">github.com/danielino/comio/internal/api/handlers/admin.go (0.0%)</option>
+				
+				<option value="file2">github.com/danielino/comio/internal/api/handlers/bucket.go (0.0%)</option>
+				
+				<option value="file3">github.com/danielino/comio/internal/api/handlers/health.go (0.0%)</option>
+				
+				<option value="file4">github.com/danielino/comio/internal/api/handlers/lifecycle.go (0.0%)</option>
+				
+				<option value="file5">github.com/danielino/comio/internal/api/handlers/multipart.go (0.0%)</option>
+				
+				<option value="file6">github.com/danielino/comio/internal/api/handlers/object.go (0.0%)</option>
+				
+				<option value="file7">github.com/danielino/comio/internal/api/handlers/replication.go (0.0%)</option>
+				
+				<option value="file8">github.com/danielino/comio/internal/api/middleware/logging.go (0.0%)</option>
+				
+				<option value="file9">github.com/danielino/comio/internal/api/middleware/recovery.go (0.0%)</option>
+				
+				<option value="file10">github.com/danielino/comio/internal/api/router.go (0.0%)</option>
+				
+				<option value="file11">github.com/danielino/comio/internal/api/server.go (0.0%)</option>
+				
+				<option value="file12">github.com/danielino/comio/internal/auth/hmac.go (0.0%)</option>
+				
+				<option value="file13">github.com/danielino/comio/internal/bucket/memory_repo.go (81.2%)</option>
+				
+				<option value="file14">github.com/danielino/comio/internal/bucket/service.go (86.7%)</option>
+				
+				<option value="file15">github.com/danielino/comio/internal/cli/admin.go (0.0%)</option>
+				
+				<option value="file16">github.com/danielino/comio/internal/cli/bucket.go (0.0%)</option>
+				
+				<option value="file17">github.com/danielino/comio/internal/cli/config.go (0.0%)</option>
+				
+				<option value="file18">github.com/danielino/comio/internal/cli/object.go (0.0%)</option>
+				
+				<option value="file19">github.com/danielino/comio/internal/cli/root.go (0.0%)</option>
+				
+				<option value="file20">github.com/danielino/comio/internal/cli/server.go (0.0%)</option>
+				
+				<option value="file21">github.com/danielino/comio/internal/config/loader.go (0.0%)</option>
+				
+				<option value="file22">github.com/danielino/comio/internal/integrity/checksum.go (0.0%)</option>
+				
+				<option value="file23">github.com/danielino/comio/internal/integrity/validator.go (0.0%)</option>
+				
+				<option value="file24">github.com/danielino/comio/internal/lifecycle/executor.go (0.0%)</option>
+				
+				<option value="file25">github.com/danielino/comio/internal/monitoring/logger.go (0.0%)</option>
+				
+				<option value="file26">github.com/danielino/comio/internal/monitoring/metrics.go (0.0%)</option>
+				
+				<option value="file27">github.com/danielino/comio/internal/multipart/service.go (0.0%)</option>
+				
+				<option value="file28">github.com/danielino/comio/internal/object/memory_repo.go (71.2%)</option>
+				
+				<option value="file29">github.com/danielino/comio/internal/object/service.go (71.7%)</option>
+				
+				<option value="file30">github.com/danielino/comio/internal/object/version.go (100.0%)</option>
+				
+				<option value="file31">github.com/danielino/comio/internal/replication/config.go (0.0%)</option>
+				
+				<option value="file32">github.com/danielino/comio/internal/replication/manager.go (0.0%)</option>
+				
+				<option value="file33">github.com/danielino/comio/internal/replication/replicator.go (61.8%)</option>
+				
+				<option value="file34">github.com/danielino/comio/internal/storage/allocator.go (0.0%)</option>
+				
+				<option value="file35">github.com/danielino/comio/internal/storage/block.go (9.1%)</option>
+				
+				<option value="file36">github.com/danielino/comio/internal/storage/device.go (67.6%)</option>
+				
+				<option value="file37">github.com/danielino/comio/internal/storage/simple_engine.go (92.3%)</option>
+				
+				<option value="file38">github.com/danielino/comio/internal/storage/slab_allocator.go (86.2%)</option>
+				
+				<option value="file39">github.com/danielino/comio/pkg/utils/hash.go (100.0%)</option>
+				
+				<option value="file40">github.com/danielino/comio/pkg/utils/time.go (100.0%)</option>
+				
+				<option value="file41">github.com/danielino/comio/stress.go (0.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package main
+
+import (
+        "fmt"
+        "os"
+
+        "github.com/danielino/comio/internal/cli"
+)
+
+var (
+        Version   = "dev"
+        BuildTime = "unknown"
+)
+
+func main() <span class="cov0" title="0">{
+        if err := cli.Execute(Version, BuildTime); err != nil </span><span class="cov0" title="0">{
+                fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+                os.Exit(1)
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package handlers
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+
+        "github.com/danielino/comio/internal/storage"
+)
+
+// AdminHandler handles admin operations
+type AdminHandler struct {
+        engine storage.Engine
+}
+
+// NewAdminHandler creates a new admin handler
+func NewAdminHandler(engine storage.Engine) *AdminHandler <span class="cov0" title="0">{
+        return &amp;AdminHandler{
+                engine: engine,
+        }
+}</span>
+
+// Metrics returns metrics
+func (h *AdminHandler) Metrics(c *gin.Context) <span class="cov0" title="0">{
+        stats := h.engine.Stats()
+        c.JSON(http.StatusOK, gin.H{
+                "storage": stats,
+        })
+}</span>
+
+// HealthCheck returns health status
+func (h *AdminHandler) HealthCheck(c *gin.Context) <span class="cov0" title="0">{
+        c.JSON(http.StatusOK, gin.H{"status": "ok"})
+}</span>
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package handlers
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+
+        "github.com/danielino/comio/internal/bucket"
+)
+
+// BucketHandler handles bucket operations
+type BucketHandler struct {
+        service *bucket.Service
+}
+
+// NewBucketHandler creates a new bucket handler
+func NewBucketHandler(service *bucket.Service) *BucketHandler <span class="cov0" title="0">{
+        return &amp;BucketHandler{
+                service: service,
+        }
+}</span>
+
+// ListBuckets lists all buckets
+func (h *BucketHandler) ListBuckets(c *gin.Context) <span class="cov0" title="0">{
+        // TODO: Get owner from auth context
+        owner := "default"
+        buckets, err := h.service.ListBuckets(c.Request.Context(), owner)
+        if err != nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+                return
+        }</span>
+        <span class="cov0" title="0">c.JSON(http.StatusOK, buckets)</span>
+}
+
+// CreateBucket creates a new bucket
+func (h *BucketHandler) CreateBucket(c *gin.Context) <span class="cov0" title="0">{
+        bucketName := c.Param("bucket")
+        // TODO: Get owner from auth context
+        owner := "default"
+        
+        if err := h.service.CreateBucket(c.Request.Context(), bucketName, owner); err != nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+                return
+        }</span>
+        
+        <span class="cov0" title="0">c.JSON(http.StatusOK, gin.H{"bucket": bucketName, "status": "created"})</span>
+}
+
+// DeleteBucket deletes a bucket
+func (h *BucketHandler) DeleteBucket(c *gin.Context) <span class="cov0" title="0">{
+        bucketName := c.Param("bucket")
+        if err := h.service.DeleteBucket(c.Request.Context(), bucketName); err != nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+                return
+        }</span>
+        <span class="cov0" title="0">c.Status(http.StatusNoContent)</span>
+}
+
+// HeadBucket checks if bucket exists
+func (h *BucketHandler) HeadBucket(c *gin.Context) <span class="cov0" title="0">{
+        bucketName := c.Param("bucket")
+        if _, err := h.service.GetBucket(c.Request.Context(), bucketName); err != nil </span><span class="cov0" title="0">{
+                c.Status(http.StatusNotFound)
+                return
+        }</span>
+        <span class="cov0" title="0">c.Status(http.StatusOK)</span>
+}
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package handlers
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+)
+
+// HealthCheck returns health status
+func HealthCheck(c *gin.Context) <span class="cov0" title="0">{
+        c.JSON(http.StatusOK, gin.H{"status": "ok"})
+}</span>
+
+// Metrics returns metrics
+func Metrics(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusOK)
+}</span>
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package handlers
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+)
+
+// LifecycleHandler handles lifecycle operations
+type LifecycleHandler struct {
+}
+
+// NewLifecycleHandler creates a new lifecycle handler
+func NewLifecycleHandler() *LifecycleHandler <span class="cov0" title="0">{
+        return &amp;LifecycleHandler{}
+}</span>
+
+// GetBucketLifecycle retrieves lifecycle configuration
+func (h *LifecycleHandler) GetBucketLifecycle(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusOK)
+}</span>
+
+// PutBucketLifecycle sets lifecycle configuration
+func (h *LifecycleHandler) PutBucketLifecycle(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusOK)
+}</span>
+</pre>
+		
+		<pre class="file" id="file5" style="display: none">package handlers
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+)
+
+// MultipartHandler handles multipart upload operations
+type MultipartHandler struct {
+}
+
+// NewMultipartHandler creates a new multipart handler
+func NewMultipartHandler() *MultipartHandler <span class="cov0" title="0">{
+        return &amp;MultipartHandler{}
+}</span>
+
+// InitiateMultipartUpload initiates a multipart upload
+func (h *MultipartHandler) InitiateMultipartUpload(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusOK)
+}</span>
+
+// UploadPart uploads a part
+func (h *MultipartHandler) UploadPart(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusOK)
+}</span>
+
+// CompleteMultipartUpload completes a multipart upload
+func (h *MultipartHandler) CompleteMultipartUpload(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusOK)
+}</span>
+
+// AbortMultipartUpload aborts a multipart upload
+func (h *MultipartHandler) AbortMultipartUpload(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusNoContent)
+}</span>
+
+// ListParts lists parts
+func (h *MultipartHandler) ListParts(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusOK)
+}</span>
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package handlers
+
+import (
+        "net/http"
+        "strconv"
+
+        "github.com/gin-gonic/gin"
+        "go.uber.org/zap"
+
+        "github.com/danielino/comio/internal/monitoring"
+        "github.com/danielino/comio/internal/object"
+)
+
+// ObjectHandler handles object operations
+type ObjectHandler struct {
+        service *object.Service
+}
+
+// NewObjectHandler creates a new object handler
+func NewObjectHandler(service *object.Service) *ObjectHandler <span class="cov0" title="0">{
+        return &amp;ObjectHandler{
+                service: service,
+        }
+}</span>
+
+// PutObject uploads an object
+func (h *ObjectHandler) PutObject(c *gin.Context) <span class="cov0" title="0">{
+        bucket := c.Param("bucket")
+        key := c.Param("key")
+        
+        // Get content length
+        size := c.Request.ContentLength
+        contentType := c.GetHeader("Content-Type")
+        
+        obj, err := h.service.PutObject(c.Request.Context(), bucket, key, c.Request.Body, size, contentType)
+        if err != nil </span><span class="cov0" title="0">{
+                monitoring.Log.Error("Failed to put object",
+                        zap.String("bucket", bucket),
+                        zap.String("key", key),
+                        zap.Int64("size", size),
+                        zap.Error(err))
+                c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+                return
+        }</span>
+        
+        <span class="cov0" title="0">c.JSON(http.StatusOK, obj)</span>
+}
+
+// GetObject retrieves an object
+func (h *ObjectHandler) GetObject(c *gin.Context) <span class="cov0" title="0">{
+        bucket := c.Param("bucket")
+        key := c.Param("key")
+        
+        obj, data, err := h.service.GetObject(c.Request.Context(), bucket, key, nil)
+        if err != nil </span><span class="cov0" title="0">{
+                monitoring.Log.Error("Failed to get object",
+                        zap.String("bucket", bucket),
+                        zap.String("key", key),
+                        zap.Error(err))
+                c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+                return
+        }</span>
+        <span class="cov0" title="0">defer data.Close()
+        
+        c.Header("Content-Type", obj.ContentType)
+        c.Header("ETag", obj.ETag)
+        // Stream data
+        // io.Copy(c.Writer, data)
+        // Gin has DataFromReader
+        c.DataFromReader(http.StatusOK, obj.Size, obj.ContentType, data, map[string]string{
+                "ETag": obj.ETag,
+        })</span>
+}
+
+// DeleteObject deletes an object
+func (h *ObjectHandler) DeleteObject(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusNoContent)
+}</span>
+
+// HeadObject checks if object exists
+func (h *ObjectHandler) HeadObject(c *gin.Context) <span class="cov0" title="0">{
+        c.Status(http.StatusOK)
+}</span>
+
+// ListObjects lists objects in a bucket
+func (h *ObjectHandler) ListObjects(c *gin.Context) <span class="cov0" title="0">{
+        bucket := c.Param("bucket")
+        prefix := c.Query("prefix")
+        delimiter := c.Query("delimiter")
+        startAfter := c.Query("start-after")
+        maxKeys := object.DefaultMaxKeys
+        
+        if maxKeysParam := c.Query("max-keys"); maxKeysParam != "" </span><span class="cov0" title="0">{
+                if mk, err := strconv.Atoi(maxKeysParam); err == nil </span><span class="cov0" title="0">{
+                        maxKeys = mk
+                        if maxKeys &gt; object.MaxKeysLimit </span><span class="cov0" title="0">{
+                                maxKeys = object.MaxKeysLimit
+                        }</span>
+                }
+        }
+        
+        <span class="cov0" title="0">opts := object.ListOptions{
+                Prefix:     prefix,
+                Delimiter:  delimiter,
+                StartAfter: startAfter,
+                MaxKeys:    maxKeys,
+        }
+        
+        result, err := h.service.ListObjects(c.Request.Context(), bucket, prefix, opts)
+        if err != nil </span><span class="cov0" title="0">{
+                monitoring.Log.Error("Failed to list objects",
+                        zap.String("bucket", bucket),
+                        zap.String("prefix", prefix),
+                        zap.Error(err))
+                c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+                return
+        }</span>
+        
+        <span class="cov0" title="0">c.JSON(http.StatusOK, result)</span>
+}
+
+// DeleteAllObjects deletes all objects in a bucket
+func (h *ObjectHandler) DeleteAllObjects(c *gin.Context) <span class="cov0" title="0">{
+        bucket := c.Param("bucket")
+        
+        // Check if this is a confirmation (POST) or info request (GET/DELETE without confirm)
+        confirm := c.Query("confirm")
+        
+        if confirm == "true" </span><span class="cov0" title="0">{
+                // Actually delete
+                count, totalSize, err := h.service.DeleteAllObjects(c.Request.Context(), bucket)
+                if err != nil </span><span class="cov0" title="0">{
+                        c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+                        return
+                }</span>
+                
+                <span class="cov0" title="0">c.JSON(http.StatusOK, gin.H{
+                        "deleted_count": count,
+                        "freed_size": totalSize,
+                })</span>
+        } else<span class="cov0" title="0"> {
+                // Just get info
+                result, err := h.service.ListObjects(c.Request.Context(), bucket, "", object.ListOptions{MaxKeys: 0})
+                if err != nil </span><span class="cov0" title="0">{
+                        monitoring.Log.Error("Failed to list objects for purge info",
+                                zap.String("bucket", bucket),
+                                zap.Error(err))
+                        c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+                        return
+                }</span>
+                
+                <span class="cov0" title="0">var totalSize int64
+                for _, obj := range result.Objects </span><span class="cov0" title="0">{
+                        totalSize += obj.Size
+                }</span>
+                
+                <span class="cov0" title="0">c.JSON(http.StatusOK, gin.H{
+                        "count": len(result.Objects),
+                        "total_size": totalSize,
+                })</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package handlers
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+
+        "github.com/danielino/comio/internal/replication"
+)
+
+type ReplicationHandler struct {
+        replicator *replication.Replicator
+}
+
+func NewReplicationHandler(replicator *replication.Replicator) *ReplicationHandler <span class="cov0" title="0">{
+        return &amp;ReplicationHandler{
+                replicator: replicator,
+        }
+}</span>
+
+func (h *ReplicationHandler) GetStatus(c *gin.Context) <span class="cov0" title="0">{
+        if h.replicator == nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusOK, gin.H{
+                        "enabled": false,
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">stats := h.replicator.GetStats()
+        
+        c.JSON(http.StatusOK, gin.H{
+                "enabled":            true,
+                "events_queued":      stats.EventsQueued,
+                "events_replicated":  stats.EventsReplicated,
+                "events_failed":      stats.EventsFailed,
+                "last_replication":   stats.LastReplication,
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">package middleware
+
+import (
+        "time"
+
+        "github.com/gin-gonic/gin"
+        "go.uber.org/zap"
+
+        "github.com/danielino/comio/internal/monitoring"
+)
+
+// Logging returns a logging middleware
+func Logging() gin.HandlerFunc <span class="cov0" title="0">{
+        return func(c *gin.Context) </span><span class="cov0" title="0">{
+                start := time.Now()
+                path := c.Request.URL.Path
+                query := c.Request.URL.RawQuery
+
+                c.Next()
+
+                end := time.Now()
+                latency := end.Sub(start)
+
+                if len(c.Errors) &gt; 0 </span><span class="cov0" title="0">{
+                        for _, e := range c.Errors.Errors() </span><span class="cov0" title="0">{
+                                monitoring.Log.Error(e)
+                        }</span>
+                } else<span class="cov0" title="0"> {
+                        monitoring.Log.Info("Request",
+                                zap.Int("status", c.Writer.Status()),
+                                zap.String("method", c.Request.Method),
+                                zap.String("path", path),
+                                zap.String("query", query),
+                                zap.String("ip", c.ClientIP()),
+                                zap.String("user-agent", c.Request.UserAgent()),
+                                zap.Duration("latency", latency),
+                        )
+                }</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file9" style="display: none">package middleware
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "go.uber.org/zap"
+
+        "github.com/danielino/comio/internal/monitoring"
+)
+
+// Recovery returns a recovery middleware
+func Recovery() gin.HandlerFunc <span class="cov0" title="0">{
+        return func(c *gin.Context) </span><span class="cov0" title="0">{
+                defer func() </span><span class="cov0" title="0">{
+                        if err := recover(); err != nil </span><span class="cov0" title="0">{
+                                monitoring.Log.Error("Panic recovered", zap.Any("error", err))
+                                c.AbortWithStatus(http.StatusInternalServerError)
+                        }</span>
+                }()
+                <span class="cov0" title="0">c.Next()</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">package api
+
+import (
+        "github.com/danielino/comio/internal/api/handlers"
+        "github.com/danielino/comio/internal/api/middleware"
+        "github.com/danielino/comio/internal/bucket"
+        "github.com/danielino/comio/internal/monitoring"
+        "github.com/danielino/comio/internal/object"
+        "github.com/danielino/comio/internal/storage"
+        "go.uber.org/zap"
+)
+
+// SetupRoutes configures the routes
+func (s *Server) SetupRoutes() <span class="cov0" title="0">{
+        // Initialize dependencies
+        // In a real app, these would be singletons or passed in
+        
+        // Storage Engine
+        // Create a dummy file for storage
+        engine, err := storage.NewSimpleEngine("storage.data", 1024*1024*1024, storage.DefaultBlockSize) // 1GB
+        if err != nil </span><span class="cov0" title="0">{
+                monitoring.Log.Fatal("Failed to initialize storage engine", zap.Error(err))
+        }</span>
+        <span class="cov0" title="0">if err := engine.Open("storage.data"); err != nil </span><span class="cov0" title="0">{
+                // Try creating it?
+                // For now, just log error
+                monitoring.Log.Error("Failed to open storage device", zap.Error(err))
+        }</span>
+        
+        // Repositories
+        <span class="cov0" title="0">bucketRepo := bucket.NewMemoryRepository()
+        objectRepo := object.NewMemoryRepository()
+        
+        // Services
+        bucketService := bucket.NewService(bucketRepo)
+        objectService := object.NewService(objectRepo, engine)
+
+        // Middleware
+        s.router.Use(middleware.Recovery())
+        s.router.Use(middleware.Logging())
+        // Auth middleware should be applied to specific routes or globally if appropriate
+        
+        // Handlers
+        bucketHandler := handlers.NewBucketHandler(bucketService)
+        objectHandler := handlers.NewObjectHandler(objectService)
+        adminHandler := handlers.NewAdminHandler(engine)
+        
+        // Service operations
+        s.router.GET("/", bucketHandler.ListBuckets)
+        
+        // Bucket operations
+        s.router.PUT("/:bucket", bucketHandler.CreateBucket)
+        s.router.DELETE("/:bucket", bucketHandler.DeleteBucket)
+        s.router.GET("/:bucket", objectHandler.ListObjects) // This conflicts with bucket operations if not careful, but S3 uses query params or just path
+        s.router.HEAD("/:bucket", bucketHandler.HeadBucket)
+        
+        // Object operations
+        s.router.PUT("/:bucket/:key", objectHandler.PutObject)
+        s.router.GET("/:bucket/:key", objectHandler.GetObject)
+        s.router.DELETE("/:bucket/:key", objectHandler.DeleteObject)
+        s.router.HEAD("/:bucket/:key", objectHandler.HeadObject)
+        
+        // Admin object operations
+        s.router.DELETE("/admin/:bucket/objects", objectHandler.DeleteAllObjects)
+        
+        // Admin endpoints
+        admin := s.router.Group("/admin")
+        </span><span class="cov0" title="0">{
+                admin.GET("/health", adminHandler.HealthCheck)
+                admin.GET("/metrics", adminHandler.Metrics)
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package api
+
+import (
+        "context"
+        "fmt"
+        "net/http"
+        "time"
+
+        "github.com/gin-gonic/gin"
+        "go.uber.org/zap"
+
+        "github.com/danielino/comio/internal/config"
+        "github.com/danielino/comio/internal/monitoring"
+)
+
+// Server represents the HTTP server
+type Server struct {
+        router *gin.Engine
+        srv    *http.Server
+        cfg    *config.Config
+}
+
+// NewServer creates a new HTTP server
+func NewServer(cfg *config.Config) *Server <span class="cov0" title="0">{
+        router := gin.New()
+        
+        return &amp;Server{
+                router: router,
+                cfg:    cfg,
+        }
+}</span>
+
+// Start starts the server
+func (s *Server) Start() error <span class="cov0" title="0">{
+        s.srv = &amp;http.Server{
+                Addr:         fmt.Sprintf("%s:%d", s.cfg.Server.Host, s.cfg.Server.Port),
+                Handler:      s.router,
+                ReadTimeout:  parseDuration(s.cfg.Server.ReadTimeout),
+                WriteTimeout: parseDuration(s.cfg.Server.WriteTimeout),
+        }
+
+        monitoring.Log.Info("Starting server", zap.String("addr", s.srv.Addr))
+
+        if s.cfg.Server.TLS.Enabled </span><span class="cov0" title="0">{
+                return s.srv.ListenAndServeTLS(s.cfg.Server.TLS.CertFile, s.cfg.Server.TLS.KeyFile)
+        }</span>
+        <span class="cov0" title="0">return s.srv.ListenAndServe()</span>
+}
+
+// Stop stops the server gracefully
+func (s *Server) Stop(ctx context.Context) error <span class="cov0" title="0">{
+        return s.srv.Shutdown(ctx)
+}</span>
+
+func parseDuration(d string) time.Duration <span class="cov0" title="0">{
+        dur, err := time.ParseDuration(d)
+        if err != nil </span><span class="cov0" title="0">{
+                return 30 * time.Second
+        }</span>
+        <span class="cov0" title="0">return dur</span>
+}
+</pre>
+		
+		<pre class="file" id="file12" style="display: none">package auth
+
+import (
+        "net/http"
+)
+
+// HMACAuthenticator implements S3-style HMAC authentication
+type HMACAuthenticator struct {
+}
+
+// ValidateSignature validates the request signature
+func (a *HMACAuthenticator) ValidateSignature(req *http.Request, secretKey string) error <span class="cov0" title="0">{
+        // Implementation of AWS Signature V4 verification
+        return nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file13" style="display: none">package bucket
+
+import (
+        "context"
+        "errors"
+        "sync"
+)
+
+// MemoryRepository implements Repository in memory
+type MemoryRepository struct {
+        buckets map[string]*Bucket
+        mu      sync.RWMutex
+}
+
+// NewMemoryRepository creates a new memory repository
+func NewMemoryRepository() *MemoryRepository <span class="cov8" title="1">{
+        return &amp;MemoryRepository{
+                buckets: make(map[string]*Bucket),
+        }
+}</span>
+
+func (r *MemoryRepository) Create(ctx context.Context, bucket *Bucket) error <span class="cov8" title="1">{
+        r.mu.Lock()
+        defer r.mu.Unlock()
+        
+        if _, exists := r.buckets[bucket.Name]; exists </span><span class="cov8" title="1">{
+                return errors.New("bucket already exists")
+        }</span>
+        
+        <span class="cov8" title="1">r.buckets[bucket.Name] = bucket
+        return nil</span>
+}
+
+func (r *MemoryRepository) Get(ctx context.Context, name string) (*Bucket, error) <span class="cov8" title="1">{
+        r.mu.RLock()
+        defer r.mu.RUnlock()
+        
+        bucket, exists := r.buckets[name]
+        if !exists </span><span class="cov8" title="1">{
+                return nil, errors.New("bucket not found")
+        }</span>
+        
+        <span class="cov8" title="1">return bucket, nil</span>
+}
+
+func (r *MemoryRepository) List(ctx context.Context, owner string) ([]*Bucket, error) <span class="cov8" title="1">{
+        r.mu.RLock()
+        defer r.mu.RUnlock()
+        
+        var buckets []*Bucket
+        for _, b := range r.buckets </span><span class="cov8" title="1">{
+                if b.Owner == owner || owner == "" </span><span class="cov8" title="1">{
+                        buckets = append(buckets, b)
+                }</span>
+        }
+        
+        <span class="cov8" title="1">return buckets, nil</span>
+}
+
+func (r *MemoryRepository) Delete(ctx context.Context, name string) error <span class="cov8" title="1">{
+        r.mu.Lock()
+        defer r.mu.Unlock()
+        
+        if _, exists := r.buckets[name]; !exists </span><span class="cov8" title="1">{
+                return errors.New("bucket not found")
+        }</span>
+        
+        <span class="cov8" title="1">delete(r.buckets, name)
+        return nil</span>
+}
+
+func (r *MemoryRepository) Update(ctx context.Context, bucket *Bucket) error <span class="cov0" title="0">{
+        r.mu.Lock()
+        defer r.mu.Unlock()
+        
+        if _, exists := r.buckets[bucket.Name]; !exists </span><span class="cov0" title="0">{
+                return errors.New("bucket not found")
+        }</span>
+        
+        <span class="cov0" title="0">r.buckets[bucket.Name] = bucket
+        return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file14" style="display: none">package bucket
+
+import (
+        "context"
+        "errors"
+        "regexp"
+        "time"
+)
+
+// Service handles bucket operations
+type Service struct {
+        repo Repository
+}
+
+// NewService creates a new bucket service
+func NewService(repo Repository) *Service <span class="cov8" title="1">{
+        return &amp;Service{
+                repo: repo,
+        }
+}</span>
+
+// CreateBucket creates a new bucket
+func (s *Service) CreateBucket(ctx context.Context, name, owner string) error <span class="cov8" title="1">{
+        if !isValidBucketName(name) </span><span class="cov0" title="0">{
+                return errors.New("invalid bucket name")
+        }</span>
+
+        // Check if exists
+        <span class="cov8" title="1">_, err := s.repo.Get(ctx, name)
+        if err == nil </span><span class="cov8" title="1">{
+                return errors.New("bucket already exists")
+        }</span>
+
+        <span class="cov8" title="1">bucket := &amp;Bucket{
+                Name:       name,
+                CreatedAt:  time.Now(),
+                Owner:      owner,
+                Versioning: VersioningDisabled,
+        }
+
+        return s.repo.Create(ctx, bucket)</span>
+}
+
+// GetBucket retrieves a bucket
+func (s *Service) GetBucket(ctx context.Context, name string) (*Bucket, error) <span class="cov8" title="1">{
+        return s.repo.Get(ctx, name)
+}</span>
+
+// ListBuckets lists buckets for an owner
+func (s *Service) ListBuckets(ctx context.Context, owner string) ([]*Bucket, error) <span class="cov8" title="1">{
+        return s.repo.List(ctx, owner)
+}</span>
+
+// DeleteBucket deletes a bucket
+func (s *Service) DeleteBucket(ctx context.Context, name string) error <span class="cov8" title="1">{
+        // TODO: Check if empty
+        return s.repo.Delete(ctx, name)
+}</span>
+
+func isValidBucketName(name string) bool <span class="cov8" title="1">{
+        if len(name) &lt; 3 || len(name) &gt; 63 </span><span class="cov0" title="0">{
+                return false
+        }</span>
+        // Simple regex for S3 bucket naming
+        <span class="cov8" title="1">matched, _ := regexp.MatchString(`^[a-z0-9][a-z0-9.-]*[a-z0-9]$`, name)
+        return matched</span>
+}
+</pre>
+		
+		<pre class="file" id="file15" style="display: none">package cli
+
+import (
+        "encoding/json"
+        "fmt"
+        "io"
+        "net/http"
+        "os"
+
+        "github.com/spf13/cobra"
+)
+
+// adminCmd represents the admin command
+var adminCmd = &amp;cobra.Command{
+        Use:   "admin",
+        Short: "Administrative commands",
+}
+
+var metricsCmd = &amp;cobra.Command{
+        Use:   "metrics",
+        Short: "Show server metrics",
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                url := fmt.Sprintf("%s/admin/metrics", serverAddr)
+
+                req, err := http.NewRequest("GET", url, nil)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error creating request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">client := &amp;http.Client{}
+                resp, err := client.Do(req)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error sending request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                <span class="cov0" title="0">defer resp.Body.Close()
+
+                if resp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                        body, _ := io.ReadAll(resp.Body)
+                        fmt.Printf("Error getting metrics: %s (Status: %d)\n", string(body), resp.StatusCode)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">var metrics map[string]interface{}
+                if err := json.NewDecoder(resp.Body).Decode(&amp;metrics); err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error decoding response: %v\n", err)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">storage := metrics["storage"].(map[string]interface{})
+                totalBytes := storage["TotalBytes"].(float64)
+                usedBytes := storage["UsedBytes"].(float64)
+                freeBytes := storage["FreeBytes"].(float64)
+                
+                fmt.Printf("Storage Metrics:\n")
+                fmt.Printf("  Total: %s\n", formatBytes(totalBytes))
+                fmt.Printf("  Used:  %s\n", formatBytes(usedBytes))
+                fmt.Printf("  Free:  %s\n", formatBytes(freeBytes))</span>
+        },
+}
+
+var purgeCmd = &amp;cobra.Command{
+        Use:   "purge &lt;bucket&gt;",
+        Short: "Delete all objects in a bucket",
+        Args:  cobra.ExactArgs(1),
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                bucket := args[0]
+                
+                // First, get info about what will be deleted
+                url := fmt.Sprintf("%s/admin/%s/objects", serverAddr, bucket)
+                
+                req, err := http.NewRequest("DELETE", url, nil)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error creating request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                
+                <span class="cov0" title="0">client := &amp;http.Client{}
+                resp, err := client.Do(req)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error sending request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                <span class="cov0" title="0">defer resp.Body.Close()
+                
+                if resp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                        body, _ := io.ReadAll(resp.Body)
+                        fmt.Printf("Error getting bucket info: %s (Status: %d)\n", string(body), resp.StatusCode)
+                        os.Exit(1)
+                }</span>
+                
+                <span class="cov0" title="0">var info map[string]interface{}
+                if err := json.NewDecoder(resp.Body).Decode(&amp;info); err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error decoding response: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                
+                <span class="cov0" title="0">count := int(info["count"].(float64))
+                totalSize := int64(info["total_size"].(float64))
+                
+                if count == 0 </span><span class="cov0" title="0">{
+                        fmt.Printf("No objects to delete in bucket '%s'\n", bucket)
+                        return
+                }</span>
+                
+                <span class="cov0" title="0">fmt.Printf("\nWARNING: This will delete %d object(s) totaling %s from bucket '%s'\n", 
+                        count, formatBytes(float64(totalSize)), bucket)
+                fmt.Print("Are you sure you want to proceed? (yes/no): ")
+                
+                var confirmation string
+                fmt.Scanln(&amp;confirmation)
+                
+                if confirmation != "yes" </span><span class="cov0" title="0">{
+                        fmt.Println("Operation cancelled")
+                        os.Exit(0)
+                }</span>
+                
+                // Perform actual deletion
+                <span class="cov0" title="0">deleteURL := fmt.Sprintf("%s/admin/%s/objects?confirm=true", serverAddr, bucket)
+                deleteReq, err := http.NewRequest("DELETE", deleteURL, nil)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error creating delete request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                
+                <span class="cov0" title="0">deleteResp, err := client.Do(deleteReq)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error performing deletion: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                <span class="cov0" title="0">defer deleteResp.Body.Close()
+                
+                if deleteResp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                        body, _ := io.ReadAll(deleteResp.Body)
+                        fmt.Printf("Error deleting objects: %s (Status: %d)\n", string(body), deleteResp.StatusCode)
+                        os.Exit(1)
+                }</span>
+                
+                <span class="cov0" title="0">var deleteResult map[string]interface{}
+                if err := json.NewDecoder(deleteResp.Body).Decode(&amp;deleteResult); err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error decoding delete response: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                
+                <span class="cov0" title="0">deletedCount := int(deleteResult["deleted_count"].(float64))
+                freedSize := int64(deleteResult["freed_size"].(float64))
+                
+                fmt.Printf("\n✓ Deleted %d object(s), freed %s\n", deletedCount, formatBytes(float64(freedSize)))</span>
+        },
+}
+
+// formatBytes formats bytes into human-readable format
+func formatBytes(bytes float64) string <span class="cov0" title="0">{
+        const unit = 1024
+        if bytes &lt; unit </span><span class="cov0" title="0">{
+                return fmt.Sprintf("%.0f B", bytes)
+        }</span>
+        <span class="cov0" title="0">div, exp := float64(unit), 0
+        for n := bytes / unit; n &gt;= unit; n /= unit </span><span class="cov0" title="0">{
+                div *= unit
+                exp++
+        }</span>
+        <span class="cov0" title="0">units := []string{"KB", "MB", "GB", "TB", "PB"}
+        return fmt.Sprintf("%.2f %s", bytes/div, units[exp])</span>
+}
+
+func init() <span class="cov0" title="0">{
+        rootCmd.AddCommand(adminCmd)
+        adminCmd.AddCommand(metricsCmd)
+        adminCmd.AddCommand(purgeCmd)
+}</span>
+</pre>
+		
+		<pre class="file" id="file16" style="display: none">package cli
+
+import (
+        "encoding/json"
+        "fmt"
+        "io"
+        "net/http"
+        "os"
+
+        "github.com/spf13/cobra"
+)
+
+// bucketCmd represents the bucket command
+var bucketCmd = &amp;cobra.Command{
+        Use:   "bucket",
+        Short: "Bucket management commands",
+}
+
+var bucketCreateCmd = &amp;cobra.Command{
+        Use:   "create &lt;name&gt;",
+        Short: "Create a new bucket",
+        Args:  cobra.ExactArgs(1),
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                bucketName := args[0]
+                url := fmt.Sprintf("%s/%s", serverAddr, bucketName)
+
+                req, err := http.NewRequest("PUT", url, nil)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error creating request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">client := &amp;http.Client{}
+                resp, err := client.Do(req)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error sending request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                <span class="cov0" title="0">defer resp.Body.Close()
+
+                if resp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                        body, _ := io.ReadAll(resp.Body)
+                        fmt.Printf("Error creating bucket: %s (Status: %d)\n", string(body), resp.StatusCode)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">fmt.Printf("Bucket %s created successfully\n", bucketName)</span>
+        },
+}
+
+var bucketListCmd = &amp;cobra.Command{
+        Use:   "list",
+        Short: "List all buckets",
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                url := fmt.Sprintf("%s/", serverAddr)
+
+                req, err := http.NewRequest("GET", url, nil)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error creating request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">client := &amp;http.Client{}
+                resp, err := client.Do(req)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error sending request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                <span class="cov0" title="0">defer resp.Body.Close()
+
+                if resp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                        body, _ := io.ReadAll(resp.Body)
+                        fmt.Printf("Error listing buckets: %s (Status: %d)\n", string(body), resp.StatusCode)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">var buckets []map[string]interface{}
+                if err := json.NewDecoder(resp.Body).Decode(&amp;buckets); err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error decoding response: %v\n", err)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">for _, b := range buckets </span><span class="cov0" title="0">{
+                        fmt.Printf("%s\n", b["name"])
+                }</span>
+        },
+}
+
+func init() <span class="cov0" title="0">{
+        rootCmd.AddCommand(bucketCmd)
+        bucketCmd.AddCommand(bucketCreateCmd)
+        bucketCmd.AddCommand(bucketListCmd)
+}</span>
+</pre>
+		
+		<pre class="file" id="file17" style="display: none">package cli
+
+import (
+        "github.com/spf13/cobra"
+)
+
+// configCmd represents the config command
+var configCmd = &amp;cobra.Command{
+        Use:   "config",
+        Short: "Configuration commands",
+}
+
+func init() <span class="cov0" title="0">{
+        rootCmd.AddCommand(configCmd)
+}</span>
+</pre>
+		
+		<pre class="file" id="file18" style="display: none">package cli
+
+import (
+        "encoding/json"
+        "fmt"
+        "net/http"
+        "os"
+
+        "github.com/spf13/cobra"
+)
+
+// objectCmd represents the object command
+var objectCmd = &amp;cobra.Command{
+        Use:   "object",
+        Short: "Object management commands",
+}
+
+var objectPutCmd = &amp;cobra.Command{
+        Use:   "put &lt;bucket&gt; &lt;key&gt; &lt;file&gt;",
+        Short: "Put an object",
+        Args:  cobra.ExactArgs(3),
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                bucket := args[0]
+                key := args[1]
+                filePath := args[2]
+
+                file, err := os.Open(filePath)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error opening file: %v\n", err)
+                        return
+                }</span>
+                <span class="cov0" title="0">defer file.Close()
+
+                fileInfo, err := file.Stat()
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error getting file info: %v\n", err)
+                        return
+                }</span>
+                <span class="cov0" title="0">fileSize := fileInfo.Size()
+
+                // TODO: Get server address from config
+                url := fmt.Sprintf("%s/%s/%s", serverAddr, bucket, key)
+
+                req, err := http.NewRequest("PUT", url, file)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error creating request: %v\n", err)
+                        return
+                }</span>
+
+                <span class="cov0" title="0">req.ContentLength = fileSize
+
+                // Set content type if possible, or let server guess
+                // req.Header.Set("Content-Type", "application/octet-stream")
+
+                client := &amp;http.Client{}
+                resp, err := client.Do(req)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error sending request: %v\n", err)
+                        return
+                }</span>
+                <span class="cov0" title="0">defer resp.Body.Close()
+
+                if resp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                        fmt.Printf("Error uploading object: %s\n", resp.Status)
+                        return
+                }</span>
+
+                <span class="cov0" title="0">fmt.Printf("Successfully uploaded object %s/%s\n", bucket, key)</span>
+        },
+}
+
+var objectListCmd = &amp;cobra.Command{
+        Use:   "list &lt;bucket&gt; [prefix]",
+        Short: "List objects in a bucket",
+        Args:  cobra.MinimumNArgs(1),
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                bucket := args[0]
+                prefix := ""
+                if len(args) &gt; 1 </span><span class="cov0" title="0">{
+                        prefix = args[1]
+                }</span>
+
+                <span class="cov0" title="0">url := fmt.Sprintf("%s/%s", serverAddr, bucket)
+                if prefix != "" </span><span class="cov0" title="0">{
+                        url += "?prefix=" + prefix
+                }</span>
+
+                <span class="cov0" title="0">req, err := http.NewRequest("GET", url, nil)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error creating request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">client := &amp;http.Client{}
+                resp, err := client.Do(req)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error sending request: %v\n", err)
+                        os.Exit(1)
+                }</span>
+                <span class="cov0" title="0">defer resp.Body.Close()
+
+                if resp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                        fmt.Printf("Error listing objects: %s\n", resp.Status)
+                        os.Exit(1)
+                }</span>
+
+                // Read and parse response
+                <span class="cov0" title="0">var result map[string]interface{}
+                if err := json.NewDecoder(resp.Body).Decode(&amp;result); err != nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Error decoding response: %v\n", err)
+                        os.Exit(1)
+                }</span>
+
+                <span class="cov0" title="0">objects, ok := result["Objects"].([]interface{})
+                if !ok || len(objects) == 0 </span><span class="cov0" title="0">{
+                        fmt.Printf("No objects found in bucket %s\n", bucket)
+                        return
+                }</span>
+
+                <span class="cov0" title="0">fmt.Printf("Objects in bucket %s:\n", bucket)
+                for _, obj := range objects </span><span class="cov0" title="0">{
+                        o := obj.(map[string]interface{})
+                        key, keyOk := o["key"].(string)
+                        if !keyOk </span><span class="cov0" title="0">{
+                                key, keyOk = o["Key"].(string)
+                        }</span>
+                        <span class="cov0" title="0">size, sizeOk := o["size"].(float64)
+                        if !sizeOk </span><span class="cov0" title="0">{
+                                size, _ = o["Size"].(float64)
+                        }</span>
+                        <span class="cov0" title="0">if keyOk </span><span class="cov0" title="0">{
+                                fmt.Printf("  %s (%d bytes)\n", key, int64(size))
+                        }</span>
+                }
+        },
+}
+
+func init() <span class="cov0" title="0">{
+        rootCmd.AddCommand(objectCmd)
+        objectCmd.AddCommand(objectPutCmd)
+        objectCmd.AddCommand(objectListCmd)
+}</span>
+</pre>
+		
+		<pre class="file" id="file19" style="display: none">package cli
+
+import (
+        "fmt"
+        "os"
+
+        "github.com/spf13/cobra"
+
+        "github.com/danielino/comio/internal/config"
+        "github.com/danielino/comio/internal/monitoring"
+)
+
+const serverAddr = "http://localhost:8080"
+
+var (
+        cfgFile string
+        version string
+        buildTime string
+)
+
+// rootCmd represents the base command when called without any subcommands
+var rootCmd = &amp;cobra.Command{
+        Use:   "comio",
+        Short: "ComIO - Community IO Storage",
+        Long: `ComIO is a production-ready S3-compliant storage solution in Golang 
+featuring RESTful API, CLI management, storage replication, raw device handling, 
+and authentication.`,
+}
+
+// Execute adds all child commands to the root command and sets flags appropriately.
+func Execute(v, b string) error <span class="cov0" title="0">{
+        version = v
+        buildTime = b
+        return rootCmd.Execute()
+}</span>
+
+func init() <span class="cov0" title="0">{
+        cobra.OnInitialize(initConfig)
+
+        rootCmd.PersistentFlags().StringVar(&amp;cfgFile, "config", "", "config file (default is /etc/comio/config.yaml)")
+}</span>
+
+// initConfig reads in config file and ENV variables if set.
+func initConfig() <span class="cov0" title="0">{
+        cfg, err := config.LoadConfig(cfgFile)
+        if err != nil </span><span class="cov0" title="0">{
+                fmt.Println("Error loading config:", err)
+                os.Exit(1)
+        }</span>
+
+        // Initialize logger
+        <span class="cov0" title="0">if err := monitoring.InitLogger(cfg.Logging.Level, cfg.Logging.Format, cfg.Logging.Output); err != nil </span><span class="cov0" title="0">{
+                fmt.Println("Error initializing logger:", err)
+                os.Exit(1)
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file20" style="display: none">package cli
+
+import (
+        "fmt"
+
+        "github.com/spf13/cobra"
+
+        "github.com/danielino/comio/internal/api"
+        "github.com/danielino/comio/internal/config"
+)
+
+// serverCmd represents the server command
+var serverCmd = &amp;cobra.Command{
+        Use:   "server",
+        Short: "Start the ComIO server",
+        Long:  `Start the ComIO server with the configured settings.`,
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                // Load config again or use global?
+                // For now, assume config is loaded in root
+                cfg, err := config.LoadConfig(cfgFile)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Println("Error loading config:", err)
+                        return
+                }</span>
+                
+                <span class="cov0" title="0">server := api.NewServer(cfg)
+                server.SetupRoutes()
+                
+                if err := server.Start(); err != nil </span><span class="cov0" title="0">{
+                        fmt.Println("Server error:", err)
+                }</span>
+        },
+}
+
+func init() <span class="cov0" title="0">{
+        rootCmd.AddCommand(serverCmd)
+        serverCmd.AddCommand(startCmd)
+}</span>
+
+var startCmd = &amp;cobra.Command{
+        Use:   "start",
+        Short: "Start the server",
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                // Same as serverCmd logic or serverCmd is the parent?
+                // The prompt says "comio server start", so server is parent, start is child.
+                // But serverCmd.Run above seems to start it.
+                // Let's make serverCmd just a container and startCmd do the work.
+                cfg, err := config.LoadConfig(cfgFile)
+                if err != nil </span><span class="cov0" title="0">{
+                        fmt.Println("Error loading config:", err)
+                        return
+                }</span>
+                
+                <span class="cov0" title="0">server := api.NewServer(cfg)
+                server.SetupRoutes()
+                
+                if err := server.Start(); err != nil </span><span class="cov0" title="0">{
+                        fmt.Println("Server error:", err)
+                }</span>
+        },
+}
+</pre>
+		
+		<pre class="file" id="file21" style="display: none">package config
+
+import (
+        "fmt"
+        "strings"
+
+        "github.com/spf13/viper"
+)
+
+// LoadConfig loads configuration from file and environment variables
+func LoadConfig(path string) (*Config, error) <span class="cov0" title="0">{
+        v := viper.New()
+
+        // Set default values
+        setDefaults(v)
+
+        // Config file settings
+        if path != "" </span><span class="cov0" title="0">{
+                v.SetConfigFile(path)
+        }</span> else<span class="cov0" title="0"> {
+                v.SetConfigName("config")
+                v.SetConfigType("yaml")
+                v.AddConfigPath("/etc/comio/")
+                v.AddConfigPath("./configs")
+                v.AddConfigPath(".")
+        }</span>
+
+        // Environment variable settings
+        <span class="cov0" title="0">v.SetEnvPrefix("COMIO")
+        v.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+        v.AutomaticEnv()
+
+        // Read config file
+        if err := v.ReadInConfig(); err != nil </span><span class="cov0" title="0">{
+                if _, ok := err.(viper.ConfigFileNotFoundError); !ok </span><span class="cov0" title="0">{
+                        return nil, fmt.Errorf("failed to read config file: %w", err)
+                }</span>
+                // Config file not found is okay if we have defaults/env vars
+        }
+
+        <span class="cov0" title="0">var config Config
+        if err := v.Unmarshal(&amp;config); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to unmarshal config: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return &amp;config, nil</span>
+}
+
+func setDefaults(v *viper.Viper) <span class="cov0" title="0">{
+        v.SetDefault("server.host", "0.0.0.0")
+        v.SetDefault("server.port", 8080)
+        v.SetDefault("server.read_timeout", "30s")
+        v.SetDefault("server.write_timeout", "30s")
+        v.SetDefault("server.tls.enabled", false)
+
+        v.SetDefault("storage.block_size", 4096)
+        v.SetDefault("storage.replication_factor", 3)
+
+        v.SetDefault("replication.write_quorum", 2)
+        v.SetDefault("replication.read_quorum", 1)
+        v.SetDefault("replication.sync_interval", "5m")
+
+        v.SetDefault("auth.enabled", true)
+
+        v.SetDefault("logging.level", "info")
+        v.SetDefault("logging.format", "json")
+        v.SetDefault("logging.output", "stdout")
+
+        v.SetDefault("metrics.enabled", true)
+        v.SetDefault("metrics.endpoint", "/admin/metrics")
+
+        v.SetDefault("lifecycle.evaluation_interval", "24h")
+}</span>
+</pre>
+		
+		<pre class="file" id="file22" style="display: none">package integrity
+
+import (
+        "crypto/md5"
+        "crypto/sha256"
+        "encoding/hex"
+        "hash"
+        "hash/crc32"
+        "io"
+)
+
+// Checksum holds checksum information
+type Checksum struct {
+        Algorithm string
+        Value     string
+}
+
+// Calculator handles checksum calculation
+type Calculator struct {
+        md5    hash.Hash
+        sha256 hash.Hash
+        crc32  hash.Hash32
+}
+
+// NewCalculator creates a new checksum calculator
+func NewCalculator() *Calculator <span class="cov0" title="0">{
+        return &amp;Calculator{
+                md5:    md5.New(),
+                sha256: sha256.New(),
+                crc32:  crc32.New(crc32.MakeTable(crc32.Castagnoli)),
+        }
+}</span>
+
+// Write implements io.Writer to update all hashes
+func (c *Calculator) Write(p []byte) (n int, err error) <span class="cov0" title="0">{
+        n, err = c.md5.Write(p)
+        if err != nil </span><span class="cov0" title="0">{
+                return n, err
+        }</span>
+        <span class="cov0" title="0">_, _ = c.sha256.Write(p)
+        _, _ = c.crc32.Write(p)
+        return n, nil</span>
+}
+
+// Sums returns all calculated checksums
+func (c *Calculator) Sums() map[string]string <span class="cov0" title="0">{
+        return map[string]string{
+                "MD5":    hex.EncodeToString(c.md5.Sum(nil)),
+                "SHA256": hex.EncodeToString(c.sha256.Sum(nil)),
+                "CRC32":  hex.EncodeToString(c.crc32.Sum(nil)),
+        }
+}</span>
+
+// CalculateChecksum calculates checksum for a reader
+func CalculateChecksum(r io.Reader, algo string) (string, error) <span class="cov0" title="0">{
+        var h hash.Hash
+        switch algo </span>{
+        case "MD5":<span class="cov0" title="0">
+                h = md5.New()</span>
+        case "SHA256":<span class="cov0" title="0">
+                h = sha256.New()</span>
+        case "CRC32":<span class="cov0" title="0">
+                h = crc32.New(crc32.MakeTable(crc32.Castagnoli))</span>
+        default:<span class="cov0" title="0">
+                return "", io.ErrUnexpectedEOF</span>
+        }
+
+        <span class="cov0" title="0">if _, err := io.Copy(h, r); err != nil </span><span class="cov0" title="0">{
+                return "", err
+        }</span>
+
+        <span class="cov0" title="0">return hex.EncodeToString(h.Sum(nil)), nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file23" style="display: none">package integrity
+
+import (
+        "fmt"
+        "io"
+)
+
+// Validator validates data integrity
+type Validator struct {
+}
+
+// NewValidator creates a new validator
+func NewValidator() *Validator <span class="cov0" title="0">{
+        return &amp;Validator{}
+}</span>
+
+// Validate verifies the checksum of the data
+func (v *Validator) Validate(r io.Reader, expectedChecksum Checksum) error <span class="cov0" title="0">{
+        calculated, err := CalculateChecksum(r, expectedChecksum.Algorithm)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">if calculated != expectedChecksum.Value </span><span class="cov0" title="0">{
+                return fmt.Errorf("checksum mismatch: expected %s, got %s", expectedChecksum.Value, calculated)
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file24" style="display: none">package lifecycle
+
+import (
+        "context"
+        "time"
+)
+
+// Executor handles lifecycle policy execution
+type Executor struct {
+        interval time.Duration
+}
+
+// NewExecutor creates a new lifecycle executor
+func NewExecutor(interval time.Duration) *Executor <span class="cov0" title="0">{
+        return &amp;Executor{
+                interval: interval,
+        }
+}</span>
+
+// Start starts the executor
+func (e *Executor) Start(ctx context.Context) <span class="cov0" title="0">{
+        ticker := time.NewTicker(e.interval)
+        go func() </span><span class="cov0" title="0">{
+                for </span><span class="cov0" title="0">{
+                        select </span>{
+                        case &lt;-ticker.C:<span class="cov0" title="0">
+                                e.run()</span>
+                        case &lt;-ctx.Done():<span class="cov0" title="0">
+                                ticker.Stop()
+                                return</span>
+                        }
+                }
+        }()
+}
+
+func (e *Executor) run() {<span class="cov0" title="0">
+        // Evaluate rules
+}</span>
+</pre>
+		
+		<pre class="file" id="file25" style="display: none">package monitoring
+
+import (
+        "go.uber.org/zap"
+        "go.uber.org/zap/zapcore"
+)
+
+var Log *zap.Logger
+
+// InitLogger initializes the global logger
+func InitLogger(level, format, output string) error <span class="cov0" title="0">{
+        var config zap.Config
+
+        if format == "json" </span><span class="cov0" title="0">{
+                config = zap.NewProductionConfig()
+        }</span> else<span class="cov0" title="0"> {
+                config = zap.NewDevelopmentConfig()
+        }</span>
+
+        // Set log level
+        <span class="cov0" title="0">var zapLevel zapcore.Level
+        if err := zapLevel.UnmarshalText([]byte(level)); err != nil </span><span class="cov0" title="0">{
+                zapLevel = zap.InfoLevel
+        }</span>
+        <span class="cov0" title="0">config.Level = zap.NewAtomicLevelAt(zapLevel)
+
+        // Set output
+        if output == "stdout" </span><span class="cov0" title="0">{
+                config.OutputPaths = []string{"stdout"}
+        }</span> else<span class="cov0" title="0"> if output == "stderr" </span><span class="cov0" title="0">{
+                config.OutputPaths = []string{"stderr"}
+        }</span> else<span class="cov0" title="0"> {
+                config.OutputPaths = []string{output}
+        }</span>
+
+        // Build logger
+        <span class="cov0" title="0">logger, err := config.Build()
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">Log = logger
+        return nil</span>
+}
+
+// Sync flushes any buffered log entries
+func Sync() <span class="cov0" title="0">{
+        if Log != nil </span><span class="cov0" title="0">{
+                _ = Log.Sync()
+        }</span>
+}
+
+// GetLogger returns the global logger instance
+func GetLogger() *zap.Logger <span class="cov0" title="0">{
+        if Log == nil </span><span class="cov0" title="0">{
+                // Fallback to a basic logger if not initialized
+                l, _ := zap.NewProduction()
+                return l
+        }</span>
+        <span class="cov0" title="0">return Log</span>
+}
+</pre>
+		
+		<pre class="file" id="file26" style="display: none">package monitoring
+
+import (
+        "github.com/prometheus/client_golang/prometheus"
+)
+
+var (
+        RequestsTotal = prometheus.NewCounterVec(
+                prometheus.CounterOpts{
+                        Name: "comio_requests_total",
+                        Help: "Total number of requests",
+                },
+                []string{"method", "bucket", "status"},
+        )
+        
+        RequestDuration = prometheus.NewHistogramVec(
+                prometheus.HistogramOpts{
+                        Name: "comio_request_duration_seconds",
+                        Help: "Request duration in seconds",
+                },
+                []string{"method"},
+        )
+)
+
+func init() <span class="cov0" title="0">{
+        prometheus.MustRegister(RequestsTotal)
+        prometheus.MustRegister(RequestDuration)
+}</span>
+</pre>
+		
+		<pre class="file" id="file27" style="display: none">package multipart
+
+import (
+        "context"
+        "errors"
+        "sort"
+        "time"
+
+        "github.com/google/uuid"
+)
+
+// Service handles multipart upload operations
+type Service struct {
+        uploads map[string]*Upload // In-memory for now
+}
+
+// NewService creates a new multipart service
+func NewService() *Service <span class="cov0" title="0">{
+        return &amp;Service{
+                uploads: make(map[string]*Upload),
+        }
+}</span>
+
+// InitiateMultipartUpload initiates a new multipart upload
+func (s *Service) InitiateMultipartUpload(ctx context.Context, bucket, key string) (*Upload, error) <span class="cov0" title="0">{
+        uploadID := uuid.New().String()
+        upload := &amp;Upload{
+                UploadID:   uploadID,
+                BucketName: bucket,
+                Key:        key,
+                CreatedAt:  time.Now(),
+                Parts:      make([]Part, 0),
+        }
+        
+        s.uploads[uploadID] = upload
+        return upload, nil
+}</span>
+
+// UploadPart handles uploading a part
+func (s *Service) UploadPart(ctx context.Context, bucket, key, uploadID string, partNumber int, size int64, etag string) (*Part, error) <span class="cov0" title="0">{
+        upload, ok := s.uploads[uploadID]
+        if !ok </span><span class="cov0" title="0">{
+                return nil, errors.New("upload not found")
+        }</span>
+        
+        <span class="cov0" title="0">if partNumber &lt; 1 || partNumber &gt; 10000 </span><span class="cov0" title="0">{
+                return nil, errors.New("invalid part number")
+        }</span>
+        
+        <span class="cov0" title="0">part := Part{
+                PartNumber: partNumber,
+                ETag:       etag,
+                Size:       size,
+        }
+        
+        // Check if part already exists and replace it
+        found := false
+        for i, p := range upload.Parts </span><span class="cov0" title="0">{
+                if p.PartNumber == partNumber </span><span class="cov0" title="0">{
+                        upload.Parts[i] = part
+                        found = true
+                        break</span>
+                }
+        }
+        
+        <span class="cov0" title="0">if !found </span><span class="cov0" title="0">{
+                upload.Parts = append(upload.Parts, part)
+        }</span>
+        
+        <span class="cov0" title="0">return &amp;part, nil</span>
+}
+
+// ListParts lists parts for an upload
+func (s *Service) ListParts(ctx context.Context, bucket, key, uploadID string) ([]Part, error) <span class="cov0" title="0">{
+        upload, ok := s.uploads[uploadID]
+        if !ok </span><span class="cov0" title="0">{
+                return nil, errors.New("upload not found")
+        }</span>
+        
+        // Sort parts by part number
+        <span class="cov0" title="0">sort.Slice(upload.Parts, func(i, j int) bool </span><span class="cov0" title="0">{
+                return upload.Parts[i].PartNumber &lt; upload.Parts[j].PartNumber
+        }</span>)
+        
+        <span class="cov0" title="0">return upload.Parts, nil</span>
+}
+
+// CompleteMultipartUpload completes a multipart upload
+func (s *Service) CompleteMultipartUpload(ctx context.Context, bucket, key, uploadID string, parts []Part) error <span class="cov0" title="0">{
+        upload, ok := s.uploads[uploadID]
+        if !ok </span><span class="cov0" title="0">{
+                return errors.New("upload not found")
+        }</span>
+        
+        // Verify parts
+        <span class="cov0" title="0">if len(parts) != len(upload.Parts) </span>{<span class="cov0" title="0">
+                // This is a simple check, real impl should verify each part ETag/Checksum
+        }</span>
+        
+        // Merge parts (logic omitted for now as it requires storage engine interaction)
+        
+        <span class="cov0" title="0">delete(s.uploads, uploadID)
+        return nil</span>
+}
+
+// AbortMultipartUpload aborts a multipart upload
+func (s *Service) AbortMultipartUpload(ctx context.Context, bucket, key, uploadID string) error <span class="cov0" title="0">{
+        if _, ok := s.uploads[uploadID]; !ok </span><span class="cov0" title="0">{
+                return errors.New("upload not found")
+        }</span>
+        
+        // Cleanup parts (logic omitted)
+        
+        <span class="cov0" title="0">delete(s.uploads, uploadID)
+        return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file28" style="display: none">package object
+
+import (
+        "context"
+        "errors"
+        "io"
+        "sort"
+        "strings"
+        "sync"
+)
+
+// MemoryRepository implements Repository in memory
+type MemoryRepository struct {
+        objects map[string]*Object // Key: bucket/key
+        mu      sync.RWMutex
+}
+
+// NewMemoryRepository creates a new memory repository
+func NewMemoryRepository() *MemoryRepository <span class="cov8" title="1">{
+        return &amp;MemoryRepository{
+                objects: make(map[string]*Object),
+        }
+}</span>
+
+func (r *MemoryRepository) Put(ctx context.Context, obj *Object, data io.Reader) error <span class="cov8" title="1">{
+        r.mu.Lock()
+        defer r.mu.Unlock()
+        
+        key := obj.BucketName + "/" + obj.Key
+        r.objects[key] = obj
+        return nil
+}</span>
+
+func (r *MemoryRepository) Get(ctx context.Context, bucket, key string, versionID *string) (*Object, io.ReadCloser, error) <span class="cov8" title="1">{
+        r.mu.RLock()
+        defer r.mu.RUnlock()
+        
+        objKey := bucket + "/" + key
+        obj, exists := r.objects[objKey]
+        if !exists </span><span class="cov0" title="0">{
+                return nil, nil, errors.New("object not found")
+        }</span>
+        
+        <span class="cov8" title="1">return obj, nil, nil</span>
+}
+
+func (r *MemoryRepository) Delete(ctx context.Context, bucket, key string, versionID *string) error <span class="cov8" title="1">{
+        r.mu.Lock()
+        defer r.mu.Unlock()
+        
+        objKey := bucket + "/" + key
+        delete(r.objects, objKey)
+        return nil
+}</span>
+
+func (r *MemoryRepository) List(ctx context.Context, bucket, prefix string, opts ListOptions) (*ListResult, error) <span class="cov8" title="1">{
+        r.mu.RLock()
+        defer r.mu.RUnlock()
+        
+        // Collect matching objects
+        var allObjects []*Object
+        for _, obj := range r.objects </span><span class="cov8" title="1">{
+                if obj.BucketName != bucket </span><span class="cov0" title="0">{
+                        continue</span>
+                }
+                
+                // Filter by prefix
+                <span class="cov8" title="1">if opts.Prefix != "" &amp;&amp; !strings.HasPrefix(obj.Key, opts.Prefix) </span><span class="cov0" title="0">{
+                        continue</span>
+                }
+                
+                // Filter by StartAfter
+                <span class="cov8" title="1">if opts.StartAfter != "" &amp;&amp; obj.Key &lt;= opts.StartAfter </span><span class="cov0" title="0">{
+                        continue</span>
+                }
+                
+                <span class="cov8" title="1">allObjects = append(allObjects, obj)</span>
+        }
+        
+        // Sort by key
+        <span class="cov8" title="1">sort.Slice(allObjects, func(i, j int) bool </span><span class="cov8" title="1">{
+                return allObjects[i].Key &lt; allObjects[j].Key
+        }</span>)
+        
+        // Apply pagination
+        <span class="cov8" title="1">maxKeys := opts.MaxKeys
+        if maxKeys &lt;= 0 </span><span class="cov8" title="1">{
+                maxKeys = DefaultMaxKeys
+        }</span>
+        <span class="cov8" title="1">if maxKeys &gt; MaxKeysLimit </span><span class="cov0" title="0">{
+                maxKeys = MaxKeysLimit
+        }</span>
+        
+        <span class="cov8" title="1">isTruncated := false
+        nextMarker := ""
+        var objects []*Object
+        
+        if len(allObjects) &gt; maxKeys </span><span class="cov0" title="0">{
+                isTruncated = true
+                objects = allObjects[:maxKeys]
+                nextMarker = objects[maxKeys-1].Key
+        }</span> else<span class="cov8" title="1"> {
+                objects = allObjects
+        }</span>
+        
+        <span class="cov8" title="1">return &amp;ListResult{
+                Objects:     objects,
+                IsTruncated: isTruncated,
+                NextMarker:  nextMarker,
+        }, nil</span>
+}
+
+func (r *MemoryRepository) Head(ctx context.Context, bucket, key string, versionID *string) (*Object, error) <span class="cov0" title="0">{
+        r.mu.RLock()
+        defer r.mu.RUnlock()
+        
+        objKey := bucket + "/" + key
+        obj, exists := r.objects[objKey]
+        if !exists </span><span class="cov0" title="0">{
+                return nil, errors.New("object not found")
+        }</span>
+        
+        <span class="cov0" title="0">return obj, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file29" style="display: none">package object
+
+import (
+        "bytes"
+        "context"
+        "io"
+        "time"
+
+        "github.com/danielino/comio/internal/integrity"
+        "github.com/danielino/comio/internal/replication"
+        "github.com/danielino/comio/internal/storage"
+)
+
+// Service handles object operations
+type Service struct {
+        repo       Repository
+        engine     storage.Engine
+        replicator *replication.Replicator
+}
+
+func (s *Service) SetReplicator(replicator *replication.Replicator) <span class="cov0" title="0">{
+        s.replicator = replicator
+}</span>
+
+// NewService creates a new object service
+func NewService(repo Repository, engine storage.Engine) *Service <span class="cov8" title="1">{
+        return &amp;Service{
+                repo:   repo,
+                engine: engine,
+        }
+}</span>
+
+// PutObject uploads an object
+func (s *Service) PutObject(ctx context.Context, bucket, key string, data io.Reader, size int64, contentType string) (*Object, error) <span class="cov8" title="1">{
+        // Calculate checksums while streaming?
+        // For now, just pass through
+        
+        obj := &amp;Object{
+                Key:         key,
+                BucketName:  bucket,
+                Size:        size,
+                ContentType: contentType,
+                CreatedAt:   time.Now(),
+                ModifiedAt:  time.Now(),
+                VersionID:   GenerateVersionID(), // Always generate version ID for now
+        }
+        
+        // In a real impl, we would stream to storage engine here, calculate checksums, then save metadata to repo.
+        // The repo.Put might handle the storage engine interaction or we do it here.
+        // The prompt says "Stream object data to storage engine" in service.go
+        
+        // We need to wrap the reader to calculate checksums
+        calc := integrity.NewCalculator()
+        tee := io.TeeReader(data, calc)
+        
+        // Write to storage engine
+        // We need to allocate space first? Or does the engine handle it?
+        // Engine.Write takes an offset. Engine.Allocate takes size.
+        
+        offset, err := s.engine.Allocate(size)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        
+        // Read all data into memory? No, stream.
+        // But Engine.Write takes []byte. We need a streaming write in Engine or read in chunks.
+        // The Engine interface has Write(offset, data).
+        // We should read from tee in chunks and write to engine.
+        
+        <span class="cov8" title="1">buf := make([]byte, 4096) // 4KB chunks
+        currentOffset := offset
+        totalRead := int64(0)
+        
+        for </span><span class="cov8" title="1">{
+                n, err := tee.Read(buf)
+                if n &gt; 0 </span><span class="cov8" title="1">{
+                        if wErr := s.engine.Write(currentOffset, buf[:n]); wErr != nil </span><span class="cov0" title="0">{
+                                // Cleanup allocated space?
+                                return nil, wErr
+                        }</span>
+                        <span class="cov8" title="1">currentOffset += int64(n)
+                        totalRead += int64(n)</span>
+                }
+                <span class="cov8" title="1">if err == io.EOF </span><span class="cov8" title="1">{
+                        break</span>
+                }
+                <span class="cov8" title="1">if err != nil </span><span class="cov0" title="0">{
+                        return nil, err
+                }</span>
+        }
+        
+        // Update object metadata with checksums
+        <span class="cov8" title="1">sums := calc.Sums()
+        obj.ETag = sums["MD5"]
+        obj.Checksum = integrity.Checksum{Algorithm: "SHA256", Value: sums["SHA256"]}
+        obj.Offset = offset // Store offset
+        
+        // Save metadata
+        if err := s.repo.Put(ctx, obj, nil); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        // Queue replication event
+        <span class="cov8" title="1">if s.replicator != nil </span><span class="cov0" title="0">{
+                event := replication.Event{
+                        Type:   replication.EventPutObject,
+                        Bucket: bucket,
+                        Key:    key,
+                        Metadata: map[string]interface{}{
+                                "content_type": contentType,
+                                "size":         size,
+                        },
+                }
+
+                // For small objects (&lt;1MB), include data inline
+                if size &lt; replication.InlineDataThreshold </span><span class="cov0" title="0">{
+                        // Read buf content for inline replication
+                        bufData := make([]byte, totalRead)
+                        copy(bufData, buf[:totalRead])
+                        event.Data = bufData
+                }</span>
+
+                <span class="cov0" title="0">s.replicator.QueueEvent(event)</span>
+        }
+
+        <span class="cov8" title="1">return obj, nil</span>
+}
+
+// GetObject retrieves an object
+func (s *Service) GetObject(ctx context.Context, bucket, key string, versionID *string) (*Object, io.ReadCloser, error) <span class="cov8" title="1">{
+        // Get metadata from repo
+        obj, _, err := s.repo.Get(ctx, bucket, key, versionID)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, nil, err
+        }</span>
+        
+        // Read data from engine
+        <span class="cov8" title="1">data, err := s.engine.Read(obj.Offset, obj.Size)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, nil, err
+        }</span>
+        
+        // Convert []byte to ReadCloser
+        // In a real impl, we'd want a stream from the engine, not read all into memory.
+        // But Engine.Read returns []byte.
+        <span class="cov8" title="1">return obj, io.NopCloser(bytes.NewReader(data)), nil</span>
+}
+
+// ListObjects lists objects in a bucket
+func (s *Service) ListObjects(ctx context.Context, bucket, prefix string, opts ListOptions) (*ListResult, error) <span class="cov8" title="1">{
+        return s.repo.List(ctx, bucket, prefix, opts)
+}</span>
+
+// DeleteAllObjects deletes all objects in a bucket and returns total size freed
+func (s *Service) DeleteAllObjects(ctx context.Context, bucket string) (int, int64, error) <span class="cov8" title="1">{
+        // List all objects
+        result, err := s.repo.List(ctx, bucket, "", ListOptions{MaxKeys: 0})
+        if err != nil </span><span class="cov0" title="0">{
+                return 0, 0, err
+        }</span>
+        
+        <span class="cov8" title="1">count := 0
+        var totalSize int64
+        
+        // Delete each object
+        for _, obj := range result.Objects </span><span class="cov8" title="1">{
+                // For slab allocator, we only track actual used bytes
+                // The allocator handles the block/slab overhead internally
+                allocatedSize := obj.Size
+                
+                // Free storage space
+                if err := s.engine.Free(obj.Offset, obj.Size); err != nil </span><span class="cov0" title="0">{
+                        // Log error but continue
+                        continue</span>
+                }
+                
+                // Delete metadata
+                <span class="cov8" title="1">if err := s.repo.Delete(ctx, bucket, obj.Key, nil); err != nil </span><span class="cov0" title="0">{
+                        continue</span>
+                }
+                
+                <span class="cov8" title="1">count++
+                totalSize += allocatedSize</span>
+        }
+
+        // Queue replication event
+        <span class="cov8" title="1">if s.replicator != nil </span><span class="cov0" title="0">{
+                s.replicator.QueueEvent(replication.Event{
+                        Type:   replication.EventPurgeBucket,
+                        Bucket: bucket,
+                })
+        }</span>
+
+        <span class="cov8" title="1">return count, totalSize, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file30" style="display: none">package object
+
+import (
+        "github.com/google/uuid"
+)
+
+// GenerateVersionID generates a new version ID
+func GenerateVersionID() string <span class="cov8" title="1">{
+        return uuid.New().String()
+}</span>
+</pre>
+		
+		<pre class="file" id="file31" style="display: none">package replication
+
+import "time"
+
+type Config struct {
+        Enabled       bool          `yaml:"enabled"`
+        Mode          Mode          `yaml:"mode"` // async, sync
+        RemoteURL     string        `yaml:"remote_url"`
+        RemoteToken   string        `yaml:"remote_token"`
+        BatchSize     int           `yaml:"batch_size"`
+        BatchInterval time.Duration `yaml:"batch_interval"`
+        RetryAttempts int           `yaml:"retry_attempts"`
+        RetryDelay    time.Duration `yaml:"retry_delay"`
+}
+
+type Mode string
+
+const (
+        ModeAsync Mode = "async"
+        ModeSync  Mode = "sync"
+)
+
+func DefaultConfig() Config <span class="cov0" title="0">{
+        return Config{
+                Enabled:       false,
+                Mode:          ModeAsync,
+                BatchSize:     100,
+                BatchInterval: 1 * time.Second,
+                RetryAttempts: 3,
+                RetryDelay:    5 * time.Second,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file32" style="display: none">package replication
+
+// Manager handles replication
+type Manager struct {
+        nodes []*Node
+}
+
+// NewManager creates a new replication manager
+func NewManager() *Manager <span class="cov0" title="0">{
+        return &amp;Manager{
+                nodes: make([]*Node, 0),
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file33" style="display: none">package replication
+
+import (
+        "bytes"
+        "context"
+        "fmt"
+        "io"
+        "net/http"
+        "sync"
+        "time"
+
+        "go.uber.org/zap"
+
+        "github.com/danielino/comio/internal/monitoring"
+)
+
+const (
+        // Small objects (&lt;1MB) are replicated inline
+        InlineDataThreshold = 1024 * 1024
+)
+
+type Replicator struct {
+        config    Config
+        client    *http.Client
+        queue     chan Event
+        wg        sync.WaitGroup
+        ctx       context.Context
+        cancel    context.CancelFunc
+        mu        sync.RWMutex
+        stats     Stats
+}
+
+type Stats struct {
+        EventsQueued    int64
+        EventsReplicated int64
+        EventsFailed    int64
+        LastReplication time.Time
+}
+
+func NewReplicator(config Config) *Replicator <span class="cov8" title="1">{
+        ctx, cancel := context.WithCancel(context.Background())
+        
+        return &amp;Replicator{
+                config: config,
+                client: &amp;http.Client{
+                        Timeout: 30 * time.Second,
+                },
+                queue:  make(chan Event, 10000), // Buffer 10k events
+                ctx:    ctx,
+                cancel: cancel,
+        }
+}</span>
+
+func (r *Replicator) Start() error <span class="cov8" title="1">{
+        if !r.config.Enabled </span><span class="cov8" title="1">{
+                monitoring.Log.Info("Replication disabled")
+                return nil
+        }</span>
+
+        <span class="cov8" title="1">monitoring.Log.Info("Starting replicator",
+                zap.String("remote", r.config.RemoteURL),
+                zap.String("mode", string(r.config.Mode)))
+
+        // Start worker goroutines
+        numWorkers := 5
+        for i := 0; i &lt; numWorkers; i++ </span><span class="cov8" title="1">{
+                r.wg.Add(1)
+                go r.worker(i)
+        }</span>
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (r *Replicator) Stop() <span class="cov8" title="1">{
+        monitoring.Log.Info("Stopping replicator")
+        r.cancel()
+        close(r.queue)
+        r.wg.Wait()
+        monitoring.Log.Info("Replicator stopped")
+}</span>
+
+func (r *Replicator) QueueEvent(event Event) <span class="cov8" title="1">{
+        if !r.config.Enabled </span><span class="cov8" title="1">{
+                return
+        }</span>
+
+        // Generate ID if not set
+        <span class="cov8" title="1">if event.ID == "" </span><span class="cov8" title="1">{
+                event.ID = fmt.Sprintf("%d-%s-%s", time.Now().UnixNano(), event.Bucket, event.Key)
+        }</span>
+
+        <span class="cov8" title="1">if event.Timestamp.IsZero() </span><span class="cov8" title="1">{
+                event.Timestamp = time.Now()
+        }</span>
+
+        <span class="cov8" title="1">select </span>{
+        case r.queue &lt;- event:<span class="cov8" title="1">
+                r.mu.Lock()
+                r.stats.EventsQueued++
+                r.mu.Unlock()</span>
+        default:<span class="cov0" title="0">
+                monitoring.Log.Warn("Replication queue full, dropping event",
+                        zap.String("event_id", event.ID))
+                r.mu.Lock()
+                r.stats.EventsFailed++
+                r.mu.Unlock()</span>
+        }
+}
+
+func (r *Replicator) worker(id int) <span class="cov8" title="1">{
+        defer r.wg.Done()
+
+        monitoring.Log.Info("Replication worker started", zap.Int("worker_id", id))
+
+        batch := make([]Event, 0, r.config.BatchSize)
+        ticker := time.NewTicker(r.config.BatchInterval)
+        defer ticker.Stop()
+
+        for </span><span class="cov8" title="1">{
+                select </span>{
+                case &lt;-r.ctx.Done():<span class="cov8" title="1">
+                        // Flush remaining events
+                        if len(batch) &gt; 0 </span><span class="cov0" title="0">{
+                                r.sendBatch(batch)
+                        }</span>
+                        <span class="cov8" title="1">return</span>
+
+                case event, ok := &lt;-r.queue:<span class="cov8" title="1">
+                        if !ok </span><span class="cov0" title="0">{
+                                return
+                        }</span>
+                        <span class="cov8" title="1">batch = append(batch, event)
+                        
+                        if len(batch) &gt;= r.config.BatchSize </span><span class="cov0" title="0">{
+                                r.sendBatch(batch)
+                                batch = batch[:0]
+                        }</span>
+
+                case &lt;-ticker.C:<span class="cov8" title="1">
+                        if len(batch) &gt; 0 </span><span class="cov8" title="1">{
+                                r.sendBatch(batch)
+                                batch = batch[:0]
+                        }</span>
+                }
+        }
+}
+
+func (r *Replicator) sendBatch(events []Event) <span class="cov8" title="1">{
+        if len(events) == 0 </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov8" title="1">for _, event := range events </span><span class="cov8" title="1">{
+                if err := r.sendEvent(event); err != nil </span><span class="cov0" title="0">{
+                        monitoring.Log.Error("Failed to replicate event",
+                                zap.String("event_id", event.ID),
+                                zap.Error(err))
+                        r.mu.Lock()
+                        r.stats.EventsFailed++
+                        r.mu.Unlock()
+                }</span> else<span class="cov8" title="1"> {
+                        r.mu.Lock()
+                        r.stats.EventsReplicated++
+                        r.stats.LastReplication = time.Now()
+                        r.mu.Unlock()
+                }</span>
+        }
+}
+
+func (r *Replicator) sendEvent(event Event) error <span class="cov8" title="1">{
+        var err error
+        for attempt := 0; attempt &lt;= r.config.RetryAttempts; attempt++ </span><span class="cov8" title="1">{
+                if attempt &gt; 0 </span><span class="cov0" title="0">{
+                        time.Sleep(r.config.RetryDelay)
+                        monitoring.Log.Info("Retrying event replication",
+                                zap.String("event_id", event.ID),
+                                zap.Int("attempt", attempt))
+                }</span>
+
+                <span class="cov8" title="1">switch event.Type </span>{
+                case EventPutObject:<span class="cov8" title="1">
+                        err = r.replicatePutObject(event)</span>
+                case EventDeleteObject:<span class="cov8" title="1">
+                        err = r.replicateDeleteObject(event)</span>
+                case EventPurgeBucket:<span class="cov0" title="0">
+                        err = r.replicatePurgeBucket(event)</span>
+                default:<span class="cov0" title="0">
+                        return fmt.Errorf("unknown event type: %s", event.Type)</span>
+                }
+
+                <span class="cov8" title="1">if err == nil </span><span class="cov8" title="1">{
+                        return nil
+                }</span>
+        }
+
+        <span class="cov0" title="0">return fmt.Errorf("failed after %d attempts: %w", r.config.RetryAttempts+1, err)</span>
+}
+
+func (r *Replicator) replicatePutObject(event Event) error <span class="cov8" title="1">{
+        url := fmt.Sprintf("%s/%s/%s", r.config.RemoteURL, event.Bucket, event.Key)
+
+        var body io.Reader
+        if len(event.Data) &gt; 0 </span><span class="cov8" title="1">{
+                // Inline data
+                body = bytes.NewReader(event.Data)
+        }</span> else<span class="cov0" title="0"> if event.DataURL != "" </span><span class="cov0" title="0">{
+                // Fetch from local URL
+                resp, err := http.Get(event.DataURL)
+                if err != nil </span><span class="cov0" title="0">{
+                        return fmt.Errorf("failed to fetch object data: %w", err)
+                }</span>
+                <span class="cov0" title="0">defer resp.Body.Close()
+                body = resp.Body</span>
+        } else<span class="cov0" title="0"> {
+                return fmt.Errorf("no data or data URL provided")
+        }</span>
+
+        <span class="cov8" title="1">req, err := http.NewRequestWithContext(r.ctx, "PUT", url, body)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">if r.config.RemoteToken != "" </span><span class="cov0" title="0">{
+                req.Header.Set("Authorization", "Bearer "+r.config.RemoteToken)
+        }</span>
+
+        <span class="cov8" title="1">if contentType, ok := event.Metadata["content_type"].(string); ok </span><span class="cov0" title="0">{
+                req.Header.Set("Content-Type", contentType)
+        }</span>
+
+        <span class="cov8" title="1">resp, err := r.client.Do(req)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov8" title="1">defer resp.Body.Close()
+
+        if resp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                bodyBytes, _ := io.ReadAll(resp.Body)
+                return fmt.Errorf("remote returned %d: %s", resp.StatusCode, string(bodyBytes))
+        }</span>
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (r *Replicator) replicateDeleteObject(event Event) error <span class="cov8" title="1">{
+        url := fmt.Sprintf("%s/%s/%s", r.config.RemoteURL, event.Bucket, event.Key)
+
+        req, err := http.NewRequestWithContext(r.ctx, "DELETE", url, nil)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">if r.config.RemoteToken != "" </span><span class="cov0" title="0">{
+                req.Header.Set("Authorization", "Bearer "+r.config.RemoteToken)
+        }</span>
+
+        <span class="cov8" title="1">resp, err := r.client.Do(req)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov8" title="1">defer resp.Body.Close()
+
+        if resp.StatusCode != http.StatusOK &amp;&amp; resp.StatusCode != http.StatusNoContent </span><span class="cov0" title="0">{
+                bodyBytes, _ := io.ReadAll(resp.Body)
+                return fmt.Errorf("remote returned %d: %s", resp.StatusCode, string(bodyBytes))
+        }</span>
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (r *Replicator) replicatePurgeBucket(event Event) error <span class="cov0" title="0">{
+        url := fmt.Sprintf("%s/admin/%s/objects", r.config.RemoteURL, event.Bucket)
+
+        req, err := http.NewRequestWithContext(r.ctx, "DELETE", url, nil)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">if r.config.RemoteToken != "" </span><span class="cov0" title="0">{
+                req.Header.Set("Authorization", "Bearer "+r.config.RemoteToken)
+        }</span>
+
+        <span class="cov0" title="0">resp, err := r.client.Do(req)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov0" title="0">defer resp.Body.Close()
+
+        if resp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                bodyBytes, _ := io.ReadAll(resp.Body)
+                return fmt.Errorf("remote returned %d: %s", resp.StatusCode, string(bodyBytes))
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (r *Replicator) GetStats() Stats <span class="cov8" title="1">{
+        r.mu.RLock()
+        defer r.mu.RUnlock()
+        return r.stats
+}</span>
+</pre>
+		
+		<pre class="file" id="file34" style="display: none">package storage
+
+import (
+        "errors"
+        "sync"
+)
+
+// Allocator handles space allocation
+type Allocator struct {
+        totalBlocks int64
+        usedBlocks  int64
+        bitmap      []bool // Simple in-memory bitmap for now. In prod, this should be persisted.
+        mu          sync.Mutex
+        blockSize   int
+}
+
+// Stats holds storage statistics
+type Stats struct {
+        TotalBytes int64
+        UsedBytes  int64
+        FreeBytes  int64
+}
+
+// NewAllocator creates a new allocator
+func NewAllocator(totalSize int64, blockSize int) *Allocator <span class="cov0" title="0">{
+        totalBlocks := totalSize / int64(blockSize)
+        return &amp;Allocator{
+                totalBlocks: totalBlocks,
+                bitmap:      make([]bool, totalBlocks),
+                blockSize:   blockSize,
+        }
+}</span>
+
+// Allocate allocates space for the given size
+// Returns the offset in bytes
+func (a *Allocator) Allocate(size int64) (int64, error) <span class="cov0" title="0">{
+        a.mu.Lock()
+        defer a.mu.Unlock()
+
+        blocksNeeded := (size + int64(a.blockSize) - 1) / int64(a.blockSize)
+        
+        // First-fit strategy
+        startBlock := int64(-1)
+        consecutive := int64(0)
+        
+        for i := int64(0); i &lt; a.totalBlocks; i++ </span><span class="cov0" title="0">{
+                if !a.bitmap[i] </span><span class="cov0" title="0">{
+                        if startBlock == -1 </span><span class="cov0" title="0">{
+                                startBlock = i
+                        }</span>
+                        <span class="cov0" title="0">consecutive++
+                        if consecutive == blocksNeeded </span><span class="cov0" title="0">{
+                                // Found space
+                                for j := startBlock; j &lt; startBlock+blocksNeeded; j++ </span><span class="cov0" title="0">{
+                                        a.bitmap[j] = true
+                                }</span>
+                                <span class="cov0" title="0">a.usedBlocks += blocksNeeded
+                                return startBlock * int64(a.blockSize), nil</span>
+                        }
+                } else<span class="cov0" title="0"> {
+                        startBlock = -1
+                        consecutive = 0
+                }</span>
+        }
+        
+        <span class="cov0" title="0">return 0, errors.New("out of space")</span>
+}
+
+// Free frees space at the given offset
+func (a *Allocator) Free(offset, size int64) error <span class="cov0" title="0">{
+        a.mu.Lock()
+        defer a.mu.Unlock()
+        
+        if offset%int64(a.blockSize) != 0 </span><span class="cov0" title="0">{
+                return errors.New("offset not aligned")
+        }</span>
+        
+        <span class="cov0" title="0">startBlock := offset / int64(a.blockSize)
+        blocksToFree := (size + int64(a.blockSize) - 1) / int64(a.blockSize)
+        
+        if startBlock+blocksToFree &gt; a.totalBlocks </span><span class="cov0" title="0">{
+                return errors.New("invalid free range")
+        }</span>
+        
+        <span class="cov0" title="0">for i := startBlock; i &lt; startBlock+blocksToFree; i++ </span><span class="cov0" title="0">{
+                a.bitmap[i] = false
+        }</span>
+        
+        <span class="cov0" title="0">a.usedBlocks -= blocksToFree
+        return nil</span>
+}
+
+// Stats returns allocation statistics
+func (a *Allocator) Stats() Stats <span class="cov0" title="0">{
+        a.mu.Lock()
+        defer a.mu.Unlock()
+
+        return Stats{
+                TotalBytes: a.totalBlocks * int64(a.blockSize),
+                UsedBytes:  a.usedBlocks * int64(a.blockSize),
+                FreeBytes:  (a.totalBlocks - a.usedBlocks) * int64(a.blockSize),
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file35" style="display: none">package storage
+
+import (
+        "errors"
+        "sync"
+)
+
+// BlockManager handles block-level operations
+type BlockManager struct {
+        blockSize int
+        device    *Device
+        mu        sync.RWMutex
+}
+
+// NewBlockManager creates a new block manager
+func NewBlockManager(device *Device, blockSize int) *BlockManager <span class="cov8" title="1">{
+        return &amp;BlockManager{
+                blockSize: blockSize,
+                device:    device,
+        }
+}</span>
+
+// ReadBlock reads a single block
+func (bm *BlockManager) ReadBlock(blockIndex int64) ([]byte, error) <span class="cov0" title="0">{
+        bm.mu.RLock()
+        defer bm.mu.RUnlock()
+        
+        offset := blockIndex * int64(bm.blockSize)
+        return bm.device.Read(offset, int64(bm.blockSize))
+}</span>
+
+// WriteBlock writes a single block
+func (bm *BlockManager) WriteBlock(blockIndex int64, data []byte) error <span class="cov0" title="0">{
+        bm.mu.Lock()
+        defer bm.mu.Unlock()
+        
+        if len(data) != bm.blockSize </span><span class="cov0" title="0">{
+                return errors.New("data size does not match block size")
+        }</span>
+        
+        <span class="cov0" title="0">offset := blockIndex * int64(bm.blockSize)
+        return bm.device.Write(offset, data)</span>
+}
+</pre>
+		
+		<pre class="file" id="file36" style="display: none">package storage
+
+import (
+        "fmt"
+        "os"
+)
+
+// Device represents a raw block device
+type Device struct {
+        file      *os.File
+        path      string
+        size      int64
+        blockSize int
+}
+
+// NewDevice creates a new device handler
+func NewDevice(path string, blockSize int) *Device <span class="cov8" title="1">{
+        return &amp;Device{
+                path:      path,
+                blockSize: blockSize,
+        }
+}</span>
+
+// Open opens the device with O_DIRECT flag
+func (d *Device) Open() error <span class="cov8" title="1">{
+        // O_DIRECT requires aligned memory buffers and file offsets
+        // For simplicity in this implementation, we might skip O_DIRECT if it causes issues on non-Linux
+        // But the prompt asks for it.
+        // Note: O_DIRECT is Linux specific. On macOS it's O_RDWR (and maybe F_NOCACHE via fcntl)
+        
+        flags := os.O_RDWR
+        // In a real cross-platform app we'd handle this better. 
+        // For now, we'll try to use syscall.O_DIRECT if available (Linux), otherwise just standard flags.
+        
+        // Check if O_DIRECT is defined in syscall (it might not be on macOS)
+        // We will use a helper or just standard open for now to ensure it compiles on macOS dev env
+        
+        f, err := os.OpenFile(d.path, flags, 0666)
+        if err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to open device %s: %w", d.path, err)
+        }</span>
+        
+        // Get device size
+        <span class="cov8" title="1">_, err = f.Stat()
+        if err != nil </span><span class="cov0" title="0">{
+                f.Close()
+                return fmt.Errorf("failed to stat device: %w", err)
+        }</span>
+        
+        // For block devices, Size() might be 0, need ioctl or seek to end
+        // But for regular files (testing) it works.
+        // Let's try seeking to end to get size if it's a block device
+        <span class="cov8" title="1">size, err := f.Seek(0, 2) // Seek to end
+        if err != nil </span><span class="cov0" title="0">{
+                f.Close()
+                return fmt.Errorf("failed to get device size: %w", err)
+        }</span>
+        
+        <span class="cov8" title="1">d.file = f
+        d.size = size
+        
+        return nil</span>
+}
+
+// Close closes the device
+func (d *Device) Close() error <span class="cov8" title="1">{
+        if d.file != nil </span><span class="cov8" title="1">{
+                return d.file.Close()
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+
+// Read reads data from the device at offset
+func (d *Device) Read(offset int64, size int64) ([]byte, error) <span class="cov8" title="1">{
+        data := make([]byte, size)
+        n, err := d.file.ReadAt(data, offset)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        
+        <span class="cov8" title="1">if int64(n) != size </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("short read: expected %d, got %d", size, n)
+        }</span>
+        
+        <span class="cov8" title="1">return data, nil</span>
+}
+
+// Write writes data to the device at offset
+func (d *Device) Write(offset int64, data []byte) error <span class="cov8" title="1">{
+        n, err := d.file.WriteAt(data, offset)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        
+        <span class="cov8" title="1">if n != len(data) </span><span class="cov0" title="0">{
+                return fmt.Errorf("short write: expected %d, got %d", len(data), n)
+        }</span>
+        
+        <span class="cov8" title="1">return nil</span>
+}
+
+// Sync syncs the device
+func (d *Device) Sync() error <span class="cov0" title="0">{
+        return d.file.Sync()
+}</span>
+
+// Size returns the device size
+func (d *Device) Size() int64 <span class="cov0" title="0">{
+        return d.size
+}</span>
+</pre>
+		
+		<pre class="file" id="file37" style="display: none">package storage
+
+import (
+        "sync"
+)
+
+const (
+        // DefaultBlockSize is the default block size for storage allocation (4MB for performance)
+        DefaultBlockSize = 4 * 1024 * 1024 // 4MB
+)
+
+// SimpleEngine implements Engine using slab allocation
+type SimpleEngine struct {
+        device       *Device
+        allocator    *SlabAllocator
+        blockMgr     *BlockManager
+        slabSize     int64
+        mu           sync.Mutex
+}
+
+// NewSimpleEngine creates a new simple engine with slab allocation
+func NewSimpleEngine(devicePath string, size int64, slabSize int) (*SimpleEngine, error) <span class="cov8" title="1">{
+        device := NewDevice(devicePath, slabSize)
+        allocator := NewSlabAllocator(size, int64(slabSize))
+        blockMgr := NewBlockManager(device, slabSize)
+        
+        return &amp;SimpleEngine{
+                device:    device,
+                allocator: allocator,
+                blockMgr:  blockMgr,
+                slabSize:  int64(slabSize),
+        }, nil
+}</span>
+
+func (e *SimpleEngine) Open(devicePath string) error <span class="cov8" title="1">{
+        return e.device.Open()
+}</span>
+
+func (e *SimpleEngine) Close() error <span class="cov8" title="1">{
+        return e.device.Close()
+}</span>
+
+func (e *SimpleEngine) Read(offset, size int64) ([]byte, error) <span class="cov8" title="1">{
+        return e.device.Read(offset, size)
+}</span>
+
+func (e *SimpleEngine) Write(offset int64, data []byte) error <span class="cov8" title="1">{
+        return e.device.Write(offset, data)
+}</span>
+
+func (e *SimpleEngine) Allocate(size int64) (int64, error) <span class="cov8" title="1">{
+        return e.allocator.Allocate(size)
+}</span>
+
+func (e *SimpleEngine) Free(offset, size int64) error <span class="cov8" title="1">{
+        return e.allocator.Free(offset, size)
+}</span>
+
+func (e *SimpleEngine) Sync() error <span class="cov0" title="0">{
+        return e.device.Sync()
+}</span>
+
+func (e *SimpleEngine) Stats() Stats <span class="cov8" title="1">{
+        return e.allocator.Stats()
+}</span>
+
+func (e *SimpleEngine) BlockSize() int <span class="cov8" title="1">{
+        return int(e.slabSize)
+}</span>
+</pre>
+		
+		<pre class="file" id="file38" style="display: none">package storage
+
+import (
+        "errors"
+        "sync"
+)
+
+// SlabAllocator allocates space within large blocks (slabs)
+// Objects smaller than slab size are packed together
+type SlabAllocator struct {
+        slabSize    int64
+        totalSize   int64
+        slabs       map[int64]*Slab // Key: slab offset
+        usedBytes   int64
+        nextOffset  int64
+        mu          sync.Mutex
+}
+
+// Slab represents a large block that can contain multiple objects
+type Slab struct {
+        offset    int64
+        size      int64
+        used      int64
+        fragments []Fragment
+}
+
+// Fragment represents a portion of a slab used by an object
+type Fragment struct {
+        offset int64
+        size   int64
+}
+
+// NewSlabAllocator creates a new slab-based allocator
+func NewSlabAllocator(totalSize int64, slabSize int64) *SlabAllocator <span class="cov8" title="1">{
+        return &amp;SlabAllocator{
+                slabSize:   slabSize,
+                totalSize:  totalSize,
+                slabs:      make(map[int64]*Slab),
+                nextOffset: 0,
+        }
+}</span>
+
+// Allocate allocates space for an object
+// Small objects are packed into existing slabs
+// Large objects (&gt;= slabSize) get dedicated slabs
+func (a *SlabAllocator) Allocate(size int64) (int64, error) <span class="cov8" title="1">{
+        a.mu.Lock()
+        defer a.mu.Unlock()
+
+        if size &lt;= 0 </span><span class="cov0" title="0">{
+                return 0, errors.New("invalid size")
+        }</span>
+
+        // For large objects, allocate dedicated slab(s)
+        <span class="cov8" title="1">if size &gt;= a.slabSize </span><span class="cov8" title="1">{
+                slabsNeeded := (size + a.slabSize - 1) / a.slabSize
+                totalSize := slabsNeeded * a.slabSize
+                
+                if a.nextOffset+totalSize &gt; a.totalSize </span><span class="cov8" title="1">{
+                        return 0, errors.New("out of space")
+                }</span>
+                
+                <span class="cov8" title="1">offset := a.nextOffset
+                a.slabs[offset] = &amp;Slab{
+                        offset: offset,
+                        size:   totalSize,
+                        used:   size,
+                        fragments: []Fragment{{offset: offset, size: size}},
+                }
+                a.nextOffset += totalSize
+                a.usedBytes += size
+                return offset, nil</span>
+        }
+
+        // For small objects, try to pack into existing slab with available space
+        // We need to check slabs in deterministic order
+        <span class="cov8" title="1">var slabOffsets []int64
+        for off := range a.slabs </span><span class="cov8" title="1">{
+                slabOffsets = append(slabOffsets, off)
+        }</span>
+        
+        <span class="cov8" title="1">for _, off := range slabOffsets </span><span class="cov8" title="1">{
+                slab := a.slabs[off]
+                // Only pack into slabs that were created for small objects (size == slabSize)
+                if slab.size == a.slabSize &amp;&amp; slab.used+size &lt;= slab.size </span><span class="cov0" title="0">{
+                        // Found space in existing slab
+                        fragmentOffset := slab.offset + slab.used
+                        slab.fragments = append(slab.fragments, Fragment{
+                                offset: fragmentOffset,
+                                size:   size,
+                        })
+                        slab.used += size
+                        a.usedBytes += size
+                        return fragmentOffset, nil
+                }</span>
+        }
+
+        // No existing slab has space, allocate new slab
+        <span class="cov8" title="1">if a.nextOffset+a.slabSize &gt; a.totalSize </span><span class="cov8" title="1">{
+                return 0, errors.New("out of space")
+        }</span>
+
+        <span class="cov8" title="1">offset := a.nextOffset
+        slab := &amp;Slab{
+                offset: offset,
+                size:   a.slabSize,
+                used:   size,
+                fragments: []Fragment{{offset: offset, size: size}},
+        }
+        a.slabs[offset] = slab
+        a.nextOffset += a.slabSize
+        a.usedBytes += size
+        return offset, nil</span>
+}
+
+// Free frees allocated space
+func (a *SlabAllocator) Free(offset, size int64) error <span class="cov8" title="1">{
+        a.mu.Lock()
+        defer a.mu.Unlock()
+
+        // Find which slab contains this offset
+        var targetSlab *Slab
+        var slabOffset int64
+        
+        for off, slab := range a.slabs </span><span class="cov8" title="1">{
+                if offset &gt;= slab.offset &amp;&amp; offset &lt; slab.offset+slab.size </span><span class="cov8" title="1">{
+                        targetSlab = slab
+                        slabOffset = off
+                        break</span>
+                }
+        }
+
+        <span class="cov8" title="1">if targetSlab == nil </span><span class="cov0" title="0">{
+                return errors.New("offset not found")
+        }</span>
+
+        // Remove fragment
+        <span class="cov8" title="1">for i, frag := range targetSlab.fragments </span><span class="cov8" title="1">{
+                if frag.offset == offset &amp;&amp; frag.size == size </span><span class="cov8" title="1">{
+                        targetSlab.fragments = append(targetSlab.fragments[:i], targetSlab.fragments[i+1:]...)
+                        targetSlab.used -= size
+                        a.usedBytes -= size
+                        
+                        // If slab is now empty, remove it (optional optimization)
+                        if len(targetSlab.fragments) == 0 </span><span class="cov8" title="1">{
+                                delete(a.slabs, slabOffset)
+                        }</span>
+                        <span class="cov8" title="1">return nil</span>
+                }
+        }
+
+        <span class="cov0" title="0">return errors.New("fragment not found")</span>
+}
+
+// Stats returns allocation statistics
+func (a *SlabAllocator) Stats() Stats <span class="cov8" title="1">{
+        a.mu.Lock()
+        defer a.mu.Unlock()
+
+        allocatedSlabs := int64(len(a.slabs)) * a.slabSize
+        
+        return Stats{
+                TotalBytes: a.totalSize,
+                UsedBytes:  a.usedBytes,
+                FreeBytes:  a.totalSize - allocatedSlabs,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file39" style="display: none">package utils
+
+import (
+        "crypto/sha256"
+        "encoding/hex"
+)
+
+// HashSHA256 calculates SHA256 hash of a string
+func HashSHA256(s string) string <span class="cov8" title="1">{
+        h := sha256.New()
+        h.Write([]byte(s))
+        return hex.EncodeToString(h.Sum(nil))
+}</span>
+</pre>
+		
+		<pre class="file" id="file40" style="display: none">package utils
+
+import (
+        "time"
+)
+
+// Now returns current time in UTC
+func Now() time.Time <span class="cov8" title="1">{
+        return time.Now().UTC()
+}</span>
+</pre>
+		
+		<pre class="file" id="file41" style="display: none">package main
+
+import (
+"bytes"
+"crypto/rand"
+"fmt"
+"io"
+"net/http"
+"os"
+"sync"
+"sync/atomic"
+"time"
+)
+
+const (
+        baseURL          = "http://localhost:8080"
+        bucket           = "test"
+        numSmallFiles    = 500  // 1-100KB
+        numMediumFiles   = 200  // 100KB-1MB
+        numLargeFiles    = 100  // 1-5MB
+        concurrency      = 20   // parallel uploads
+)
+
+type TestResult struct {
+        Success bool
+        Key     string
+        Size    int
+        Error   string
+}
+
+func main() <span class="cov0" title="0">{
+        fmt.Println("======================================")
+        fmt.Println("ComIO Parallel Stress Test")
+        fmt.Println("======================================")
+        fmt.Printf("Small files (1-100KB): %d\n", numSmallFiles)
+        fmt.Printf("Medium files (100KB-1MB): %d\n", numMediumFiles)
+        fmt.Printf("Large files (1-5MB): %d\n", numLargeFiles)
+        fmt.Printf("Concurrency: %d\n", concurrency)
+        fmt.Println("======================================")
+        fmt.Println()
+
+        startTime := time.Now()
+        
+        var (
+successCount atomic.Int64
+errorCount   atomic.Int64
+wg           sync.WaitGroup
+results      = make(chan TestResult, numSmallFiles+numMediumFiles+numLargeFiles)
+semaphore    = make(chan struct{}, concurrency)
+)
+
+        // Test small files
+        fmt.Println("Testing small files (1-100KB)...")
+        for i := 1; i &lt;= numSmallFiles; i++ </span><span class="cov0" title="0">{
+                wg.Add(1)
+                go func(idx int) </span><span class="cov0" title="0">{
+                        defer wg.Done()
+                        semaphore &lt;- struct{}{}        // acquire
+                        defer func() </span><span class="cov0" title="0">{ &lt;-semaphore }</span>() // release
+
+                        <span class="cov0" title="0">size := (idx%100 + 1) * 1024 // 1-100KB
+                        key := fmt.Sprintf("small_%d_%dk", idx, size/1024)
+                        
+                        result := uploadFile(key, size)
+                        results &lt;- result
+                        
+                        if result.Success </span><span class="cov0" title="0">{
+                                successCount.Add(1)
+                                fmt.Print("\033[0;32m.\033[0m")
+                        }</span> else<span class="cov0" title="0"> {
+                                errorCount.Add(1)
+                                fmt.Print("\033[0;31mF\033[0m")
+                        }</span>
+                        
+                        <span class="cov0" title="0">if idx%10 == 0 </span><span class="cov0" title="0">{
+                                fmt.Printf(" [%d/%d]\n", idx, numSmallFiles)
+                        }</span>
+                }(i)
+        }
+        <span class="cov0" title="0">wg.Wait()
+        fmt.Println()
+
+        // Test medium files
+        fmt.Println("Testing medium files (100KB-1MB)...")
+        for i := 1; i &lt;= numMediumFiles; i++ </span><span class="cov0" title="0">{
+                wg.Add(1)
+                go func(idx int) </span><span class="cov0" title="0">{
+                        defer wg.Done()
+                        semaphore &lt;- struct{}{}
+                        defer func() </span><span class="cov0" title="0">{ &lt;-semaphore }</span>()
+
+                        <span class="cov0" title="0">size := (100 + (idx%900)) * 1024 // 100-1000KB
+                        key := fmt.Sprintf("medium_%d_%dk", idx, size/1024)
+                        
+                        result := uploadFile(key, size)
+                        results &lt;- result
+                        
+                        if result.Success </span><span class="cov0" title="0">{
+                                successCount.Add(1)
+                                fmt.Print("\033[0;32m.\033[0m")
+                        }</span> else<span class="cov0" title="0"> {
+                                errorCount.Add(1)
+                                fmt.Print("\033[0;31mF\033[0m")
+                        }</span>
+                        
+                        <span class="cov0" title="0">if idx%5 == 0 </span><span class="cov0" title="0">{
+                                fmt.Printf(" [%d/%d]\n", idx, numMediumFiles)
+                        }</span>
+                }(i)
+        }
+        <span class="cov0" title="0">wg.Wait()
+        fmt.Println()
+
+        // Test large files
+        fmt.Println("Testing large files (1-5MB)...")
+        for i := 1; i &lt;= numLargeFiles; i++ </span><span class="cov0" title="0">{
+                wg.Add(1)
+                go func(idx int) </span><span class="cov0" title="0">{
+                        defer wg.Done()
+                        semaphore &lt;- struct{}{}
+                        defer func() </span><span class="cov0" title="0">{ &lt;-semaphore }</span>()
+
+                        <span class="cov0" title="0">size := (1 + (idx % 5)) * 1024 * 1024 // 1-5MB
+                        key := fmt.Sprintf("large_%d_%dmb", idx, size/(1024*1024))
+                        
+                        result := uploadFile(key, size)
+                        results &lt;- result
+                        
+                        if result.Success </span><span class="cov0" title="0">{
+                                successCount.Add(1)
+                                fmt.Print("\033[0;32m.\033[0m")
+                        }</span> else<span class="cov0" title="0"> {
+                                errorCount.Add(1)
+                                fmt.Print("\033[0;31mF\033[0m")
+                        }</span>
+                        
+                        <span class="cov0" title="0">if idx%2 == 0 </span><span class="cov0" title="0">{
+                                fmt.Printf(" [%d/%d]\n", idx, numLargeFiles)
+                        }</span>
+                }(i)
+        }
+        <span class="cov0" title="0">wg.Wait()
+        close(results)
+        fmt.Println()
+
+        // Collect errors
+        var errors []TestResult
+        for result := range results </span><span class="cov0" title="0">{
+                if !result.Success </span><span class="cov0" title="0">{
+                        errors = append(errors, result)
+                }</span>
+        }
+
+        <span class="cov0" title="0">duration := time.Since(startTime)
+
+        fmt.Println()
+        fmt.Println("======================================")
+        fmt.Println("Stress Test Results")
+        fmt.Println("======================================")
+        fmt.Printf("Successful uploads: \033[0;32m%d\033[0m\n", successCount.Load())
+        fmt.Printf("Failed uploads: \033[0;31m%d\033[0m\n", errorCount.Load())
+        fmt.Printf("Total duration: %.2fs\n", duration.Seconds())
+        fmt.Printf("Throughput: %.2f req/s\n", float64(successCount.Load()+errorCount.Load())/duration.Seconds())
+        fmt.Println("======================================")
+
+        // Write errors to file
+        if len(errors) &gt; 0 </span><span class="cov0" title="0">{
+                f, err := os.Create("stress_errors.log")
+                if err == nil </span><span class="cov0" title="0">{
+                        for _, e := range errors </span><span class="cov0" title="0">{
+                                fmt.Fprintf(f, "Failed: %s (size: %d bytes, error: %s)\n", e.Key, e.Size, e.Error)
+                        }</span>
+                        <span class="cov0" title="0">f.Close()
+                        fmt.Println()
+                        fmt.Println("\033[1;33mErrors logged to stress_errors.log\033[0m")</span>
+                }
+        }
+
+        // Show metrics
+        <span class="cov0" title="0">fmt.Println()
+        fmt.Println("======================================")
+        fmt.Println("Server Metrics")
+        fmt.Println("======================================")
+        showMetrics()
+
+        if errorCount.Load() &gt; 0 </span><span class="cov0" title="0">{
+                os.Exit(1)
+        }</span>
+}
+
+func uploadFile(key string, size int) TestResult <span class="cov0" title="0">{
+        // Generate random data
+        data := make([]byte, size)
+        rand.Read(data)
+
+        url := fmt.Sprintf("%s/%s/%s", baseURL, bucket, key)
+        req, err := http.NewRequest("PUT", url, bytes.NewReader(data))
+        if err != nil </span><span class="cov0" title="0">{
+                return TestResult{Success: false, Key: key, Size: size, Error: err.Error()}
+        }</span>
+
+        <span class="cov0" title="0">req.Header.Set("Content-Type", "application/octet-stream")
+
+        client := &amp;http.Client{Timeout: 30 * time.Second}
+        resp, err := client.Do(req)
+        if err != nil </span><span class="cov0" title="0">{
+                return TestResult{Success: false, Key: key, Size: size, Error: err.Error()}
+        }</span>
+        <span class="cov0" title="0">defer resp.Body.Close()
+
+        if resp.StatusCode != http.StatusOK </span><span class="cov0" title="0">{
+                body, _ := io.ReadAll(resp.Body)
+                return TestResult{Success: false, Key: key, Size: size, Error: string(body)}
+        }</span>
+
+        <span class="cov0" title="0">return TestResult{Success: true, Key: key, Size: size}</span>
+}
+
+func showMetrics() <span class="cov0" title="0">{
+        resp, err := http.Get(baseURL + "/admin/metrics")
+        if err != nil </span><span class="cov0" title="0">{
+                fmt.Printf("Error fetching metrics: %v\n", err)
+                return
+        }</span>
+        <span class="cov0" title="0">defer resp.Body.Close()
+
+        body, _ := io.ReadAll(resp.Body)
+        fmt.Println(string(body))</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

@@ -14,6 +14,13 @@ type Allocator struct {
 	blockSize   int
 }
 
+// Stats holds storage statistics
+type Stats struct {
+	TotalBytes int64
+	UsedBytes  int64
+	FreeBytes  int64
+}
+
 // NewAllocator creates a new allocator
 func NewAllocator(totalSize int64, blockSize int) *Allocator {
 	totalBlocks := totalSize / int64(blockSize)
@@ -81,4 +88,16 @@ func (a *Allocator) Free(offset, size int64) error {
 	
 	a.usedBlocks -= blocksToFree
 	return nil
+}
+
+// Stats returns allocation statistics
+func (a *Allocator) Stats() Stats {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+
+	return Stats{
+		TotalBytes: a.totalBlocks * int64(a.blockSize),
+		UsedBytes:  a.usedBlocks * int64(a.blockSize),
+		FreeBytes:  (a.totalBlocks - a.usedBlocks) * int64(a.blockSize),
+	}
 }

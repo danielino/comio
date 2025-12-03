@@ -10,6 +10,8 @@ import (
 	"github.com/danielino/comio/internal/monitoring"
 )
 
+const serverAddr = "http://localhost:8080"
+
 var (
 	cfgFile string
 	version string

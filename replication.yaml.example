@@ -1,0 +1,17 @@
+# ComIO Replication Configuration Example
+
+# Site A (Primary) configuration
+replication:
+  enabled: true
+  mode: async                              # async or sync
+  remote_url: https://site-b.example.com   # Remote ComIO instance
+  remote_token: "your-secret-token"        # Authentication token
+  batch_size: 100                          # Events per batch
+  batch_interval: 1s                       # Max time before sending batch
+  retry_attempts: 3                        # Retry failed replications
+  retry_delay: 5s                          # Delay between retries
+
+# Site B (Replica) configuration
+# Set enabled: false to prevent circular replication
+replication:
+  enabled: false

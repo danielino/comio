@@ -5,6 +5,13 @@ import (
 	"io"
 )
 
+const (
+	// DefaultMaxKeys is the default number of objects returned in a list operation
+	DefaultMaxKeys = 50
+	// MaxKeysLimit is the maximum number of objects that can be returned in a list operation
+	MaxKeysLimit = 50
+)
+
 // ListOptions defines options for listing objects
 type ListOptions struct {
 	MaxKeys    int

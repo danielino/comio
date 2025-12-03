@@ -72,10 +72,6 @@ func (d *Device) Close() error {
 
 // Read reads data from the device at offset
 func (d *Device) Read(offset int64, size int64) ([]byte, error) {
-	if offset%int64(d.blockSize) != 0 {
-		return nil, fmt.Errorf("offset must be aligned to block size %d", d.blockSize)
-	}
-	
 	data := make([]byte, size)
 	n, err := d.file.ReadAt(data, offset)
 	if err != nil {
@@ -91,16 +87,6 @@ func (d *Device) Read(offset int64, size int64) ([]byte, error) {
 
 // Write writes data to the device at offset
 func (d *Device) Write(offset int64, data []byte) error {
-	if offset%int64(d.blockSize) != 0 {
-		return fmt.Errorf("offset must be aligned to block size %d", d.blockSize)
-	}
-	
-	if len(data)%d.blockSize != 0 {
-		// Pad data if needed? Or enforce block size writes?
-		// For now, let's enforce block size writes or just write what we have
-		// But O_DIRECT would require alignment.
-	}
-	
 	n, err := d.file.WriteAt(data, offset)
 	if err != nil {
 		return err
