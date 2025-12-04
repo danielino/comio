@@ -1,8 +1,8 @@
 # ComIO Cross-Site Replication
 
-Sistema di replica asincrona tra istanze ComIO su siti geografici diversi.
+Asynchronous replication system between ComIO instances on different geographic sites.
 
-## Architettura
+## Architecture
 
 ```
 Site A (Primary)                    Site B (Replica)
@@ -20,29 +20,29 @@ Site A (Primary)                    Site B (Replica)
 └──────────────────┘               └──────────────────┘
 ```
 
-## Caratteristiche
+## Features
 
-### ✅ Replica Asincrona
-- **Non blocca le write**: gli oggetti vengono scritti immediatamente nel sito primario
-- **Queue bufferizzata**: fino a 10,000 eventi in memoria
-- **Batch processing**: invia fino a 100 eventi per batch ogni secondo
-- **5 worker paralleli**: per throughput elevato
+### ✅ Asynchronous Replication
+- **Non-blocking writes**: objects are written immediately to the primary site
+- **Buffered Queue**: up to 10,000 events in memory
+- **Batch processing**: sends up to 100 events per batch every second
+- **5 parallel workers**: for high throughput
 
-### 🔄 Retry Automatico
-- **3 tentativi** per evento fallito
-- **Delay configurabile** tra retry (default: 5s)
-- **Error logging** dettagliato
+### 🔄 Automatic Retry
+- **3 attempts** for failed events
+- **Configurable delay** between retries (default: 5s)
+- **Detailed error logging**
 
-### 📊 Eventi Replicati
-1. **PUT Object** - Creazione/aggiornamento oggetto
-2. **DELETE Object** - Eliminazione oggetto singolo
-3. **PURGE Bucket** - Eliminazione tutti gli oggetti di un bucket
+### 📊 Replicated Events
+1. **PUT Object** - Object creation/update
+2. **DELETE Object** - Single object deletion
+3. **PURGE Bucket** - Deletion of all objects in a bucket
 
-### 🎯 Ottimizzazioni
-- **Oggetti piccoli (<1MB)**: data inline nel payload
-- **Oggetti grandi (≥1MB)**: replica fetcha dal sito primario via HTTP
+### 🎯 Optimizations
+- **Small objects (<1MB)**: data inline in the payload
+- **Large objects (≥1MB)**: replica fetches from the primary site via HTTP
 
-## Configurazione
+## Configuration
 
 ### Site A (Primary) - config.yaml
 
@@ -72,19 +72,19 @@ server:
   storage_size: 1TB
 
 replication:
-  enabled: false  # ⚠️ IMPORTANTE: disabilita per evitare loop!
+  enabled: false  # ⚠️ IMPORTANT: disable to avoid loops!
 ```
 
 ## Setup
 
-### 1. Genera Token di Autenticazione
+### 1. Generate Authentication Token
 
 ```bash
-# Genera token sicuro
+# Generate secure token
 openssl rand -hex 32
 ```
 
-### 2. Configura Site A (Primary)
+### 2. Configure Site A (Primary)
 
 ```bash
 # Site A
@@ -98,7 +98,7 @@ EOF
 ./bin/comio server --config config.yaml
 ```
 
-### 3. Configura Site B (Replica)
+### 3. Configure Site B (Replica)
 
 ```bash
 # Site B
@@ -110,7 +110,7 @@ EOF
 ./bin/comio server --config config.yaml
 ```
 
-### 4. Test Replica
+### 4. Test Replication
 
 ```bash
 # Site A: upload file
@@ -118,15 +118,15 @@ curl -X PUT http://site-a:8080/mybucket/myfile \
   -H "Content-Type: application/octet-stream" \
   --data-binary @file.dat
 
-# Attendi 1-2 secondi (batch interval)
+# Wait 1-2 seconds (batch interval)
 
-# Site B: verifica presenza
+# Site B: verify presence
 curl http://site-b:8080/mybucket/myfile
 ```
 
-## Monitoraggio
+## Monitoring
 
-### Status Replica
+### Replication Status
 
 ```bash
 curl http://site-a:8080/admin/replication/status
@@ -143,78 +143,78 @@ curl http://site-a:8080/admin/replication/status
 }
 ```
 
-### Metriche Chiave
+### Key Metrics
 
-- **events_queued**: Totale eventi accodati
-- **events_replicated**: Eventi replicati con successo
-- **events_failed**: Eventi falliti dopo tutti i retry
-- **last_replication**: Timestamp ultima replica riuscita
+- **events_queued**: Total events queued
+- **events_replicated**: Events successfully replicated
+- **events_failed**: Events failed after all retries
+- **last_replication**: Timestamp of last successful replication
 
 ## Performance
 
-### Throughput Stimato
+### Estimated Throughput
 
-Con configurazione default:
-- **Batch size**: 100 eventi
-- **Batch interval**: 1 secondo
-- **Workers**: 5 paralleli
+With default configuration:
+- **Batch size**: 100 events
+- **Batch interval**: 1 second
+- **Workers**: 5 parallel
 
-**Throughput teorico**: ~500 eventi/secondo
+**Theoretical throughput**: ~500 events/second
 
-### Latenza Replica
+### Replication Latency
 
-| Dimensione Oggetto | Latenza Stimata |
-|-------------------|-----------------|
-| < 1MB (inline)    | 10-50ms         |
-| 1-10MB            | 100-500ms       |
-| 10-100MB          | 1-5s            |
+| Object Size       | Estimated Latency |
+|-------------------|-------------------|
+| < 1MB (inline)    | 10-50ms           |
+| 1-10MB            | 100-500ms         |
+| 10-100MB          | 1-5s              |
 
 ## Best Practices
 
-### 🔒 Sicurezza
+### 🔒 Security
 
-1. **Usa HTTPS** in produzione per `remote_url`
-2. **Token forte**: almeno 32 caratteri random
-3. **Firewall**: limita accesso solo da Site A
+1. **Use HTTPS** in production for `remote_url`
+2. **Strong Token**: at least 32 random characters
+3. **Firewall**: limit access only from Site A
 
 ### ⚡ Performance
 
-1. **Aumenta workers** per throughput alto:
+1. **Increase workers** for high throughput:
    ```yaml
-   # Nel codice, modifica numWorkers in replicator.go
+   # In code, modify numWorkers in replicator.go
    numWorkers := 10  # default: 5
    ```
 
-2. **Batch size ottimale** per tuo workload:
-   - File piccoli: batch_size=200
-   - File grandi: batch_size=50
+2. **Optimal batch size** for your workload:
+   - Small files: batch_size=200
+   - Large files: batch_size=50
 
-3. **Rete veloce**: 1Gbps+ consigliato tra siti
+3. **Fast Network**: 1Gbps+ recommended between sites
 
 ### 💾 Storage
 
-1. **Stessa capacità** su entrambi i siti
-2. **NVMe consigliato** per latenza bassa
-3. **Monitoraggio spazio**: evita disco pieno su replica
+1. **Same capacity** on both sites
+2. **NVMe recommended** for low latency
+3. **Space monitoring**: avoid full disk on replica
 
 ## Troubleshooting
 
-### Replica non funziona
+### Replication not working
 
 ```bash
-# Verifica configurazione
+# Verify configuration
 curl http://site-a:8080/admin/replication/status
 
 # Check logs
 grep -i "replication" server.log | tail -50
 
-# Verifica connettività
+# Verify connectivity
 curl -I https://site-b.example.com/admin/health
 ```
 
-### Eventi falliti
+### Failed Events
 
-Gli eventi falliti dopo tutti i retry vengono loggati:
+Events failed after all retries are logged:
 
 ```json
 {"level":"error","msg":"Failed to replicate event",
@@ -222,37 +222,37 @@ Gli eventi falliti dopo tutti i retry vengono loggati:
  "error":"remote returned 500: out of space"}
 ```
 
-**Soluzioni:**
-- Aumenta `retry_attempts` e `retry_delay`
-- Verifica spazio disponibile su Site B
-- Check network errors tra siti
+**Solutions:**
+- Increase `retry_attempts` and `retry_delay`
+- Check available space on Site B
+- Check network errors between sites
 
-### Queue piena
+### Queue Full
 
-Se vedi warning `"Replication queue full, dropping event"`:
+If you see warning `"Replication queue full, dropping event"`:
 
 ```go
-// Aumenta buffer queue in replicator.go
+// Increase queue buffer in replicator.go
 queue: make(chan Event, 50000), // default: 10000
 ```
 
-## Limitazioni
+## Limitations
 
-1. **No replica sincrona**: eventual consistency
+1. **No synchronous replication**: eventual consistency
 2. **No conflict resolution**: last-write-wins
-3. **No bidirectional**: unidirezionale A→B
-4. **No ordered delivery**: eventi possono arrivare out-of-order
+3. **No bidirectional**: unidirectional A→B
+4. **No ordered delivery**: events may arrive out-of-order
 
 ## Future Enhancements
 
 - [ ] Multi-site replication (A→B→C)
-- [ ] Replica sincrona (mode: sync)
-- [ ] Conflict detection e resolution
-- [ ] WAL persistence per recovery
-- [ ] Compression per oggetti grandi
+- [ ] Synchronous replication (mode: sync)
+- [ ] Conflict detection and resolution
+- [ ] WAL persistence for recovery
+- [ ] Compression for large objects
 - [ ] Metrics export (Prometheus)
 
-## Esempio Completo
+## Complete Example
 
 ```bash
 # Site A: Primary
