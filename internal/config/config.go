@@ -42,10 +42,10 @@ type DeviceConfig struct {
 
 // ReplicationConfig holds replication settings
 type ReplicationConfig struct {
-	Nodes         []NodeConfig `mapstructure:"nodes"`
-	WriteQuorum   int          `mapstructure:"write_quorum"`
-	ReadQuorum    int          `mapstructure:"read_quorum"`
-	SyncInterval  string       `mapstructure:"sync_interval"`
+	Nodes        []NodeConfig `mapstructure:"nodes"`
+	WriteQuorum  int          `mapstructure:"write_quorum"`
+	ReadQuorum   int          `mapstructure:"read_quorum"`
+	SyncInterval string       `mapstructure:"sync_interval"`
 }
 
 // NodeConfig holds node settings

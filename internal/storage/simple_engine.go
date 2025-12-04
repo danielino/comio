@@ -11,11 +11,11 @@ const (
 
 // SimpleEngine implements Engine using slab allocation
 type SimpleEngine struct {
-	device       *Device
-	allocator    *SlabAllocator
-	blockMgr     *BlockManager
-	slabSize     int64
-	mu           sync.Mutex
+	device    *Device
+	allocator *SlabAllocator
+	blockMgr  *BlockManager
+	slabSize  int64
+	mu        sync.Mutex
 }
 
 // NewSimpleEngine creates a new simple engine with slab allocation
@@ -23,7 +23,7 @@ func NewSimpleEngine(devicePath string, size int64, slabSize int) (*SimpleEngine
 	device := NewDevice(devicePath, slabSize)
 	allocator := NewSlabAllocator(size, int64(slabSize))
 	blockMgr := NewBlockManager(device, slabSize)
-	
+
 	return &SimpleEngine{
 		device:    device,
 		allocator: allocator,

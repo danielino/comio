@@ -217,3 +217,84 @@ func BenchmarkDevice_Read(b *testing.B) {
 		}
 	}
 }
+
+func TestDevice_Sync(t *testing.T) {
+	f, err := os.CreateTemp("", "device_test_*.dat")
+	if err != nil {
+		t.Fatalf("Failed to create temp file: %v", err)
+	}
+	defer os.Remove(f.Name())
+	defer f.Close()
+
+	if err := f.Truncate(1024 * 1024); err != nil {
+		t.Fatalf("Failed to truncate: %v", err)
+	}
+
+	dev := NewDevice(f.Name(), 4096)
+	if err := dev.Open(); err != nil {
+		t.Fatalf("Failed to open device: %v", err)
+	}
+	defer dev.Close()
+
+	data := []byte("test data for sync")
+	if err := dev.Write(0, data); err != nil {
+		t.Errorf("Write() error = %v", err)
+	}
+
+	if err := dev.Sync(); err != nil {
+		t.Errorf("Sync() error = %v", err)
+	}
+}
+
+func TestDevice_Size(t *testing.T) {
+	f, err := os.CreateTemp("", "device_test_*.dat")
+	if err != nil {
+		t.Fatalf("Failed to create temp file: %v", err)
+	}
+	defer os.Remove(f.Name())
+	defer f.Close()
+
+	size := int64(10 * 1024 * 1024)
+	if err := f.Truncate(size); err != nil {
+		t.Fatalf("Failed to truncate: %v", err)
+	}
+
+	dev := NewDevice(f.Name(), 4096)
+	if err := dev.Open(); err != nil {
+		t.Fatalf("Failed to open device: %v", err)
+	}
+	defer dev.Close()
+
+	if dev.Size() != size {
+		t.Errorf("Size() = %d, want %d", dev.Size(), size)
+	}
+}
+
+func TestDevice_ErrorCases(t *testing.T) {
+	// Test open non-existing file
+	dev := NewDevice("/non/existing/path", 4096)
+	err := dev.Open()
+	if err == nil {
+		t.Error("Open() expected error for non-existing file, got nil")
+	}
+
+	// Test read/write errors
+	f, err := os.CreateTemp("", "device_test_*.dat")
+	if err != nil {
+		t.Fatalf("Failed to create temp file: %v", err)
+	}
+	defer os.Remove(f.Name())
+	f.Close()
+
+	dev2 := NewDevice(f.Name(), 4096)
+	if err := dev2.Open(); err != nil {
+		t.Fatalf("Failed to open device: %v", err)
+	}
+	defer dev2.Close()
+
+	// Try to read beyond file size
+	_, err = dev2.Read(1024*1024*1024, 4096) // 1GB offset on small file
+	if err == nil {
+		t.Error("Read() expected error for read beyond size, got nil")
+	}
+}

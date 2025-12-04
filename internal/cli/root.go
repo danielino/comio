@@ -13,8 +13,8 @@ import (
 const serverAddr = "http://localhost:8080"
 
 var (
-	cfgFile string
-	version string
+	cfgFile   string
+	version   string
 	buildTime string
 )
 
@@ -22,8 +22,8 @@ var (
 var rootCmd = &cobra.Command{
 	Use:   "comio",
 	Short: "ComIO - Community IO Storage",
-	Long: `ComIO is a production-ready S3-compliant storage solution in Golang 
-featuring RESTful API, CLI management, storage replication, raw device handling, 
+	Long: `ComIO is a production-ready S3-compliant storage solution in Golang
+featuring RESTful API, CLI management, storage replication, raw device handling,
 and authentication.`,
 }
 

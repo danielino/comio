@@ -38,11 +38,11 @@ func (a *Allocator) Allocate(size int64) (int64, error) {
 	defer a.mu.Unlock()
 
 	blocksNeeded := (size + int64(a.blockSize) - 1) / int64(a.blockSize)
-	
+
 	// First-fit strategy
 	startBlock := int64(-1)
 	consecutive := int64(0)
-	
+
 	for i := int64(0); i < a.totalBlocks; i++ {
 		if !a.bitmap[i] {
 			if startBlock == -1 {
@@ -62,7 +62,7 @@ func (a *Allocator) Allocate(size int64) (int64, error) {
 			consecutive = 0
 		}
 	}
-	
+
 	return 0, errors.New("out of space")
 }
 
@@ -70,22 +70,22 @@ func (a *Allocator) Allocate(size int64) (int64, error) {
 func (a *Allocator) Free(offset, size int64) error {
 	a.mu.Lock()
 	defer a.mu.Unlock()
-	
+
 	if offset%int64(a.blockSize) != 0 {
 		return errors.New("offset not aligned")
 	}
-	
+
 	startBlock := offset / int64(a.blockSize)
 	blocksToFree := (size + int64(a.blockSize) - 1) / int64(a.blockSize)
-	
+
 	if startBlock+blocksToFree > a.totalBlocks {
 		return errors.New("invalid free range")
 	}
-	
+
 	for i := startBlock; i < startBlock+blocksToFree; i++ {
 		a.bitmap[i] = false
 	}
-	
+
 	a.usedBlocks -= blocksToFree
 	return nil
 }

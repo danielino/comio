@@ -15,17 +15,25 @@ var serverCmd = &cobra.Command{
 	Short: "Start the ComIO server",
 	Long:  `Start the ComIO server with the configured settings.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Load config again or use global?
-		// For now, assume config is loaded in root
+		// Load configuration
 		cfg, err := config.LoadConfig(cfgFile)
 		if err != nil {
 			fmt.Println("Error loading config:", err)
 			return
 		}
-		
-		server := api.NewServer(cfg)
+
+		// Wire up all dependencies using dependency injection
+		container, err := api.NewServiceContainer(cfg)
+		if err != nil {
+			fmt.Println("Error initializing services:", err)
+			return
+		}
+
+		// Create server with injected dependencies
+		server := api.NewServer(cfg, container)
 		server.SetupRoutes()
-		
+
+		// Start the server
 		if err := server.Start(); err != nil {
 			fmt.Println("Server error:", err)
 		}
@@ -41,19 +49,25 @@ var startCmd = &cobra.Command{
 	Use:   "start",
 	Short: "Start the server",
 	Run: func(cmd *cobra.Command, args []string) {
-		// Same as serverCmd logic or serverCmd is the parent?
-		// The prompt says "comio server start", so server is parent, start is child.
-		// But serverCmd.Run above seems to start it.
-		// Let's make serverCmd just a container and startCmd do the work.
+		// Load configuration
 		cfg, err := config.LoadConfig(cfgFile)
 		if err != nil {
 			fmt.Println("Error loading config:", err)
 			return
 		}
-		
-		server := api.NewServer(cfg)
+
+		// Wire up all dependencies using dependency injection
+		container, err := api.NewServiceContainer(cfg)
+		if err != nil {
+			fmt.Println("Error initializing services:", err)
+			return
+		}
+
+		// Create server with injected dependencies
+		server := api.NewServer(cfg, container)
 		server.SetupRoutes()
-		
+
+		// Start the server
 		if err := server.Start(); err != nil {
 			fmt.Println("Server error:", err)
 		}

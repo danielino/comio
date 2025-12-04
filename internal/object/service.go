@@ -34,7 +34,7 @@ func NewService(repo Repository, engine storage.Engine) *Service {
 func (s *Service) PutObject(ctx context.Context, bucket, key string, data io.Reader, size int64, contentType string) (*Object, error) {
 	// Calculate checksums while streaming?
 	// For now, just pass through
-	
+
 	obj := &Object{
 		Key:         key,
 		BucketName:  bucket,
@@ -44,38 +44,43 @@ func (s *Service) PutObject(ctx context.Context, bucket, key string, data io.Rea
 		ModifiedAt:  time.Now(),
 		VersionID:   GenerateVersionID(), // Always generate version ID for now
 	}
-	
+
 	// In a real impl, we would stream to storage engine here, calculate checksums, then save metadata to repo.
 	// The repo.Put might handle the storage engine interaction or we do it here.
 	// The prompt says "Stream object data to storage engine" in service.go
-	
+
 	// We need to wrap the reader to calculate checksums
 	calc := integrity.NewCalculator()
 	tee := io.TeeReader(data, calc)
-	
-	// Write to storage engine
-	// We need to allocate space first? Or does the engine handle it?
-	// Engine.Write takes an offset. Engine.Allocate takes size.
-	
+
+	// Allocate storage space
 	offset, err := s.engine.Allocate(size)
 	if err != nil {
 		return nil, err
 	}
-	
-	// Read all data into memory? No, stream.
-	// But Engine.Write takes []byte. We need a streaming write in Engine or read in chunks.
-	// The Engine interface has Write(offset, data).
-	// We should read from tee in chunks and write to engine.
-	
+
+	// Setup cleanup: free allocated space if operation fails
+	allocated := true
+	defer func() {
+		if allocated {
+			// Operation failed - free the allocated space
+			if freeErr := s.engine.Free(offset, size); freeErr != nil {
+				// Log error but don't fail - cleanup is best effort
+				// In production, a background process should handle orphaned blocks
+			}
+		}
+	}()
+
+	// Stream data from reader to storage in chunks
 	buf := make([]byte, 4096) // 4KB chunks
 	currentOffset := offset
 	totalRead := int64(0)
-	
+
 	for {
 		n, err := tee.Read(buf)
 		if n > 0 {
 			if wErr := s.engine.Write(currentOffset, buf[:n]); wErr != nil {
-				// Cleanup allocated space?
+				// Write failed - cleanup will happen via defer
 				return nil, wErr
 			}
 			currentOffset += int64(n)
@@ -85,20 +90,25 @@ func (s *Service) PutObject(ctx context.Context, bucket, key string, data io.Rea
 			break
 		}
 		if err != nil {
+			// Read failed - cleanup will happen via defer
 			return nil, err
 		}
 	}
-	
+
 	// Update object metadata with checksums
 	sums := calc.Sums()
 	obj.ETag = sums["MD5"]
 	obj.Checksum = integrity.Checksum{Algorithm: "SHA256", Value: sums["SHA256"]}
 	obj.Offset = offset // Store offset
-	
+
 	// Save metadata
 	if err := s.repo.Put(ctx, obj, nil); err != nil {
+		// Metadata save failed - cleanup will happen via defer
 		return nil, err
 	}
+
+	// Success! Mark as committed so defer doesn't free the space
+	allocated = false
 
 	// Queue replication event
 	if s.replicator != nil {
@@ -112,12 +122,26 @@ func (s *Service) PutObject(ctx context.Context, bucket, key string, data io.Rea
 			},
 		}
 
-		// For small objects (<1MB), include data inline
-		if size < replication.InlineDataThreshold {
-			// Read buf content for inline replication
-			bufData := make([]byte, totalRead)
-			copy(bufData, buf[:totalRead])
-			event.Data = bufData
+		// For very small objects (<1KB), include data inline to avoid extra storage reads
+		// For larger objects, use storage pointer to avoid memory leak
+		if size < 1024 { // 1KB threshold for inline
+			// Small objects: read data and include inline
+			inlineData, err := s.engine.Read(offset, size)
+			if err == nil {
+				event.Data = inlineData
+			} else {
+				// Fallback to pointer if read fails
+				event.StoragePointer = &replication.StoragePointer{
+					Offset: offset,
+					Size:   size,
+				}
+			}
+		} else {
+			// Larger objects: use storage pointer (avoids memory leak)
+			event.StoragePointer = &replication.StoragePointer{
+				Offset: offset,
+				Size:   size,
+			}
 		}
 
 		s.replicator.QueueEvent(event)
@@ -133,13 +157,13 @@ func (s *Service) GetObject(ctx context.Context, bucket, key string, versionID *
 	if err != nil {
 		return nil, nil, err
 	}
-	
+
 	// Read data from engine
 	data, err := s.engine.Read(obj.Offset, obj.Size)
 	if err != nil {
 		return nil, nil, err
 	}
-	
+
 	// Convert []byte to ReadCloser
 	// In a real impl, we'd want a stream from the engine, not read all into memory.
 	// But Engine.Read returns []byte.
@@ -153,34 +177,42 @@ func (s *Service) ListObjects(ctx context.Context, bucket, prefix string, opts L
 
 // DeleteAllObjects deletes all objects in a bucket and returns total size freed
 func (s *Service) DeleteAllObjects(ctx context.Context, bucket string) (int, int64, error) {
-	// List all objects
-	result, err := s.repo.List(ctx, bucket, "", ListOptions{MaxKeys: 0})
+	// First, list all objects to get their offsets (we need to free storage)
+	var allObjects []*Object
+	startAfter := ""
+
+	for {
+		result, err := s.repo.List(ctx, bucket, "", ListOptions{
+			MaxKeys:    1000,
+			StartAfter: startAfter,
+		})
+		if err != nil {
+			return 0, 0, err
+		}
+
+		if len(result.Objects) == 0 {
+			break
+		}
+
+		allObjects = append(allObjects, result.Objects...)
+
+		if !result.IsTruncated {
+			break
+		}
+		startAfter = result.NextMarker
+	}
+
+	// Free storage for all objects
+	for _, obj := range allObjects {
+		if err := s.engine.Free(obj.Offset, obj.Size); err != nil {
+			// Log but continue
+		}
+	}
+
+	// Delete all metadata in one shot
+	count, totalSize, err := s.repo.DeleteAll(ctx, bucket)
 	if err != nil {
 		return 0, 0, err
-	}
-	
-	count := 0
-	var totalSize int64
-	
-	// Delete each object
-	for _, obj := range result.Objects {
-		// For slab allocator, we only track actual used bytes
-		// The allocator handles the block/slab overhead internally
-		allocatedSize := obj.Size
-		
-		// Free storage space
-		if err := s.engine.Free(obj.Offset, obj.Size); err != nil {
-			// Log error but continue
-			continue
-		}
-		
-		// Delete metadata
-		if err := s.repo.Delete(ctx, bucket, obj.Key, nil); err != nil {
-			continue
-		}
-		
-		count++
-		totalSize += allocatedSize
 	}
 
 	// Queue replication event
@@ -192,4 +224,46 @@ func (s *Service) DeleteAllObjects(ctx context.Context, bucket string) (int, int
 	}
 
 	return count, totalSize, nil
+}
+
+// CountObjects returns the number of objects and total size in a bucket
+func (s *Service) CountObjects(ctx context.Context, bucket string) (int, int64, error) {
+	return s.repo.Count(ctx, bucket)
+}
+
+// DeleteObject deletes a single object
+func (s *Service) DeleteObject(ctx context.Context, bucket, key string) error {
+	// Get object metadata first to find storage location
+	obj, _, err := s.repo.Get(ctx, bucket, key, nil)
+	if err != nil {
+		return err
+	}
+
+	// Free storage space
+	if err := s.engine.Free(obj.Offset, obj.Size); err != nil {
+		// Log but continue with metadata deletion
+		// Storage cleanup can be done later by background process
+	}
+
+	// Delete metadata
+	if err := s.repo.Delete(ctx, bucket, key, nil); err != nil {
+		return err
+	}
+
+	// Queue replication event
+	if s.replicator != nil {
+		s.replicator.QueueEvent(replication.Event{
+			Type:   replication.EventDeleteObject,
+			Bucket: bucket,
+			Key:    key,
+		})
+	}
+
+	return nil
+}
+
+// GetObjectMetadata retrieves only object metadata without data
+func (s *Service) GetObjectMetadata(ctx context.Context, bucket, key string) (*Object, error) {
+	obj, _, err := s.repo.Get(ctx, bucket, key, nil)
+	return obj, err
 }

@@ -37,12 +37,12 @@ func (h *BucketHandler) CreateBucket(c *gin.Context) {
 	bucketName := c.Param("bucket")
 	// TODO: Get owner from auth context
 	owner := "default"
-	
+
 	if err := h.service.CreateBucket(c.Request.Context(), bucketName, owner); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	
+
 	c.JSON(http.StatusOK, gin.H{"bucket": bucketName, "status": "created"})
 }
 

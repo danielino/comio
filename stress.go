@@ -1,24 +1,26 @@
 package main
 
 import (
-"bytes"
-"crypto/rand"
-"fmt"
-"io"
-"net/http"
-"os"
-"sync"
-"sync/atomic"
-"time"
+	"bytes"
+	"crypto/rand"
+	"fmt"
+	"io"
+	"net/http"
+	"os"
+	"sync"
+	"sync/atomic"
+	"time"
+
+	"github.com/google/uuid"
 )
 
 const (
-	baseURL          = "http://localhost:8080"
-	bucket           = "test"
-	numSmallFiles    = 500  // 1-100KB
-	numMediumFiles   = 200  // 100KB-1MB
-	numLargeFiles    = 100  // 1-5MB
-	concurrency      = 20   // parallel uploads
+	baseURL        = "http://localhost:8080"
+	bucket         = "test"
+	numSmallFiles  = 1000000 // 1-100KB
+	numMediumFiles = 0       // 100KB-1MB
+	numLargeFiles  = 0       // 1-5MB
+	concurrency    = 70      // parallel uploads
 )
 
 type TestResult struct {
@@ -40,14 +42,14 @@ func main() {
 	fmt.Println()
 
 	startTime := time.Now()
-	
+
 	var (
-successCount atomic.Int64
-errorCount   atomic.Int64
-wg           sync.WaitGroup
-results      = make(chan TestResult, numSmallFiles+numMediumFiles+numLargeFiles)
-semaphore    = make(chan struct{}, concurrency)
-)
+		successCount atomic.Int64
+		errorCount   atomic.Int64
+		wg           sync.WaitGroup
+		results      = make(chan TestResult, numSmallFiles+numMediumFiles+numLargeFiles)
+		semaphore    = make(chan struct{}, concurrency)
+	)
 
 	// Test small files
 	fmt.Println("Testing small files (1-100KB)...")
@@ -59,11 +61,11 @@ semaphore    = make(chan struct{}, concurrency)
 			defer func() { <-semaphore }() // release
 
 			size := (idx%100 + 1) * 1024 // 1-100KB
-			key := fmt.Sprintf("small_%d_%dk", idx, size/1024)
-			
+			key := fmt.Sprintf("small_%s_%dk", uuid.New().String(), size/1024)
+
 			result := uploadFile(key, size)
 			results <- result
-			
+
 			if result.Success {
 				successCount.Add(1)
 				fmt.Print("\033[0;32m.\033[0m")
@@ -71,7 +73,7 @@ semaphore    = make(chan struct{}, concurrency)
 				errorCount.Add(1)
 				fmt.Print("\033[0;31mF\033[0m")
 			}
-			
+
 			if idx%10 == 0 {
 				fmt.Printf(" [%d/%d]\n", idx, numSmallFiles)
 			}
@@ -89,12 +91,12 @@ semaphore    = make(chan struct{}, concurrency)
 			semaphore <- struct{}{}
 			defer func() { <-semaphore }()
 
-			size := (100 + (idx%900)) * 1024 // 100-1000KB
-			key := fmt.Sprintf("medium_%d_%dk", idx, size/1024)
-			
+			size := (100 + (idx % 900)) * 1024 // 100-1000KB
+			key := fmt.Sprintf("medium_%s_%dk", uuid.New().String(), size/1024)
+
 			result := uploadFile(key, size)
 			results <- result
-			
+
 			if result.Success {
 				successCount.Add(1)
 				fmt.Print("\033[0;32m.\033[0m")
@@ -102,7 +104,7 @@ semaphore    = make(chan struct{}, concurrency)
 				errorCount.Add(1)
 				fmt.Print("\033[0;31mF\033[0m")
 			}
-			
+
 			if idx%5 == 0 {
 				fmt.Printf(" [%d/%d]\n", idx, numMediumFiles)
 			}
@@ -121,11 +123,11 @@ semaphore    = make(chan struct{}, concurrency)
 			defer func() { <-semaphore }()
 
 			size := (1 + (idx % 5)) * 1024 * 1024 // 1-5MB
-			key := fmt.Sprintf("large_%d_%dmb", idx, size/(1024*1024))
-			
+			key := fmt.Sprintf("large_%s_%dmb", uuid.New().String(), size/(1024*1024))
+
 			result := uploadFile(key, size)
 			results <- result
-			
+
 			if result.Success {
 				successCount.Add(1)
 				fmt.Print("\033[0;32m.\033[0m")
@@ -133,7 +135,7 @@ semaphore    = make(chan struct{}, concurrency)
 				errorCount.Add(1)
 				fmt.Print("\033[0;31mF\033[0m")
 			}
-			
+
 			if idx%2 == 0 {
 				fmt.Printf(" [%d/%d]\n", idx, numLargeFiles)
 			}

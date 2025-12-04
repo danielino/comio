@@ -7,9 +7,9 @@ import (
 
 const (
 	// DefaultMaxKeys is the default number of objects returned in a list operation
-	DefaultMaxKeys = 50
+	DefaultMaxKeys = 1000
 	// MaxKeysLimit is the maximum number of objects that can be returned in a list operation
-	MaxKeysLimit = 50
+	MaxKeysLimit = 10000
 )
 
 // ListOptions defines options for listing objects
@@ -35,4 +35,6 @@ type Repository interface {
 	Delete(ctx context.Context, bucket, key string, versionID *string) error
 	List(ctx context.Context, bucket, prefix string, opts ListOptions) (*ListResult, error)
 	Head(ctx context.Context, bucket, key string, versionID *string) (*Object, error)
+	Count(ctx context.Context, bucket string) (int, int64, error)
+	DeleteAll(ctx context.Context, bucket string) (int, int64, error)
 }

@@ -15,11 +15,11 @@ const (
 
 // Bucket represents a storage bucket
 type Bucket struct {
-	Name        string           `json:"name"`
-	CreatedAt   time.Time        `json:"created_at"`
-	Owner       string           `json:"owner"`
-	Versioning  VersioningStatus `json:"versioning"`
-	Lifecycle   []LifecycleRule  `json:"lifecycle,omitempty"`
+	Name       string           `json:"name"`
+	CreatedAt  time.Time        `json:"created_at"`
+	Owner      string           `json:"owner"`
+	Versioning VersioningStatus `json:"versioning"`
+	Lifecycle  []LifecycleRule  `json:"lifecycle,omitempty"`
 }
 
 // LifecycleRule represents a lifecycle policy rule

@@ -32,7 +32,7 @@ start_time=$(date +%s)
 upload_file() {
     local key=$1
     local size=$2
-    
+
     # Create random data
     dd if=/dev/urandom bs=$size count=1 2>/dev/null | \
         curl -s -X PUT -H "Content-Type: application/octet-stream" \
@@ -45,9 +45,9 @@ for i in $(seq 1 $NUM_SMALL_FILES); do
     size=$((RANDOM % 100 + 1))  # 1-100KB
     size_bytes=$((size * 1024))
     key="small_${i}_${size}k"
-    
+
     http_code=$(upload_file "$key" "$size_bytes")
-    
+
     if [ "$http_code" = "200" ]; then
         ((success_count++))
         echo -ne "${GREEN}.${NC}"
@@ -57,7 +57,7 @@ for i in $(seq 1 $NUM_SMALL_FILES); do
         echo "" >> stress_errors.log
         echo "Failed: $key (size: ${size}KB, http: $http_code)" >> stress_errors.log
     fi
-    
+
     # Progress every 10 files
     if [ $((i % 10)) -eq 0 ]; then
         echo -ne " [$i/$NUM_SMALL_FILES]\n"
@@ -71,9 +71,9 @@ for i in $(seq 1 $NUM_MEDIUM_FILES); do
     size=$((RANDOM % 900 + 100))  # 100-1000KB
     size_bytes=$((size * 1024))
     key="medium_${i}_${size}k"
-    
+
     http_code=$(upload_file "$key" "$size_bytes")
-    
+
     if [ "$http_code" = "200" ]; then
         ((success_count++))
         echo -ne "${GREEN}.${NC}"
@@ -83,7 +83,7 @@ for i in $(seq 1 $NUM_MEDIUM_FILES); do
         echo "" >> stress_errors.log
         echo "Failed: $key (size: ${size}KB, http: $http_code)" >> stress_errors.log
     fi
-    
+
     # Progress every 5 files
     if [ $((i % 5)) -eq 0 ]; then
         echo -ne " [$i/$NUM_MEDIUM_FILES]\n"
@@ -97,9 +97,9 @@ for i in $(seq 1 $NUM_LARGE_FILES); do
     size=$((RANDOM % 4 + 1))  # 1-5MB
     size_bytes=$((size * 1024 * 1024))
     key="large_${i}_${size}mb"
-    
+
     http_code=$(upload_file "$key" "$size_bytes")
-    
+
     if [ "$http_code" = "200" ]; then
         ((success_count++))
         echo -ne "${GREEN}.${NC}"
@@ -109,7 +109,7 @@ for i in $(seq 1 $NUM_LARGE_FILES); do
         echo "" >> stress_errors.log
         echo "Failed: $key (size: ${size}MB, http: $http_code)" >> stress_errors.log
     fi
-    
+
     # Progress every 2 files
     if [ $((i % 2)) -eq 0 ]; then
         echo -ne " [$i/$NUM_LARGE_FILES]\n"

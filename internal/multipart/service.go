@@ -31,7 +31,7 @@ func (s *Service) InitiateMultipartUpload(ctx context.Context, bucket, key strin
 		CreatedAt:  time.Now(),
 		Parts:      make([]Part, 0),
 	}
-	
+
 	s.uploads[uploadID] = upload
 	return upload, nil
 }
@@ -42,17 +42,17 @@ func (s *Service) UploadPart(ctx context.Context, bucket, key, uploadID string, 
 	if !ok {
 		return nil, errors.New("upload not found")
 	}
-	
+
 	if partNumber < 1 || partNumber > 10000 {
 		return nil, errors.New("invalid part number")
 	}
-	
+
 	part := Part{
 		PartNumber: partNumber,
 		ETag:       etag,
 		Size:       size,
 	}
-	
+
 	// Check if part already exists and replace it
 	found := false
 	for i, p := range upload.Parts {
@@ -62,11 +62,11 @@ func (s *Service) UploadPart(ctx context.Context, bucket, key, uploadID string, 
 			break
 		}
 	}
-	
+
 	if !found {
 		upload.Parts = append(upload.Parts, part)
 	}
-	
+
 	return &part, nil
 }
 
@@ -76,12 +76,12 @@ func (s *Service) ListParts(ctx context.Context, bucket, key, uploadID string) (
 	if !ok {
 		return nil, errors.New("upload not found")
 	}
-	
+
 	// Sort parts by part number
 	sort.Slice(upload.Parts, func(i, j int) bool {
 		return upload.Parts[i].PartNumber < upload.Parts[j].PartNumber
 	})
-	
+
 	return upload.Parts, nil
 }
 
@@ -91,14 +91,14 @@ func (s *Service) CompleteMultipartUpload(ctx context.Context, bucket, key, uplo
 	if !ok {
 		return errors.New("upload not found")
 	}
-	
+
 	// Verify parts
 	if len(parts) != len(upload.Parts) {
 		// This is a simple check, real impl should verify each part ETag/Checksum
 	}
-	
+
 	// Merge parts (logic omitted for now as it requires storage engine interaction)
-	
+
 	delete(s.uploads, uploadID)
 	return nil
 }
@@ -108,9 +108,9 @@ func (s *Service) AbortMultipartUpload(ctx context.Context, bucket, key, uploadI
 	if _, ok := s.uploads[uploadID]; !ok {
 		return errors.New("upload not found")
 	}
-	
+
 	// Cleanup parts (logic omitted)
-	
+
 	delete(s.uploads, uploadID)
 	return nil
 }

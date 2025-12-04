@@ -27,12 +27,12 @@ func (h *ReplicationHandler) GetStatus(c *gin.Context) {
 	}
 
 	stats := h.replicator.GetStats()
-	
+
 	c.JSON(http.StatusOK, gin.H{
-		"enabled":            true,
-		"events_queued":      stats.EventsQueued,
-		"events_replicated":  stats.EventsReplicated,
-		"events_failed":      stats.EventsFailed,
-		"last_replication":   stats.LastReplication,
+		"enabled":           true,
+		"events_queued":     stats.EventsQueued,
+		"events_replicated": stats.EventsReplicated,
+		"events_failed":     stats.EventsFailed,
+		"last_replication":  stats.LastReplication,
 	})
 }

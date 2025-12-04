@@ -20,3 +20,14 @@ bin/
 .vscode/
 *.swp
 *.swo
+
+# logs
+*.log
+
+# metadata directory
+metadata/
+
+# storage
+storage.data
+
+*.db*

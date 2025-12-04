@@ -134,3 +134,38 @@ func TestSimpleEngine_BlockSize(t *testing.T) {
 		t.Errorf("BlockSize() = %d, want %d", engine.BlockSize(), blockSize)
 	}
 }
+
+func TestSimpleEngine_Sync(t *testing.T) {
+	f, err := os.CreateTemp("", "engine_test_*.dat")
+	if err != nil {
+		t.Fatalf("Failed to create temp file: %v", err)
+	}
+	defer os.Remove(f.Name())
+	f.Close()
+
+	engine, err := NewSimpleEngine(f.Name(), 64*1024*1024, 4*1024*1024)
+	if err != nil {
+		t.Fatalf("Failed to create engine: %v", err)
+	}
+	defer engine.Close()
+
+	if err := engine.Open(f.Name()); err != nil {
+		t.Fatalf("Failed to open engine: %v", err)
+	}
+
+	// Write some data
+	offset, err := engine.Allocate(1024)
+	if err != nil {
+		t.Fatalf("Failed to allocate: %v", err)
+	}
+
+	data := []byte("test data")
+	if err := engine.Write(offset, data); err != nil {
+		t.Fatalf("Failed to write: %v", err)
+	}
+
+	// Sync should not error
+	if err := engine.Sync(); err != nil {
+		t.Errorf("Sync() error = %v", err)
+	}
+}

@@ -12,7 +12,7 @@ var (
 		},
 		[]string{"method", "bucket", "status"},
 	)
-	
+
 	RequestDuration = prometheus.NewHistogramVec(
 		prometheus.HistogramOpts{
 			Name: "comio_request_duration_seconds",

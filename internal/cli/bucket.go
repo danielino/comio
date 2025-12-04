@@ -86,8 +86,51 @@ var bucketListCmd = &cobra.Command{
 	},
 }
 
+var bucketCountCmd = &cobra.Command{
+	Use:   "count <name>",
+	Short: "Count objects in a bucket",
+	Args:  cobra.ExactArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
+		bucket := args[0]
+
+		url := fmt.Sprintf("%s/admin/%s/objects", serverAddr, bucket)
+
+		req, err := http.NewRequest("DELETE", url, nil)
+		if err != nil {
+			fmt.Printf("Error creating request: %v\n", err)
+			os.Exit(1)
+		}
+
+		client := &http.Client{}
+		resp, err := client.Do(req)
+		if err != nil {
+			fmt.Printf("Error sending request: %v\n", err)
+			os.Exit(1)
+		}
+		defer resp.Body.Close()
+
+		if resp.StatusCode != http.StatusOK {
+			body, _ := io.ReadAll(resp.Body)
+			fmt.Printf("Error getting bucket info: %s (Status: %d)\n", string(body), resp.StatusCode)
+			os.Exit(1)
+		}
+
+		var info map[string]interface{}
+		if err := json.NewDecoder(resp.Body).Decode(&info); err != nil {
+			fmt.Printf("Error decoding response: %v\n", err)
+			os.Exit(1)
+		}
+
+		count := int(info["count"].(float64))
+		totalSize := int64(info["total_size"].(float64))
+
+		fmt.Printf("Bucket '%s' contains %d object(s) (%s)\n", bucket, count, formatBytes(float64(totalSize)))
+	},
+}
+
 func init() {
 	rootCmd.AddCommand(bucketCmd)
 	bucketCmd.AddCommand(bucketCreateCmd)
 	bucketCmd.AddCommand(bucketListCmd)
+	bucketCmd.AddCommand(bucketCountCmd)
 }

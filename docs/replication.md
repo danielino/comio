@@ -35,7 +35,7 @@ Site A (Primary)                    Site B (Replica)
 
 ### 📊 Eventi Replicati
 1. **PUT Object** - Creazione/aggiornamento oggetto
-2. **DELETE Object** - Eliminazione oggetto singolo  
+2. **DELETE Object** - Eliminazione oggetto singolo
 3. **PURGE Bucket** - Eliminazione tutti gli oggetti di un bucket
 
 ### 🎯 Ottimizzazioni

@@ -52,3 +52,686 @@
 2025-12-03T22:07:32.784+0100	INFO	replication/replicator.go:56	Replication disabled
 2025-12-03T22:07:32.784+0100	INFO	replication/replicator.go:75	Stopping replicator
 2025-12-03T22:07:32.784+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:08:45.470+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T22:08:45.471+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:08:45.471+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:08:45.471+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:08:45.471+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:08:45.471+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:08:45.523+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:08:45.523+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:08:45.524+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57001", "mode": "async"}
+2025-12-03T22:08:45.524+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:08:45.524+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:08:45.524+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:08:45.524+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:08:45.524+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:08:45.825+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:08:45.825+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:08:45.826+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57003", "mode": ""}
+2025-12-03T22:08:45.826+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:08:45.826+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:08:45.826+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:08:45.826+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:08:45.826+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:08:46.128+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:08:46.128+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:08:46.129+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T22:08:46.129+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:08:46.129+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:21.166+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T22:10:21.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:21.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:21.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:21.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:21.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:21.218+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:21.222+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:21.225+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57343", "mode": "async"}
+2025-12-03T22:10:21.225+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:21.226+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:21.226+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:21.226+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:21.226+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:21.527+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:21.527+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:21.528+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57345", "mode": ""}
+2025-12-03T22:10:21.528+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:21.528+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:21.528+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:21.528+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:21.528+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:21.829+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:21.829+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:21.830+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T22:10:21.830+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:21.830+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:21.831+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57351", "mode": ""}
+2025-12-03T22:10:21.832+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:21.832+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:21.832+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:21.832+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:21.832+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:21.937+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796221831246000-test-", "attempt": 1}
+2025-12-03T22:10:21.937+0100	ERROR	replication/replicator.go:155	Failed to replicate event	{"event_id": "1764796221831246000-test-", "error": "failed after 2 attempts: remote returned 404: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:155
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:141
+2025-12-03T22:10:22.131+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:22.132+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:22.132+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57353", "mode": ""}
+2025-12-03T22:10:22.133+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:22.133+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:22.133+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:22.133+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:22.133+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:22.435+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:22.435+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:50.467+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T22:10:50.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:50.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:50.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:50.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:50.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:50.519+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:50.519+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:50.520+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57432", "mode": "async"}
+2025-12-03T22:10:50.520+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:50.520+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:50.520+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:50.520+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:50.520+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:50.821+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:50.821+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:50.822+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57434", "mode": ""}
+2025-12-03T22:10:50.822+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:50.822+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:50.822+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:50.822+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:50.822+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:51.127+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:51.127+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:51.128+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T22:10:51.128+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:51.128+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:51.129+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57436", "mode": ""}
+2025-12-03T22:10:51.130+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:51.130+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:51.130+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:51.130+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:51.130+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:51.232+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796251129497000-test-", "attempt": 1}
+2025-12-03T22:10:51.233+0100	ERROR	replication/replicator.go:155	Failed to replicate event	{"event_id": "1764796251129497000-test-", "error": "failed after 2 attempts: remote returned 404: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:155
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:141
+2025-12-03T22:10:51.430+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:51.430+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:10:51.431+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57439", "mode": ""}
+2025-12-03T22:10:51.431+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:10:51.431+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:10:51.431+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:10:51.431+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:10:51.432+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:10:51.732+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:10:51.733+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:43.383+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T22:11:43.385+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:43.385+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:43.385+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:43.385+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:43.385+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:43.436+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:43.436+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:43.436+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57495", "mode": "async"}
+2025-12-03T22:11:43.436+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:43.436+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:43.436+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:43.436+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:43.436+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:43.737+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:43.738+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:43.739+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57497", "mode": ""}
+2025-12-03T22:11:43.739+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:43.739+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:43.739+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:43.739+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:43.739+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:44.040+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:44.040+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:44.041+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T22:11:44.041+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:44.041+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:44.041+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57499", "mode": ""}
+2025-12-03T22:11:44.041+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:44.041+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:44.041+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:44.041+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:44.041+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:44.342+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:44.342+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:44.342+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57501", "mode": ""}
+2025-12-03T22:11:44.342+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:44.342+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:44.342+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:44.342+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:44.342+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:44.643+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:44.643+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:53.115+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T22:11:53.115+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:53.115+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:53.115+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:53.115+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:53.115+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:53.166+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:53.166+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:53.167+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57511", "mode": "async"}
+2025-12-03T22:11:53.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:53.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:53.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:53.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:53.167+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:53.467+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:53.468+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:53.468+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57513", "mode": ""}
+2025-12-03T22:11:53.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:53.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:53.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:53.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:53.468+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:53.770+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:53.770+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:53.771+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T22:11:53.771+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:53.771+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:53.771+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57515", "mode": ""}
+2025-12-03T22:11:53.772+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:53.772+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:53.772+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:53.772+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:53.772+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:54.073+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:54.073+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:11:54.073+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57518", "mode": ""}
+2025-12-03T22:11:54.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:11:54.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:11:54.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:11:54.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:11:54.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:11:54.374+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:11:54.374+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:12:54.680+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T22:12:54.681+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:12:54.681+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:12:54.681+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:12:54.681+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:12:54.681+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:12:54.732+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:12:54.732+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:12:54.732+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57564", "mode": "async"}
+2025-12-03T22:12:54.732+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:12:54.732+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:12:54.733+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:12:54.733+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:12:54.733+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:12:55.033+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:12:55.033+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:12:55.034+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57566", "mode": ""}
+2025-12-03T22:12:55.034+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:12:55.034+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:12:55.034+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:12:55.034+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:12:55.034+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:12:55.335+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:12:55.335+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:12:55.336+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T22:12:55.336+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:12:55.336+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:12:55.336+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57568", "mode": ""}
+2025-12-03T22:12:55.336+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:12:55.336+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:12:55.336+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:12:55.337+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:12:55.337+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:12:55.637+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:12:55.637+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:12:55.638+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57570", "mode": ""}
+2025-12-03T22:12:55.638+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:12:55.638+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:12:55.638+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:12:55.638+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:12:55.638+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:12:55.939+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:12:55.939+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:12:55.940+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57573", "mode": ""}
+2025-12-03T22:12:55.940+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:12:55.940+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:12:55.940+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:12:55.940+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:12:55.940+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:12:56.002+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796375940096000-test-fail", "attempt": 1}
+2025-12-03T22:12:56.013+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796375940096000-test-fail", "attempt": 2}
+2025-12-03T22:12:56.025+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796375940096000-test-fail", "attempt": 3}
+2025-12-03T22:12:56.025+0100	ERROR	replication/replicator.go:155	Failed to replicate event	{"event_id": "1764796375940096000-test-fail", "error": "failed after 4 attempts: remote returned 500: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:155
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:141
+2025-12-03T22:12:56.440+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:12:56.440+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:01.327+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T22:13:01.327+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:01.327+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:01.327+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:01.327+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:01.327+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:01.378+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:01.378+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:01.379+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57579", "mode": "async"}
+2025-12-03T22:13:01.379+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:01.379+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:01.379+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:01.379+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:01.379+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:01.680+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:01.680+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:01.680+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57581", "mode": ""}
+2025-12-03T22:13:01.680+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:01.680+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:01.680+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:01.680+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:01.680+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:01.981+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:01.981+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:01.981+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T22:13:01.981+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:01.981+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:01.982+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57583", "mode": ""}
+2025-12-03T22:13:01.982+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:01.982+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:01.982+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:01.982+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:01.982+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:02.283+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:02.283+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:02.284+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57586", "mode": ""}
+2025-12-03T22:13:02.284+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:02.284+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:02.284+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:02.284+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:02.284+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:02.585+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:02.585+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:02.586+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57589", "mode": ""}
+2025-12-03T22:13:02.586+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:02.586+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:02.586+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:02.586+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:02.586+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:02.649+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796382586286000-test-fail", "attempt": 1}
+2025-12-03T22:13:02.660+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796382586286000-test-fail", "attempt": 2}
+2025-12-03T22:13:02.671+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796382586286000-test-fail", "attempt": 3}
+2025-12-03T22:13:02.671+0100	ERROR	replication/replicator.go:155	Failed to replicate event	{"event_id": "1764796382586286000-test-fail", "error": "failed after 4 attempts: remote returned 500: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:155
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:141
+2025-12-03T22:13:03.086+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:03.087+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:21.381+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T22:13:21.382+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:21.382+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:21.382+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:21.382+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:21.382+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:21.433+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:21.433+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:21.434+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57603", "mode": "async"}
+2025-12-03T22:13:21.434+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:21.434+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:21.434+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:21.434+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:21.434+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:21.735+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:21.735+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:21.736+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57605", "mode": ""}
+2025-12-03T22:13:21.736+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:21.736+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:21.736+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:21.736+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:21.736+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:22.037+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:22.037+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:22.037+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T22:13:22.037+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:22.037+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:22.038+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57609", "mode": ""}
+2025-12-03T22:13:22.038+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:22.038+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:22.038+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:22.038+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:22.038+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:22.339+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:22.339+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:22.339+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57611", "mode": ""}
+2025-12-03T22:13:22.339+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:22.339+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:22.339+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:22.339+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:22.339+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:22.640+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:22.640+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T22:13:22.641+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:57614", "mode": ""}
+2025-12-03T22:13:22.641+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T22:13:22.641+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T22:13:22.641+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T22:13:22.641+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T22:13:22.641+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T22:13:22.704+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796402641565000-test-fail", "attempt": 1}
+2025-12-03T22:13:22.715+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796402641565000-test-fail", "attempt": 2}
+2025-12-03T22:13:22.727+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764796402641565000-test-fail", "attempt": 3}
+2025-12-03T22:13:22.727+0100	ERROR	replication/replicator.go:155	Failed to replicate event	{"event_id": "1764796402641565000-test-fail", "error": "failed after 4 attempts: remote returned 500: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:155
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:141
+2025-12-03T22:13:23.142+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T22:13:23.142+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:13.244+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T23:26:13.245+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:13.245+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:13.245+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:13.245+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:13.245+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:13.296+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:13.296+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:13.297+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64474", "mode": "async"}
+2025-12-03T23:26:13.297+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:13.297+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:13.297+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:13.297+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:13.297+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:13.599+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:13.600+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:13.600+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64476", "mode": ""}
+2025-12-03T23:26:13.601+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:13.601+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:13.601+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:13.601+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:13.601+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:13.902+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:13.902+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:13.902+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T23:26:13.902+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:13.902+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:13.903+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64478", "mode": ""}
+2025-12-03T23:26:13.903+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:13.903+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:13.903+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:13.903+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:13.903+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:14.203+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:14.203+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:14.204+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64480", "mode": ""}
+2025-12-03T23:26:14.204+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:14.204+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:14.204+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:14.204+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:14.204+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:14.504+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:14.505+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:14.505+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64483", "mode": ""}
+2025-12-03T23:26:14.505+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:14.505+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:14.505+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:14.505+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:14.505+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:14.567+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764800774505928000-test-fail", "attempt": 1}
+2025-12-03T23:26:14.579+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764800774505928000-test-fail", "attempt": 2}
+2025-12-03T23:26:14.590+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764800774505928000-test-fail", "attempt": 3}
+2025-12-03T23:26:14.590+0100	ERROR	replication/replicator.go:155	Failed to replicate event	{"event_id": "1764800774505928000-test-fail", "error": "failed after 4 attempts: remote returned 500: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:155
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:141
+2025-12-03T23:26:15.006+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:15.006+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:23.938+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-03T23:26:23.939+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:23.939+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:23.939+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:23.939+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:23.939+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:23.990+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:23.990+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:23.991+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64490", "mode": "async"}
+2025-12-03T23:26:23.992+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:23.992+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:23.992+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:23.992+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:23.992+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:24.296+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:24.297+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:24.298+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64492", "mode": ""}
+2025-12-03T23:26:24.298+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:24.298+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:24.298+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:24.298+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:24.298+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:24.603+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:24.603+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:24.605+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-03T23:26:24.605+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:24.605+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:24.606+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64494", "mode": ""}
+2025-12-03T23:26:24.606+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:24.606+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:24.606+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:24.606+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:24.606+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:24.907+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:24.908+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:24.909+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64496", "mode": ""}
+2025-12-03T23:26:24.910+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:24.910+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:24.910+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:24.910+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:24.910+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:25.211+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:25.211+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-03T23:26:25.212+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:64499", "mode": ""}
+2025-12-03T23:26:25.212+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-03T23:26:25.212+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-03T23:26:25.212+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-03T23:26:25.212+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-03T23:26:25.212+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-03T23:26:25.282+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764800785212651000-test-fail", "attempt": 1}
+2025-12-03T23:26:25.294+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764800785212651000-test-fail", "attempt": 2}
+2025-12-03T23:26:25.306+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764800785212651000-test-fail", "attempt": 3}
+2025-12-03T23:26:25.306+0100	ERROR	replication/replicator.go:155	Failed to replicate event	{"event_id": "1764800785212651000-test-fail", "error": "failed after 4 attempts: remote returned 500: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:155
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:141
+2025-12-03T23:26:25.713+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-03T23:26:25.713+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T17:55:05.718+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-04T17:55:05.720+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T17:55:05.720+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T17:55:05.720+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T17:55:05.720+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T17:55:05.720+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T17:55:05.771+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T17:55:05.771+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T17:55:05.771+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:53972", "mode": "async"}
+2025-12-04T17:55:05.771+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T17:55:05.771+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T17:55:05.771+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T17:55:05.771+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T17:55:05.771+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T17:55:06.072+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T17:55:06.073+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T17:55:06.073+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:53975", "mode": ""}
+2025-12-04T17:55:06.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T17:55:06.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T17:55:06.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T17:55:06.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T17:55:06.073+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T17:55:06.374+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T17:55:06.374+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T17:55:06.374+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-04T17:55:06.375+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T17:55:06.375+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T17:55:06.375+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:53977", "mode": ""}
+2025-12-04T17:55:06.375+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T17:55:06.375+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T17:55:06.375+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T17:55:06.375+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T17:55:06.375+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T17:55:06.676+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T17:55:06.676+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T17:55:06.676+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:53985", "mode": ""}
+2025-12-04T17:55:06.677+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T17:55:06.677+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T17:55:06.677+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T17:55:06.677+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T17:55:06.677+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T17:55:06.978+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T17:55:06.978+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T17:55:06.978+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:53990", "mode": ""}
+2025-12-04T17:55:06.978+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T17:55:06.978+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T17:55:06.978+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T17:55:06.979+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T17:55:06.978+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T17:55:07.041+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764867306978795000-test-fail", "attempt": 1}
+2025-12-04T17:55:07.055+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764867306978795000-test-fail", "attempt": 2}
+2025-12-04T17:55:07.066+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764867306978795000-test-fail", "attempt": 3}
+2025-12-04T17:55:07.066+0100	ERROR	replication/replicator.go:155	Failed to replicate event	{"event_id": "1764867306978795000-test-fail", "error": "failed after 4 attempts: remote returned 500: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:155
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:141
+2025-12-04T17:55:07.479+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T17:55:07.479+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T18:31:19.882+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-04T18:31:19.884+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T18:31:19.884+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T18:31:19.884+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T18:31:19.884+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T18:31:19.884+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T18:31:19.935+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T18:31:19.935+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T18:31:19.935+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:50639", "mode": "async"}
+2025-12-04T18:31:19.935+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T18:31:19.935+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T18:31:19.935+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T18:31:19.935+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T18:31:19.935+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T18:31:20.236+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T18:31:20.237+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T18:31:20.237+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:50645", "mode": ""}
+2025-12-04T18:31:20.237+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T18:31:20.237+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T18:31:20.237+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T18:31:20.237+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T18:31:20.237+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T18:31:20.538+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T18:31:20.538+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T18:31:20.538+0100	INFO	replication/replicator.go:56	Replication disabled
+2025-12-04T18:31:20.538+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T18:31:20.538+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T18:31:20.539+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:50650", "mode": ""}
+2025-12-04T18:31:20.539+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T18:31:20.539+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T18:31:20.539+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T18:31:20.539+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T18:31:20.539+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T18:31:20.840+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T18:31:20.840+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T18:31:20.841+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:50652", "mode": ""}
+2025-12-04T18:31:20.841+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T18:31:20.841+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T18:31:20.841+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T18:31:20.841+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T18:31:20.841+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T18:31:21.142+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T18:31:21.142+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T18:31:21.142+0100	INFO	replication/replicator.go:60	Starting replicator	{"remote": "http://127.0.0.1:50655", "mode": ""}
+2025-12-04T18:31:21.143+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 1}
+2025-12-04T18:31:21.143+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 2}
+2025-12-04T18:31:21.143+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 4}
+2025-12-04T18:31:21.143+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 0}
+2025-12-04T18:31:21.143+0100	INFO	replication/replicator.go:113	Replication worker started	{"worker_id": 3}
+2025-12-04T18:31:21.205+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764869481143117000-test-fail", "attempt": 1}
+2025-12-04T18:31:21.216+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764869481143117000-test-fail", "attempt": 2}
+2025-12-04T18:31:21.228+0100	INFO	replication/replicator.go:175	Retrying event replication	{"event_id": "1764869481143117000-test-fail", "attempt": 3}
+2025-12-04T18:31:21.228+0100	ERROR	replication/replicator.go:155	Failed to replicate event	{"event_id": "1764869481143117000-test-fail", "error": "failed after 4 attempts: remote returned 500: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:155
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:141
+2025-12-04T18:31:21.644+0100	INFO	replication/replicator.go:75	Stopping replicator
+2025-12-04T18:31:21.644+0100	INFO	replication/replicator.go:79	Replicator stopped
+2025-12-04T18:41:25.980+0100	INFO	replication/replicator.go:66	Starting replicator	{"remote": "", "mode": "async"}
+2025-12-04T18:41:25.981+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 2}
+2025-12-04T18:41:25.981+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 3}
+2025-12-04T18:41:25.981+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 0}
+2025-12-04T18:41:25.981+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 4}
+2025-12-04T18:41:25.981+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 1}
+2025-12-04T18:41:26.032+0100	INFO	replication/replicator.go:81	Stopping replicator
+2025-12-04T18:41:26.032+0100	INFO	replication/replicator.go:85	Replicator stopped
+2025-12-04T18:41:26.032+0100	INFO	replication/replicator.go:66	Starting replicator	{"remote": "http://127.0.0.1:54821", "mode": "async"}
+2025-12-04T18:41:26.032+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 4}
+2025-12-04T18:41:26.032+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 2}
+2025-12-04T18:41:26.032+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 0}
+2025-12-04T18:41:26.032+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 1}
+2025-12-04T18:41:26.032+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 3}
+2025-12-04T18:41:26.333+0100	INFO	replication/replicator.go:81	Stopping replicator
+2025-12-04T18:41:26.333+0100	INFO	replication/replicator.go:85	Replicator stopped
+2025-12-04T18:41:26.333+0100	INFO	replication/replicator.go:66	Starting replicator	{"remote": "http://127.0.0.1:54827", "mode": ""}
+2025-12-04T18:41:26.333+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 4}
+2025-12-04T18:41:26.333+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 3}
+2025-12-04T18:41:26.333+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 1}
+2025-12-04T18:41:26.333+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 2}
+2025-12-04T18:41:26.333+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 0}
+2025-12-04T18:41:26.634+0100	INFO	replication/replicator.go:81	Stopping replicator
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:85	Replicator stopped
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:62	Replication disabled
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:81	Stopping replicator
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:85	Replicator stopped
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:66	Starting replicator	{"remote": "http://127.0.0.1:54831", "mode": ""}
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 4}
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 0}
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 3}
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 2}
+2025-12-04T18:41:26.635+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 1}
+2025-12-04T18:41:26.936+0100	INFO	replication/replicator.go:81	Stopping replicator
+2025-12-04T18:41:26.936+0100	INFO	replication/replicator.go:85	Replicator stopped
+2025-12-04T18:41:26.936+0100	INFO	replication/replicator.go:66	Starting replicator	{"remote": "http://127.0.0.1:54833", "mode": ""}
+2025-12-04T18:41:26.937+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 2}
+2025-12-04T18:41:26.937+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 1}
+2025-12-04T18:41:26.937+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 0}
+2025-12-04T18:41:26.937+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 3}
+2025-12-04T18:41:26.937+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 4}
+2025-12-04T18:41:27.238+0100	INFO	replication/replicator.go:81	Stopping replicator
+2025-12-04T18:41:27.238+0100	INFO	replication/replicator.go:85	Replicator stopped
+2025-12-04T18:41:27.238+0100	INFO	replication/replicator.go:66	Starting replicator	{"remote": "http://127.0.0.1:54840", "mode": ""}
+2025-12-04T18:41:27.239+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 3}
+2025-12-04T18:41:27.239+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 1}
+2025-12-04T18:41:27.239+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 2}
+2025-12-04T18:41:27.239+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 0}
+2025-12-04T18:41:27.239+0100	INFO	replication/replicator.go:119	Replication worker started	{"worker_id": 4}
+2025-12-04T18:41:27.290+0100	INFO	replication/replicator.go:196	Retrying event replication	{"event_id": "1764870087238798000-test-fail", "attempt": 1, "backoff": "10ms"}
+2025-12-04T18:41:27.302+0100	INFO	replication/replicator.go:196	Retrying event replication	{"event_id": "1764870087238798000-test-fail", "attempt": 2, "backoff": "20ms"}
+2025-12-04T18:41:27.323+0100	INFO	replication/replicator.go:196	Retrying event replication	{"event_id": "1764870087238798000-test-fail", "attempt": 3, "backoff": "40ms"}
+2025-12-04T18:41:27.364+0100	ERROR	replication/replicator.go:161	Failed to replicate event	{"event_id": "1764870087238798000-test-fail", "error": "failed after 4 attempts: remote returned 500: "}
+github.com/danielino/comio/internal/replication.(*Replicator).sendBatch
+	/Users/dmarcocci/comio/internal/replication/replicator.go:161
+github.com/danielino/comio/internal/replication.(*Replicator).worker
+	/Users/dmarcocci/comio/internal/replication/replicator.go:147
+2025-12-04T18:41:27.740+0100	INFO	replication/replicator.go:81	Stopping replicator
+2025-12-04T18:41:27.743+0100	INFO	replication/replicator.go:85	Replicator stopped

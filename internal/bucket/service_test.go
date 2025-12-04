@@ -210,3 +210,73 @@ func TestBucketService_DeleteBucket(t *testing.T) {
 		t.Error("GetBucket() after DeleteBucket() should return error, got nil")
 	}
 }
+
+func TestMemoryRepository_Update(t *testing.T) {
+	repo := NewMemoryRepository()
+	ctx := context.Background()
+
+	name := "test-bucket"
+	bucket := &Bucket{
+		Name:       name,
+		CreatedAt:  time.Now(),
+		Versioning: VersioningDisabled,
+	}
+	repo.Create(ctx, bucket)
+
+	// Update versioning
+	bucket.Versioning = VersioningEnabled
+	err := repo.Update(ctx, bucket)
+	if err != nil {
+		t.Errorf("Update() error = %v", err)
+	}
+
+	// Verify update
+	updated, err := repo.Get(ctx, name)
+	if err != nil {
+		t.Errorf("Get() error = %v", err)
+	}
+
+	if updated.Versioning != VersioningEnabled {
+		t.Errorf("Update() versioning = %s, want %s", updated.Versioning, VersioningEnabled)
+	}
+
+	// Update non-existing bucket
+	err = repo.Update(ctx, &Bucket{Name: "non-existing"})
+	if err == nil {
+		t.Error("Update() expected error for non-existing bucket, got nil")
+	}
+}
+
+func TestBucketService_InvalidNames(t *testing.T) {
+	repo := NewMemoryRepository()
+	service := NewService(repo)
+	ctx := context.Background()
+
+	tests := []struct {
+		name    string
+		invalid bool
+	}{
+		{"valid-bucket-name", false},
+		{"valid123", false},
+		{"a", true},            // too short
+		{"ab", true},           // too short
+		{"Invalid", true},      // uppercase
+		{"invalid_name", true}, // underscore
+		{".invalid", true},     // starts with dot
+		{"invalid.", true},     // ends with dot
+		// Note: The current regex doesn't fully validate all S3 rules
+		// (consecutive dots, IP addresses), just basic naming
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := service.CreateBucket(ctx, tt.name, "owner")
+			if tt.invalid && err == nil {
+				t.Errorf("CreateBucket(%s) expected error, got nil", tt.name)
+			}
+			if !tt.invalid && err != nil {
+				t.Errorf("CreateBucket(%s) unexpected error = %v", tt.name, err)
+			}
+		})
+	}
+}

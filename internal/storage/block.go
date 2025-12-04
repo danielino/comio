@@ -24,7 +24,7 @@ func NewBlockManager(device *Device, blockSize int) *BlockManager {
 func (bm *BlockManager) ReadBlock(blockIndex int64) ([]byte, error) {
 	bm.mu.RLock()
 	defer bm.mu.RUnlock()
-	
+
 	offset := blockIndex * int64(bm.blockSize)
 	return bm.device.Read(offset, int64(bm.blockSize))
 }
@@ -33,11 +33,11 @@ func (bm *BlockManager) ReadBlock(blockIndex int64) ([]byte, error) {
 func (bm *BlockManager) WriteBlock(blockIndex int64, data []byte) error {
 	bm.mu.Lock()
 	defer bm.mu.Unlock()
-	
+
 	if len(data) != bm.blockSize {
 		return errors.New("data size does not match block size")
 	}
-	
+
 	offset := blockIndex * int64(bm.blockSize)
 	return bm.device.Write(offset, data)
 }

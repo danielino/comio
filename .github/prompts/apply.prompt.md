@@ -250,7 +250,7 @@ Implement in `internal/object/`:
        StorageClass string
        DeleteMarker bool
    }
-   
+
    type Checksum struct {
        Algorithm string // MD5, SHA256, CRC32
        Value     string
@@ -445,7 +445,7 @@ Implement in `internal/api/`:
    ```
    # Service operations
    GET /                                    # ListBuckets
-   
+
    # Bucket operations
    PUT /{bucket}                            # CreateBucket
    DELETE /{bucket}                         # DeleteBucket
@@ -455,7 +455,7 @@ Implement in `internal/api/`:
    PUT /{bucket}?versioning                 # PutBucketVersioning
    GET /{bucket}?lifecycle                  # GetBucketLifecycle
    PUT /{bucket}?lifecycle                  # PutBucketLifecycle
-   
+
    # Object operations
    PUT /{bucket}/{key}                      # PutObject
    GET /{bucket}/{key}                      # GetObject
@@ -466,7 +466,7 @@ Implement in `internal/api/`:
    POST /{bucket}/{key}?uploadId            # CompleteMultipartUpload
    DELETE /{bucket}/{key}?uploadId          # AbortMultipartUpload
    GET /{bucket}/{key}?uploadId             # ListParts
-   
+
    # Admin endpoints (non-S3)
    GET /admin/health                        # Health check
    GET /admin/metrics                       # Prometheus metrics
@@ -492,10 +492,10 @@ Implement in `internal/cli/`:
 1. **root.go**: Root command:
    ```
    comio - Community IO Storage
-   
+
    Usage:
      comio [command]
-   
+
    Commands:
      server    Start the ComIO server
      bucket    Bucket management commands
@@ -726,21 +726,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: '1.25'
-      
+
       - name: Install dependencies
         run: go mod download
-      
+
       - name: Run vet
         run: go vet ./...
-      
+
       - name: Run tests
         run: go test -v -race -coverprofile=coverage.out ./...
-      
+
       - name: Check coverage
         run: |
           COVERAGE=$(go tool cover -func=coverage.out | grep total | awk '{print $3}' | sed 's/%//')
@@ -748,7 +748,7 @@ jobs:
             echo "Coverage is below 80%: $COVERAGE%"
             exit 1
           fi
-      
+
       - name: Upload coverage
         uses: codecov/codecov-action@v3
         with:
@@ -758,12 +758,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: '1.25'
-      
+
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
         with:
@@ -774,15 +774,15 @@ jobs:
     needs: [test, lint]
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: '1.25'
-      
+
       - name: Build
         run: make build
-      
+
       - name: Build Docker image
         run: make docker-build
 ```
@@ -804,12 +804,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: '1.25'
-      
+
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:
@@ -818,13 +818,13 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:

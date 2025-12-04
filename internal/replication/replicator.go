@@ -20,34 +20,40 @@ const (
 )
 
 type Replicator struct {
-	config    Config
-	client    *http.Client
-	queue     chan Event
-	wg        sync.WaitGroup
-	ctx       context.Context
-	cancel    context.CancelFunc
-	mu        sync.RWMutex
-	stats     Stats
+	config         Config
+	client         *http.Client
+	queue          chan Event
+	wg             sync.WaitGroup
+	ctx            context.Context
+	cancel         context.CancelFunc
+	mu             sync.RWMutex
+	stats          Stats
+	circuitBreaker *CircuitBreaker
 }
 
 type Stats struct {
-	EventsQueued    int64
+	EventsQueued     int64
 	EventsReplicated int64
-	EventsFailed    int64
-	LastReplication time.Time
+	EventsFailed     int64
+	LastReplication  time.Time
 }
 
 func NewReplicator(config Config) *Replicator {
 	ctx, cancel := context.WithCancel(context.Background())
-	
+
+	// Initialize circuit breaker with default config
+	cbConfig := DefaultCircuitBreakerConfig()
+	circuitBreaker := NewCircuitBreaker(cbConfig)
+
 	return &Replicator{
 		config: config,
 		client: &http.Client{
 			Timeout: 30 * time.Second,
 		},
-		queue:  make(chan Event, 10000), // Buffer 10k events
-		ctx:    ctx,
-		cancel: cancel,
+		queue:          make(chan Event, 10000), // Buffer 10k events
+		ctx:            ctx,
+		cancel:         cancel,
+		circuitBreaker: circuitBreaker,
 	}
 }
 
@@ -130,7 +136,7 @@ func (r *Replicator) worker(id int) {
 				return
 			}
 			batch = append(batch, event)
-			
+
 			if len(batch) >= r.config.BatchSize {
 				r.sendBatch(batch)
 				batch = batch[:0]
@@ -168,13 +174,31 @@ func (r *Replicator) sendBatch(events []Event) {
 }
 
 func (r *Replicator) sendEvent(event Event) error {
+	// Use circuit breaker to protect against cascading failures
+	return r.circuitBreaker.Call(func() error {
+		return r.sendEventWithRetry(event)
+	})
+}
+
+// sendEventWithRetry sends an event with exponential backoff retry
+func (r *Replicator) sendEventWithRetry(event Event) error {
 	var err error
+	backoff := r.config.RetryDelay // Start with configured delay
+
 	for attempt := 0; attempt <= r.config.RetryAttempts; attempt++ {
 		if attempt > 0 {
-			time.Sleep(r.config.RetryDelay)
+			// Exponential backoff: delay * 2^attempt, capped at 1 minute
+			delay := backoff * time.Duration(1<<uint(attempt-1))
+			if delay > time.Minute {
+				delay = time.Minute
+			}
+
 			monitoring.Log.Info("Retrying event replication",
 				zap.String("event_id", event.ID),
-				zap.Int("attempt", attempt))
+				zap.Int("attempt", attempt),
+				zap.Duration("backoff", delay))
+
+			time.Sleep(delay)
 		}
 
 		switch event.Type {
@@ -201,10 +225,26 @@ func (r *Replicator) replicatePutObject(event Event) error {
 
 	var body io.Reader
 	if len(event.Data) > 0 {
-		// Inline data
+		// Inline data (for small objects)
 		body = bytes.NewReader(event.Data)
+	} else if event.StoragePointer != nil {
+		// Storage pointer: fetch from local storage via API
+		// This avoids holding large object data in memory
+		localURL := fmt.Sprintf("http://localhost:8080/%s/%s", event.Bucket, event.Key)
+		resp, err := http.Get(localURL)
+		if err != nil {
+			return fmt.Errorf("failed to fetch object data from local storage: %w", err)
+		}
+		defer resp.Body.Close()
+
+		if resp.StatusCode != http.StatusOK {
+			bodyBytes, _ := io.ReadAll(resp.Body)
+			return fmt.Errorf("local storage returned %d: %s", resp.StatusCode, string(bodyBytes))
+		}
+
+		body = resp.Body
 	} else if event.DataURL != "" {
-		// Fetch from local URL
+		// Fetch from external URL
 		resp, err := http.Get(event.DataURL)
 		if err != nil {
 			return fmt.Errorf("failed to fetch object data: %w", err)
@@ -212,7 +252,7 @@ func (r *Replicator) replicatePutObject(event Event) error {
 		defer resp.Body.Close()
 		body = resp.Body
 	} else {
-		return fmt.Errorf("no data or data URL provided")
+		return fmt.Errorf("no data, storage pointer, or data URL provided")
 	}
 
 	req, err := http.NewRequestWithContext(r.ctx, "PUT", url, body)
@@ -298,4 +338,20 @@ func (r *Replicator) GetStats() Stats {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
 	return r.stats
+}
+
+// GetCircuitBreakerStats returns circuit breaker statistics
+func (r *Replicator) GetCircuitBreakerStats() CircuitBreakerStats {
+	return r.circuitBreaker.GetStats()
+}
+
+// GetCircuitBreakerState returns the current circuit breaker state
+func (r *Replicator) GetCircuitBreakerState() CircuitState {
+	return r.circuitBreaker.GetState()
+}
+
+// ResetCircuitBreaker resets the circuit breaker to closed state
+func (r *Replicator) ResetCircuitBreaker() {
+	r.circuitBreaker.Reset()
+	monitoring.Log.Info("Circuit breaker manually reset")
 }

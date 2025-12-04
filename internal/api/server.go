@@ -15,18 +15,20 @@ import (
 
 // Server represents the HTTP server
 type Server struct {
-	router *gin.Engine
-	srv    *http.Server
-	cfg    *config.Config
+	router    *gin.Engine
+	srv       *http.Server
+	cfg       *config.Config
+	container *ServiceContainer
 }
 
-// NewServer creates a new HTTP server
-func NewServer(cfg *config.Config) *Server {
+// NewServer creates a new HTTP server with injected dependencies
+func NewServer(cfg *config.Config, container *ServiceContainer) *Server {
 	router := gin.New()
-	
+
 	return &Server{
-		router: router,
-		cfg:    cfg,
+		router:    router,
+		cfg:       cfg,
+		container: container,
 	}
 }
 
@@ -49,7 +51,20 @@ func (s *Server) Start() error {
 
 // Stop stops the server gracefully
 func (s *Server) Stop(ctx context.Context) error {
-	return s.srv.Shutdown(ctx)
+	monitoring.Log.Info("Stopping server...")
+
+	// First, stop accepting new connections
+	if err := s.srv.Shutdown(ctx); err != nil {
+		return fmt.Errorf("server shutdown failed: %w", err)
+	}
+
+	// Then, clean up resources
+	if err := s.container.Close(); err != nil {
+		return fmt.Errorf("container cleanup failed: %w", err)
+	}
+
+	monitoring.Log.Info("Server stopped successfully")
+	return nil
 }
 
 func parseDuration(d string) time.Duration {

@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -52,7 +53,7 @@ var metricsCmd = &cobra.Command{
 		totalBytes := storage["TotalBytes"].(float64)
 		usedBytes := storage["UsedBytes"].(float64)
 		freeBytes := storage["FreeBytes"].(float64)
-		
+
 		fmt.Printf("Storage Metrics:\n")
 		fmt.Printf("  Total: %s\n", formatBytes(totalBytes))
 		fmt.Printf("  Used:  %s\n", formatBytes(usedBytes))
@@ -66,16 +67,16 @@ var purgeCmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		bucket := args[0]
-		
+
 		// First, get info about what will be deleted
 		url := fmt.Sprintf("%s/admin/%s/objects", serverAddr, bucket)
-		
+
 		req, err := http.NewRequest("DELETE", url, nil)
 		if err != nil {
 			fmt.Printf("Error creating request: %v\n", err)
 			os.Exit(1)
 		}
-		
+
 		client := &http.Client{}
 		resp, err := client.Do(req)
 		if err != nil {
@@ -83,70 +84,103 @@ var purgeCmd = &cobra.Command{
 			os.Exit(1)
 		}
 		defer resp.Body.Close()
-		
+
 		if resp.StatusCode != http.StatusOK {
 			body, _ := io.ReadAll(resp.Body)
 			fmt.Printf("Error getting bucket info: %s (Status: %d)\n", string(body), resp.StatusCode)
 			os.Exit(1)
 		}
-		
+
 		var info map[string]interface{}
 		if err := json.NewDecoder(resp.Body).Decode(&info); err != nil {
 			fmt.Printf("Error decoding response: %v\n", err)
 			os.Exit(1)
 		}
-		
+
 		count := int(info["count"].(float64))
 		totalSize := int64(info["total_size"].(float64))
-		
+
 		if count == 0 {
 			fmt.Printf("No objects to delete in bucket '%s'\n", bucket)
 			return
 		}
-		
-		fmt.Printf("\nWARNING: This will delete %d object(s) totaling %s from bucket '%s'\n", 
+
+		fmt.Printf("\nWARNING: This will delete %d object(s) totaling %s from bucket '%s'\n",
 			count, formatBytes(float64(totalSize)), bucket)
 		fmt.Print("Are you sure you want to proceed? (yes/no): ")
-		
+
 		var confirmation string
 		fmt.Scanln(&confirmation)
-		
+
 		if confirmation != "yes" {
 			fmt.Println("Operation cancelled")
 			os.Exit(0)
 		}
-		
-		// Perform actual deletion
+
+		// Perform actual deletion with progress feedback
+		fmt.Printf("\nDeleting %d objects...\n", count)
 		deleteURL := fmt.Sprintf("%s/admin/%s/objects?confirm=true", serverAddr, bucket)
 		deleteReq, err := http.NewRequest("DELETE", deleteURL, nil)
 		if err != nil {
 			fmt.Printf("Error creating delete request: %v\n", err)
 			os.Exit(1)
 		}
-		
-		deleteResp, err := client.Do(deleteReq)
-		if err != nil {
-			fmt.Printf("Error performing deletion: %v\n", err)
-			os.Exit(1)
+
+		// Start deletion with timeout
+		client.Timeout = 300 * time.Second
+
+		// Show progress animation while deletion is happening
+		ticker := time.NewTicker(200 * time.Millisecond)
+		done := make(chan error)
+		var deletedCount int
+		var freedSize int64
+
+		go func() {
+			deleteResp, err := client.Do(deleteReq)
+			if err != nil {
+				done <- err
+				return
+			}
+			defer deleteResp.Body.Close()
+
+			if deleteResp.StatusCode != http.StatusOK {
+				body, _ := io.ReadAll(deleteResp.Body)
+				done <- fmt.Errorf("%s (Status: %d)", string(body), deleteResp.StatusCode)
+				return
+			}
+
+			var deleteResult map[string]interface{}
+			if err := json.NewDecoder(deleteResp.Body).Decode(&deleteResult); err != nil {
+				done <- err
+				return
+			}
+
+			deletedCount = int(deleteResult["deleted_count"].(float64))
+			freedSize = int64(deleteResult["freed_size"].(float64))
+			done <- nil
+		}()
+
+		// Show progress animation
+		progressChars := []string{"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"}
+		charIndex := 0
+	progressLoop:
+		for {
+			select {
+			case err := <-done:
+				ticker.Stop()
+				fmt.Printf("\r")
+				if err != nil {
+					fmt.Printf("✗ Error during deletion: %v\n", err)
+					os.Exit(1)
+				}
+				break progressLoop
+			case <-ticker.C:
+				fmt.Printf("\r%s Deleting objects... ", progressChars[charIndex%len(progressChars)])
+				charIndex++
+			}
 		}
-		defer deleteResp.Body.Close()
-		
-		if deleteResp.StatusCode != http.StatusOK {
-			body, _ := io.ReadAll(deleteResp.Body)
-			fmt.Printf("Error deleting objects: %s (Status: %d)\n", string(body), deleteResp.StatusCode)
-			os.Exit(1)
-		}
-		
-		var deleteResult map[string]interface{}
-		if err := json.NewDecoder(deleteResp.Body).Decode(&deleteResult); err != nil {
-			fmt.Printf("Error decoding delete response: %v\n", err)
-			os.Exit(1)
-		}
-		
-		deletedCount := int(deleteResult["deleted_count"].(float64))
-		freedSize := int64(deleteResult["freed_size"].(float64))
-		
-		fmt.Printf("\n✓ Deleted %d object(s), freed %s\n", deletedCount, formatBytes(float64(freedSize)))
+
+		fmt.Printf("✓ Deleted %d object(s), freed %s\n", deletedCount, formatBytes(float64(freedSize)))
 	},
 }
 

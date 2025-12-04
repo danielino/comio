@@ -1,8 +1,8 @@
 package utils
 
 import (
-"testing"
-"time"
+	"testing"
+	"time"
 )
 
 func TestHashSHA256(t *testing.T) {
