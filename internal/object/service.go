@@ -6,7 +6,10 @@ import (
 	"io"
 	"time"
 
+	"go.uber.org/zap"
+
 	"github.com/danielino/comio/internal/integrity"
+	"github.com/danielino/comio/internal/monitoring"
 	"github.com/danielino/comio/internal/replication"
 	"github.com/danielino/comio/internal/storage"
 )
@@ -65,8 +68,11 @@ func (s *Service) PutObject(ctx context.Context, bucket, key string, data io.Rea
 		if allocated {
 			// Operation failed - free the allocated space
 			if freeErr := s.engine.Free(offset, size); freeErr != nil {
-				// Log error but don't fail - cleanup is best effort
-				// In production, a background process should handle orphaned blocks
+				// Log error - in production, a background process should handle orphaned blocks
+				monitoring.Log.Error("Failed to free allocated storage space during cleanup",
+					zap.Int64("offset", offset),
+					zap.Int64("size", size),
+					zap.Error(freeErr))
 			}
 		}
 	}()
@@ -205,7 +211,13 @@ func (s *Service) DeleteAllObjects(ctx context.Context, bucket string) (int, int
 	// Free storage for all objects
 	for _, obj := range allObjects {
 		if err := s.engine.Free(obj.Offset, obj.Size); err != nil {
-			// Log but continue
+			// Log error but continue - storage cleanup can be done by background process
+			monitoring.Log.Warn("Failed to free storage for object during bulk delete",
+				zap.String("bucket", bucket),
+				zap.String("key", obj.Key),
+				zap.Int64("offset", obj.Offset),
+				zap.Int64("size", obj.Size),
+				zap.Error(err))
 		}
 	}
 
@@ -241,8 +253,14 @@ func (s *Service) DeleteObject(ctx context.Context, bucket, key string) error {
 
 	// Free storage space
 	if err := s.engine.Free(obj.Offset, obj.Size); err != nil {
-		// Log but continue with metadata deletion
+		// Log error but continue with metadata deletion
 		// Storage cleanup can be done later by background process
+		monitoring.Log.Warn("Failed to free storage for deleted object",
+			zap.String("bucket", bucket),
+			zap.String("key", key),
+			zap.Int64("offset", obj.Offset),
+			zap.Int64("size", obj.Size),
+			zap.Error(err))
 	}
 
 	// Delete metadata

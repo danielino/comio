@@ -9,6 +9,8 @@ import (
 	"path/filepath"
 	"strings"
 	"sync"
+
+	"github.com/danielino/comio/pkg/pathutil"
 )
 
 // FileRepository implements Repository using filesystem metadata files
@@ -32,17 +34,8 @@ func NewFileRepository(metadataDir string) (*FileRepository, error) {
 
 // getBucketMetaPath returns the path to a bucket's metadata file
 func (r *FileRepository) getBucketMetaPath(name string) string {
-	safeName := sanitizePath(name)
+	safeName := pathutil.SanitizePath(name)
 	return filepath.Join(r.metadataDir, "buckets", safeName+".json")
-}
-
-// sanitizePath sanitizes a path component to be filesystem-safe
-func sanitizePath(s string) string {
-	// Replace unsafe characters with underscores
-	s = strings.ReplaceAll(s, "/", "_")
-	s = strings.ReplaceAll(s, "\\", "_")
-	s = strings.ReplaceAll(s, "..", "_")
-	return s
 }
 
 func (r *FileRepository) Create(ctx context.Context, bucket *Bucket) error {

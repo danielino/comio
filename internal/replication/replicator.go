@@ -230,8 +230,12 @@ func (r *Replicator) replicatePutObject(event Event) error {
 	} else if event.StoragePointer != nil {
 		// Storage pointer: fetch from local storage via API
 		// This avoids holding large object data in memory
-		localURL := fmt.Sprintf("http://localhost:8080/%s/%s", event.Bucket, event.Key)
-		resp, err := http.Get(localURL)
+		localURL := r.config.LocalURL
+		if localURL == "" {
+			localURL = "http://localhost:8080" // fallback
+		}
+		fetchURL := fmt.Sprintf("%s/%s/%s", localURL, event.Bucket, event.Key)
+		resp, err := http.Get(fetchURL)
 		if err != nil {
 			return fmt.Errorf("failed to fetch object data from local storage: %w", err)
 		}

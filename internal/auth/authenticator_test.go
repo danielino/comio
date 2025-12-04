@@ -57,11 +57,31 @@ func TestMockAuthenticator_ValidateSignature(t *testing.T) {
 }
 
 func TestHMACAuthenticator_ValidateSignature(t *testing.T) {
-	auth := &HMACAuthenticator{}
-	req := httptest.NewRequest("GET", "/bucket/key", nil)
+	auth := NewHMACAuthenticator()
 
-	err := auth.ValidateSignature(req, "test-secret")
-	if err != nil {
-		t.Errorf("ValidateSignature() error = %v", err)
-	}
+	t.Run("missing authorization header", func(t *testing.T) {
+		req := httptest.NewRequest("GET", "/bucket/key", nil)
+		err := auth.ValidateSignature(req, "test-secret")
+		if err == nil {
+			t.Error("ValidateSignature() expected error for missing authorization header")
+		}
+	})
+
+	t.Run("invalid authorization scheme", func(t *testing.T) {
+		req := httptest.NewRequest("GET", "/bucket/key", nil)
+		req.Header.Set("Authorization", "Basic dXNlcjpwYXNz")
+		err := auth.ValidateSignature(req, "test-secret")
+		if err == nil {
+			t.Error("ValidateSignature() expected error for invalid scheme")
+		}
+	})
+
+	t.Run("missing signature in header", func(t *testing.T) {
+		req := httptest.NewRequest("GET", "/bucket/key", nil)
+		req.Header.Set("Authorization", "AWS4-HMAC-SHA256 Credential=AKID/date/region/s3/aws4_request, SignedHeaders=host")
+		err := auth.ValidateSignature(req, "test-secret")
+		if err == nil {
+			t.Error("ValidateSignature() expected error for missing signature")
+		}
+	})
 }

@@ -1,5 +1,7 @@
 package config
 
+import "time"
+
 // Config holds the global configuration
 type Config struct {
 	Server      ServerConfig      `mapstructure:"server"`
@@ -13,11 +15,24 @@ type Config struct {
 
 // ServerConfig holds server settings
 type ServerConfig struct {
-	Host         string    `mapstructure:"host"`
-	Port         int       `mapstructure:"port"`
-	ReadTimeout  string    `mapstructure:"read_timeout"`
-	WriteTimeout string    `mapstructure:"write_timeout"`
-	TLS          TLSConfig `mapstructure:"tls"`
+	Host            string    `mapstructure:"host"`
+	Port            int       `mapstructure:"port"`
+	ReadTimeout     string    `mapstructure:"read_timeout"`
+	WriteTimeout    string    `mapstructure:"write_timeout"`
+	ShutdownTimeoutStr string `mapstructure:"shutdown_timeout"`
+	TLS             TLSConfig `mapstructure:"tls"`
+}
+
+// ShutdownTimeout returns the shutdown timeout duration
+func (s *ServerConfig) ShutdownTimeout() time.Duration {
+	if s.ShutdownTimeoutStr == "" {
+		return 30 * time.Second // Default 30 seconds
+	}
+	d, err := time.ParseDuration(s.ShutdownTimeoutStr)
+	if err != nil {
+		return 30 * time.Second
+	}
+	return d
 }
 
 // TLSConfig holds TLS settings

@@ -23,6 +23,7 @@ bin/
 
 # logs
 *.log
+console
 
 # metadata directory
 metadata/

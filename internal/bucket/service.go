@@ -3,13 +3,20 @@ package bucket
 import (
 	"context"
 	"errors"
+	"fmt"
 	"regexp"
 	"time"
 )
 
+// ObjectCounter is used to check if a bucket has objects
+type ObjectCounter interface {
+	Count(ctx context.Context, bucket string) (int, int64, error)
+}
+
 // Service handles bucket operations
 type Service struct {
-	repo Repository
+	repo          Repository
+	objectCounter ObjectCounter
 }
 
 // NewService creates a new bucket service
@@ -17,6 +24,11 @@ func NewService(repo Repository) *Service {
 	return &Service{
 		repo: repo,
 	}
+}
+
+// SetObjectCounter sets the object counter for checking bucket emptiness
+func (s *Service) SetObjectCounter(counter ObjectCounter) {
+	s.objectCounter = counter
 }
 
 // CreateBucket creates a new bucket
@@ -53,7 +65,22 @@ func (s *Service) ListBuckets(ctx context.Context, owner string) ([]*Bucket, err
 
 // DeleteBucket deletes a bucket
 func (s *Service) DeleteBucket(ctx context.Context, name string) error {
-	// TODO: Check if empty
+	// Check if bucket exists
+	if _, err := s.repo.Get(ctx, name); err != nil {
+		return err
+	}
+
+	// Check if bucket is empty
+	if s.objectCounter != nil {
+		count, _, err := s.objectCounter.Count(ctx, name)
+		if err != nil {
+			return fmt.Errorf("failed to check if bucket %q is empty: %w", name, err)
+		}
+		if count > 0 {
+			return fmt.Errorf("bucket %q is not empty: contains %d objects", name, count)
+		}
+	}
+
 	return s.repo.Delete(ctx, name)
 }
 
