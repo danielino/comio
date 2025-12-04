@@ -7,6 +7,7 @@ type Config struct {
 	Mode          Mode          `yaml:"mode"` // async, sync
 	RemoteURL     string        `yaml:"remote_url"`
 	RemoteToken   string        `yaml:"remote_token"`
+	LocalURL      string        `yaml:"local_url"` // Local server URL for fetching objects
 	BatchSize     int           `yaml:"batch_size"`
 	BatchInterval time.Duration `yaml:"batch_interval"`
 	RetryAttempts int           `yaml:"retry_attempts"`
@@ -24,6 +25,7 @@ func DefaultConfig() Config {
 	return Config{
 		Enabled:       false,
 		Mode:          ModeAsync,
+		LocalURL:      "http://localhost:8080",
 		BatchSize:     100,
 		BatchInterval: 1 * time.Second,
 		RetryAttempts: 3,

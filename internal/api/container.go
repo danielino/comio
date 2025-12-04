@@ -121,6 +121,9 @@ func (c *ServiceContainer) initServices() {
 	c.BucketService = bucket.NewService(c.BucketRepo)
 	c.ObjectService = object.NewService(c.ObjectRepo, c.Engine)
 
+	// Wire up the object counter for bucket emptiness checks
+	c.BucketService.SetObjectCounter(c.ObjectRepo)
+
 	monitoring.Log.Info("Services initialized")
 }
 

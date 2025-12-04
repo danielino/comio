@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"github.com/danielino/comio/internal/api/middleware"
 	"github.com/danielino/comio/internal/bucket"
 )
 
@@ -22,9 +23,8 @@ func NewBucketHandler(service *bucket.Service) *BucketHandler {
 
 // ListBuckets lists all buckets
 func (h *BucketHandler) ListBuckets(c *gin.Context) {
-	// TODO: Get owner from auth context
-	owner := "default"
-	buckets, err := h.service.ListBuckets(c.Request.Context(), owner)
+	user := middleware.GetUserFromContext(c)
+	buckets, err := h.service.ListBuckets(c.Request.Context(), user.Username)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -35,10 +35,9 @@ func (h *BucketHandler) ListBuckets(c *gin.Context) {
 // CreateBucket creates a new bucket
 func (h *BucketHandler) CreateBucket(c *gin.Context) {
 	bucketName := c.Param("bucket")
-	// TODO: Get owner from auth context
-	owner := "default"
+	user := middleware.GetUserFromContext(c)
 
-	if err := h.service.CreateBucket(c.Request.Context(), bucketName, owner); err != nil {
+	if err := h.service.CreateBucket(c.Request.Context(), bucketName, user.Username); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
