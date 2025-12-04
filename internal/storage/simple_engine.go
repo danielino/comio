@@ -57,12 +57,14 @@ func (e *SimpleEngine) Write(offset int64, data []byte) error {
 }
 
 func (e *SimpleEngine) Allocate(size int64) (int64, error) {
-	// Allocator has its own lock
+	// SlabAllocator has its own internal mutex for thread safety.
+	// Allocation is independent of device I/O operations, so no engine lock needed.
 	return e.allocator.Allocate(size)
 }
 
 func (e *SimpleEngine) Free(offset, size int64) error {
-	// Allocator has its own lock
+	// SlabAllocator has its own internal mutex for thread safety.
+	// Freeing is independent of device I/O operations, so no engine lock needed.
 	return e.allocator.Free(offset, size)
 }
 

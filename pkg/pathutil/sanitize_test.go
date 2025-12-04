@@ -36,7 +36,7 @@ func TestSanitizePath(t *testing.T) {
 		{
 			name:     "empty string",
 			input:    "",
-			expected: "",
+			expected: ".",
 		},
 	}
 

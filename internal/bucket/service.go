@@ -3,6 +3,7 @@ package bucket
 import (
 	"context"
 	"errors"
+	"fmt"
 	"regexp"
 	"time"
 )
@@ -73,10 +74,10 @@ func (s *Service) DeleteBucket(ctx context.Context, name string) error {
 	if s.objectCounter != nil {
 		count, _, err := s.objectCounter.Count(ctx, name)
 		if err != nil {
-			return errors.New("failed to check bucket contents")
+			return fmt.Errorf("failed to check if bucket %q is empty: %w", name, err)
 		}
 		if count > 0 {
-			return errors.New("bucket is not empty")
+			return fmt.Errorf("bucket %q is not empty: contains %d objects", name, count)
 		}
 	}
 

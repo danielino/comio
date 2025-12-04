@@ -11,7 +11,12 @@ import (
 	"time"
 )
 
-// HMACAuthenticator implements S3-style HMAC authentication
+// HMACAuthenticator implements S3-style HMAC authentication.
+// Note: This is a simplified implementation for demonstration purposes.
+// A production implementation should follow the complete AWS Signature Version 4
+// specification including canonical request building, signing key derivation,
+// and proper timestamp validation. See:
+// https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
 type HMACAuthenticator struct {
 	users map[string]*User // accessKeyID -> User
 }
